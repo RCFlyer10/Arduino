@@ -1,0 +1,2306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSLT/decoder.xsl"?>
+<!-- Copyright (C) JMRI 2001, 2005, 2007, 2-009, 2010 All rights reserved -->
+<!--                                                                        -->
+<!-- JMRI is free software; you can redistribute it and/or modify it under  -->
+<!-- the terms of version 2 of the GNU General Public License as published  -->
+<!-- by the Free Software Foundation. See the "COPYING" file for a copy     -->
+<!-- of this license.                                                       -->
+<!--                                                                        -->
+<!-- JMRI is distributed in the hope that it will be useful, but WITHOUT    -->
+<!-- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  -->
+<!-- for more details.                                                      -->
+<decoder-config xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/decoder-4-15-2.xsd">
+  <copyright xmlns="http://docbook.org/ns/docbook">    
+    <year>2022</year>
+    <holder>JMRI</holder>
+  </copyright>
+  <authorgroup xmlns="http://docbook.org/ns/docbook">
+    <author>
+      <personname><firstname>Keith</firstname><surname>Ruberson</surname></personname>
+    </author>    
+  </authorgroup>
+  <revhistory xmlns="http://docbook.org/ns/docbook">
+    <revision>
+      <revnumber>3</revnumber><date>2002?</date><authorinitials>BJ</authorinitials>
+      <revremark>Add consist direction</revremark>
+    </revision>    
+  </revhistory>
+  <decoder>
+    <family name="6L Function Decoder" mfg="Public-domain and DIY">      
+      <model model="6L Function Decoder v 1.0" numOuts="6" numFns="28"/>
+    </family>
+    <programming direct="yes" paged="yes" register="yes" ops="yes">
+			<capability>
+				<name>Ops Mode Delayed Programming</name>
+				<parameter name="Delay">500</parameter>
+			</capability>
+		</programming>
+    <variables>
+			<variable CV="1" comment="Short address" item="Short Address" default="03">
+				<shortAddressVal/>
+				<label>Primary Address</label>
+			</variable>
+			
+			<variable CV="7" item="Decoder Version" readOnly="yes" default="10">
+				<decVal/>
+				<label>Manufacturer Version No: </label>    
+			</variable>
+			
+			<variable CV="8" readOnly="yes" item="Manufacturer" default="8">
+				<decVal/>
+				<label>Manufacturer ID: </label>    
+			</variable>
+			
+			<variable CV="17" item="Long Address">
+				<longAddressVal/>
+				<label>Extended Address</label>    
+			</variable>
+			
+			<variable CV="19" item="Consist Address" mask="XVVVVVVV" default="0" tooltip="Stores consist address. Range 0-127 (direction set in bit 7)">
+				<decVal max="127"/>
+				<label>Advanced Consist Address</label>				
+				<tooltip>Stores consist address. Range 0-127 (direction set in bit 7)</tooltip>				
+			</variable>
+			
+			<variable CV="19" item="Consist Direction"  mask="VXXXXXXX" default="0" tooltip="This loco runs Normal(default) or Reversed(address+128) when in the consist">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NormRev.xml"/>
+				<label>Locomotive Direction In Consist</label>
+				<tooltip>This loco runs Normal(default) or Reversed(address+128) when in the consist</tooltip>				
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F1" mask="XXXXXXXV" default="1" minFn="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>                
+				<label>Consist Address Active For FX1</label>
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F2" mask="XXXXXXVX" default="1" minFn="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>				
+				<label>Consist Address Active For FX2</label>
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F3" mask="XXXXXVXX" default="1" minFn="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>                
+				<label>Consist Address Active For FX3</label>
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F4" mask="XXXXVXXX" default="1" minFn="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>				
+				<label>Consist Address Active For FX4</label>				
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F5" mask="XXXVXXXX" default="1" minFn="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>				
+				<label>Consist Address Active For FX5</label>				
+			</variable>
+			
+			<variable CV="21" item="Consist Address Active For F6" mask="XXVXXXXX" default="1" minFn="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-LocoAddrConsistAddr.xml"/>				
+				<label>Consist Address Active For FX6</label>				
+			</variable>
+			
+			<variable CV="29" item="Address Format" mask="XXVXXXXX">
+				<enumVal>
+					<enumChoice choice="Short (one byte) address">        
+					</enumChoice>
+					<enumChoice choice="Long (two byte) address">
+					</enumChoice>
+				</enumVal>
+				<label>Address Format</label>				
+			</variable>
+			
+			<variable CV="29" item="Speed Step Mode" mask="XXXXXXVX" tooltip="'2' bit. Sets the Speed Step for motor, also may affect some light settings" default="1">
+				<enumVal>
+					<enumChoice choice="14 speed step format">
+					</enumChoice>
+					<enumChoice choice="28/128 speed step format">
+					<choice>28/128 speed step format (recommended)</choice>        
+					</enumChoice>
+				</enumVal>
+				<label>Speed Steps</label>    
+				<tooltip>Sets the Speed Step for motor, also may affect some light settings</tooltip>
+			</variable>
+			
+			<variable CV="29" item="Locomotive Direction" mask="XXXXXXXV" tooltip="Sets the relative direction of the loco when told to move forward">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NormRev.xml"/>
+				<label>Locomotive Direction</label>    
+				<tooltip>Sets the relative direction of the loco when told to move forward</tooltip>    
+			</variable>
+			
+			<variable CV="29" item="Analog (DC) Operation" mask="XXXXXVXX" default="0" tooltip="'NMRA Digital only: Digital Operation Only - DC conversion enabled: both Digital + Analog, default is Off">
+				<enumVal>
+					<enumChoice choice="NMRA Digital only">
+						<choice>NMRA Digital only</choice>        
+					</enumChoice>
+					<enumChoice choice="DC conversion enabled">
+						<choice>DC conversion enabled</choice>        
+					</enumChoice>
+				</enumVal>
+				<label>Power Source Conversion</label>    
+				<tooltip>&lt;html&gt;NMRA Digital only: Digital Operation Only.&lt;br&gt; DC conversion enabled: both Digital + Analog, default is both&lt;br&gt;</tooltip>
+			</variable>
+			
+			<variable CV="29" item="Advanced Ack" mask="XXXXVXXX">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-disabledEnabled.xml"/>
+				<label>Advanced Decoder Acknowledgement</label>		
+			</variable>
+			
+			<variable CV="45" item="FX1 FWD Enable" mask="XXXXXXXV" default="1" minOut="1">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>				
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="45" item="FX2 FWD Enable" mask="XXXXXXVX" default="1" minOut="2">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="45" item="FX3 FWD Enable" mask="XXXXXVXX" default="1" minOut="3">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="45" item="FX4 FWD Enable" mask="XXXXVXXX" default="1" minOut="4">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="45" item="FX5 FWD Enable" mask="XXXVXXXX" default="1" minOut="5">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="45" item="FX6 FWD Enable" mask="XXVXXXXX" default="1" minOut="6">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Forward Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX1 REV Enable" mask="XXXXXXXV" default="1" minOut="1">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>				
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX2 REV Enable" mask="XXXXXXVX" default="1" minOut="2">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX3 REV Enable" mask="XXXXXVXX" default="1" minOut="3">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX4 REV Enable" mask="XXXXVXXX" default="1" minOut="4">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX5 REV Enable" mask="XXXVXXXX" default="1" minOut="5">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="46" item="FX6 REV Enable" mask="XXVXXXXX" default="1" minOut="5">
+				<enumVal>
+					<enumChoice choice="Disable">        
+					</enumChoice>
+					<enumChoice choice="Enable">
+					</enumChoice>
+				</enumVal>
+				<label>Reverse Directionl Control</label>
+			</variable>
+			
+			<variable CV="60" item="FX1 Efects Selection" default="0" minOut="1">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>
+					<enumChoice choice="Mars">        
+					</enumChoice>	
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="61" item="FX2 Efects Selection" default="0" minOut="2">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>
+					<enumChoice choice="Mars">        
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="62" item="FX3 Efects Selection" default="0" minOut="3">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>	
+					<enumChoice choice="Mars">        
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="63" item="FX4 Efects Selection" default="0" minOut="4">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>	
+					<enumChoice choice="Mars">        
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>	
+			
+			<variable CV="64" item="FX5 Efects Selection" default="0" minOut="5">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>	
+					<enumChoice choice="Mars">        
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+
+			<variable CV="65" item="FX6 Efects Selection" default="0" minOut="6">
+				<enumVal>
+					<enumChoice choice="Normal">        
+					</enumChoice>
+					<enumChoice choice="Dimable">
+					</enumChoice>
+					<enumChoice choice="Fade">        
+					</enumChoice>
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>
+					<enumChoice choice="Beacon">        
+					</enumChoice>	
+					<enumChoice choice="Mars">        
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>	
+			
+			<variable CV="66" item="FX1 Brightness" default="255" minOut="1">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="67" item="FX2 Brightness" default="255" minOut="2">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="68" item="FX3 Brightness" default="255" minOut="3">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="69" item="FX4 Brightness" default="255" minOut="4">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="70" item="FX5 Brightness" default="255" minOut="5">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="71" item="FX6 Brightness" default="255" minOut="6">
+				<decVal min="0" max="255"/>
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="72" item="FX1 Dimmer" default="128" minOut="1">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="73" item="FX2 Dimmer" default="128" minOut="2">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="74" item="FX3 Dimmer" default="128" minOut="3">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="75" item="FX4 Dimmer" default="128" minOut="4">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="76" item="FX5 Dimmer" default="128" minOut="5">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="77" item="FX6 Dimmer" default="128" minOut="6">
+				<decVal min="0" max="255"/>
+				<label>Dimmer</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="78" item="FX1 Fade Rate" default="128" minOut="1">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="79" item="FX2 Fade Rate" default="128" minOut="2">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="80" item="FX3 Fade Rate" default="128" minOut="3">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="81" item="FX4 Fade Rate" default="128" minOut="4">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="82" item="FX5 Fade Rate" default="128" minOut="5">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="83" item="FX6 Fade Rate" default="128" minOut="6">
+				<decVal min="0" max="255"/>
+				<label>Fade Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="84" item="FX1 Flash Rate" default="128" minOut="1">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="85" item="FX2 Flash Rate" default="128" minOut="2">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="86" item="FX3 Flash Rate" default="128" minOut="3">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="87" item="FX4 Flash Rate" default="128" minOut="4">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+
+			<variable CV="88" item="FX5 Flash Rate" default="128" minOut="5">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="89" item="FX6 Flash Rate" default="128" minOut="6">
+				<decVal min="0" max="255"/>
+				<label>Flash Rate</label>
+				<tooltip>choose a value 0 - 255</tooltip>
+			</variable>
+			
+			<variable CV="90" item="FX1 Probability" default="50" minOut="1">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>		
+			
+			<variable CV="91" item="FX2 Probability" default="50" minOut="2">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>			
+			
+			<variable CV="92" item="FX3 Probability" default="50" minOut="3">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>			
+			
+			<variable CV="93" item="FX4 Probability" default="50" minOut="4">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+
+			<variable CV="94" item="FX5 Probability" default="50" minOut="5">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+			
+			<variable CV="95" item="FX6 Probability" default="50" minOut="6">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+			
+			<variable CV="100" item="F0 controls output 1" mask="XXXVXXXX" minOut="1" default= "1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="100" item="F1 controls output 1" mask="XXXXXXXV" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="100" item="F2 controls output 1" mask="XXXXXXVX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="100" item="F3 controls output 1" mask="XXXXXVXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="100" item="F4 controls output 1" mask="XXXXVXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="101" item="F5 controls output 1" mask="XXXXXXXV" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="101" item="F6 controls output 1" mask="XXXXXXVX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="101" item="F7 controls output 1" mask="XXXXXVXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="101" item="F8 controls output 1" mask="XXXXVXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="102" item="F9 controls output 1" mask="XXXXXXXV" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="102" item="F10 controls output 1" mask="XXXXXXVX" minOut="1" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="102" item="F11 controls output 1" mask="XXXXXVXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="102" item="F12 controls output 1" mask="XXXXVXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F13 controls output 1" mask="XXXXXXXV" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F14 controls output 1" mask="XXXXXXVX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F15 controls output 1" mask="XXXXXVXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F16 controls output 1" mask="XXXXVXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F17 controls output 1" mask="XXXVXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F18 controls output 1" mask="XXVXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F19 controls output 1" mask="XVXXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="103" item="F20 controls output 1" mask="VXXXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F21 controls output 1" mask="XXXXXXXV" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F22 controls output 1" mask="XXXXXXVX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F23 controls output 1" mask="XXXXXVXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F24 controls output 1" mask="XXXXVXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F25 controls output 1" mask="XXXVXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F26 controls output 1" mask="XXVXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F27 controls output 1" mask="XVXXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="104" item="F28 controls output 1" mask="VXXXXXXX" minOut="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="105" item="F0 controls output 2" mask="XXXVXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="105" item="F1 controls output 2" mask="XXXXXXXV" minOut="2" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="105" item="F2 controls output 2" mask="XXXXXXVX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="105" item="F3 controls output 2" mask="XXXXXVXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="105" item="F4 controls output 2" mask="XXXXVXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="106" item="F5 controls output 2" mask="XXXXXXXV" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="106" item="F6 controls output 2" mask="XXXXXXVX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="106" item="F7 controls output 2" mask="XXXXXVXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="106" item="F8 controls output 2" mask="XXXXVXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="107" item="F9 controls output 2" mask="XXXXXXXV" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="107" item="F10 controls output 2" mask="XXXXXXVX" minOut="2" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="107" item="F11 controls output 2" mask="XXXXXVXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="107" item="F12 controls output 2" mask="XXXXVXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F13 controls output 2" mask="XXXXXXXV" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F14 controls output 2" mask="XXXXXXVX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F15 controls output 2" mask="XXXXXVXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F16 controls output 2" mask="XXXXVXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F17 controls output 2" mask="XXXVXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F18 controls output 2" mask="XXVXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F19 controls output 2" mask="XVXXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="108" item="F20 controls output 2" mask="VXXXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F21 controls output 2" mask="XXXXXXXV" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F22 controls output 2" mask="XXXXXXVX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F23 controls output 2" mask="XXXXXVXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F24 controls output 2" mask="XXXXVXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F25 controls output 2" mask="XXXVXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F26 controls output 2" mask="XXVXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F27 controls output 2" mask="XVXXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="109" item="F28 controls output 2" mask="VXXXXXXX" minOut="2">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="110" item="F0 controls output 3" mask="XXXVXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="110" item="F1 controls output 3" mask="XXXXXXXV" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="110" item="F2 controls output 3" mask="XXXXXXVX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="110" item="F3 controls output 3" mask="XXXXXVXX" minOut="3" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="110" item="F4 controls output 3" mask="XXXXVXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="111" item="F5 controls output 3" mask="XXXXXXXV" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="111" item="F6 controls output 3" mask="XXXXXXVX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="111" item="F7 controls output 3" mask="XXXXXVXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="111" item="F8 controls output 3" mask="XXXXVXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="112" item="F9 controls output 3" mask="XXXXXXXV" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="112" item="F10 controls output 3" mask="XXXXXXVX" minOut="3" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="112" item="F11 controls output 3" mask="XXXXXVXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="112" item="F12 controls output 3" mask="XXXXVXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F13 controls output 3" mask="XXXXXXXV" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F14 controls output 3" mask="XXXXXXVX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F15 controls output 3" mask="XXXXXVXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F16 controls output 3" mask="XXXXVXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F17 controls output 3" mask="XXXVXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F18 controls output 3" mask="XXVXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F19 controls output 3" mask="XVXXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="113" item="F20 controls output 3" mask="VXXXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F21 controls output 3" mask="XXXXXXXV" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F22 controls output 3" mask="XXXXXXVX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F23 controls output 3" mask="XXXXXVXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F24 controls output 3" mask="XXXXVXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F25 controls output 3" mask="XXXVXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F26 controls output 3" mask="XXVXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F27 controls output 3" mask="XVXXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="114" item="F28 controls output 3" mask="VXXXXXXX" minOut="3">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="115" item="F0 controls output 4" mask="XXXVXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="115" item="F1 controls output 4" mask="XXXXXXXV" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="115" item="F2 controls output 4" mask="XXXXXXVX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="115" item="F3 controls output 4" mask="XXXXXVXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="115" item="F4 controls output 4"  mask="XXXXVXXX" minOut="4" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="116" item="F5 controls output 4" mask="XXXXXXXV" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="116" item="F6 controls output 4" mask="XXXXXXVX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="116" item="F7 controls output 4" mask="XXXXXVXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="116" item="F8 controls output 4" mask="XXXXVXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="117" item="F9 controls output 4" mask="XXXXXXXV" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="117" item="F10 controls output 4" mask="XXXXXXVX" minOut="4" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="117" item="F11 controls output 4" mask="XXXXXVXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>				
+			
+			<variable CV="117" item="F12 controls output 4" mask="XXXXVXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F13 controls output 4" mask="XXXXXXXV" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F14 controls output 4" mask="XXXXXXVX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F15 controls output 4" mask="XXXXXVXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F16 controls output 4" mask="XXXXVXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="118" item="F17 controls output 4" mask="XXXVXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F18 controls output 4" mask="XXVXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F19 controls output 4" mask="XVXXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="118" item="F20 controls output 4" mask="VXXXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="119" item="F21 controls output 4" mask="XXXXXXXV" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="119" item="F22 controls output 4" mask="XXXXXXVX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="119" item="F23 controls output 4" mask="XXXXXVXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="119" item="F24 controls output 4" mask="XXXXVXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="119" item="F25 controls output 4" mask="XXXVXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="119" item="F26 controls output 4" mask="XXVXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="119" item="F27 controls output 4" mask="XVXXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="119" item="F28 controls output 4" mask="VXXXXXXX" minOut="4">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+
+			<variable CV="120" item="F0 controls output 5" mask="XXXVXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="120" item="F1 controls output 5" mask="XXXXXXXV" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="120" item="F2 controls output 5" mask="XXXXXXVX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="120" item="F3 controls output 5" mask="XXXXXVXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="120" item="F4 controls output 5"  mask="XXXXVXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="121" item="F5 controls output 5" mask="XXXXXXXV" minOut="5" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="121" item="F6 controls output 5" mask="XXXXXXVX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="121" item="F7 controls output 5" mask="XXXXXVXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="121" item="F8 controls output 5" mask="XXXXVXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="122" item="F9 controls output 5" mask="XXXXXXXV" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="122" item="F10 controls output 5" mask="XXXXXXVX" minOut="5" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="122" item="F11 controls output 5" mask="XXXXXVXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>				
+			
+			<variable CV="122" item="F12 controls output 5" mask="XXXXVXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F13 controls output 5" mask="XXXXXXXV" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F14 controls output 5" mask="XXXXXXVX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F15 controls output 5" mask="XXXXXVXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F16 controls output 5" mask="XXXXVXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="123" item="F17 controls output 5" mask="XXXVXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F18 controls output 5" mask="XXVXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F19 controls output 5" mask="XVXXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="123" item="F20 controls output 5" mask="VXXXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="124" item="F21 controls output 5" mask="XXXXXXXV" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="124" item="F22 controls output 5" mask="XXXXXXVX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="124" item="F23 controls output 5" mask="XXXXXVXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="124" item="F24 controls output 5" mask="XXXXVXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="124" item="F25 controls output 5" mask="XXXVXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="124" item="F26 controls output 5" mask="XXVXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="124" item="F27 controls output 5" mask="XVXXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="124" item="F28 controls output 5" mask="VXXXXXXX" minOut="5">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+
+			<variable CV="125" item="F0 controls output 6" mask="XXXVXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="125" item="F1 controls output 6" mask="XXXXXXXV" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>
+			
+			<variable CV="125" item="F2 controls output 6" mask="XXXXXXVX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="125" item="F3 controls output 6" mask="XXXXXVXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="125" item="F4 controls output 6"  mask="XXXXVXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="126" item="F5 controls output 6" mask="XXXXXXXV" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="126" item="F6 controls output 6" mask="XXXXXXVX" minOut="6" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="126" item="F7 controls output 6" mask="XXXXXVXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="126" item="F8 controls output 6" mask="XXXXVXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="127" item="F9 controls output 6" mask="XXXXXXXV" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="127" item="F10 controls output 6" mask="XXXXXXVX" minOut="6" default="1">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="127" item="F11 controls output 6" mask="XXXXXVXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>				
+			
+			<variable CV="127" item="F12 controls output 6" mask="XXXXVXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F13 controls output 6" mask="XXXXXXXV" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F14 controls output 6" mask="XXXXXXVX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F15 controls output 6" mask="XXXXXVXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F16 controls output 6" mask="XXXXVXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="128" item="F17 controls output 6" mask="XXXVXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F18 controls output 6" mask="XXVXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F19 controls output 6" mask="XVXXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="128" item="F20 controls output 6" mask="VXXXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="129" item="F21 controls output 6" mask="XXXXXXXV" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="129" item="F22 controls output 6" mask="XXXXXXVX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="129" item="F23 controls output 6" mask="XXXXXVXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="129" item="F24 controls output 6" mask="XXXXVXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+			
+			<variable CV="129" item="F25 controls output 6" mask="XXXVXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="129" item="F26 controls output 6" mask="XXVXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="129" item="F27 controls output 6" mask="XVXXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>		
+			
+			<variable CV="129" item="F28 controls output 6" mask="VXXXXXXX" minOut="6">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label> </label>				
+			</variable>			
+		</variables>
+		<resets>
+			<factReset CV="8" default="255">
+					<label>Restore All CVs to Factory Defaults.</label>
+			</factReset>            
+		</resets>
+	</decoder>
+	<pane>
+		<name>Lights</name>
+		<column>
+			<row>
+				<label>
+					<text>LIGHTING EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                                  FX1</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX1 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX1 Brightness" layout="above" label=""/>
+					<display item="FX1 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX1 Dimmer" layout="above" label=""/>
+					<display item="FX1 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX1 Fade Rate" layout="above" label=""/>
+					<display item="FX1 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX1 Flash Rate" layout="above" label=""/>
+					<display item="FX1 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX1 Probability" layout="above" label=""/>
+					<display item="FX1 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX1 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX1 REV Enable" format="checkbox"/>
+					</row>
+				
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				</column>
+				<separator/>
+				<column>
+				<label>
+						<text>	        </text>
+				</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                                  FX2</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX2 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX2 Brightness" layout="above" label=""/>
+					<display item="FX2 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX2 Dimmer" layout="above" label=""/>
+					<display item="FX2 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX2 Fade Rate" layout="above" label=""/>
+					<display item="FX2 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX2 Flash Rate" layout="above" label=""/>
+					<display item="FX2 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX2 Probability" layout="above" label=""/>
+					<display item="FX2 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX2 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX2 REV Enable" format="checkbox"/>
+					</row>
+				
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				
+				</column>
+				<column>					
+				</column>
+				<separator/>
+				<column>
+				<label>
+						<text>	        </text>
+				</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                             			    FX3</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX3 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX3 Brightness" layout="above" label=""/>
+					<display item="FX3 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX3 Dimmer" layout="above" label=""/>
+					<display item="FX3 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX3 Fade Rate" layout="above" label=""/>
+					<display item="FX3 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX3 Flash Rate" layout="above" label=""/>
+					<display item="FX3 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX3 Probability" layout="above" label=""/>
+					<display item="FX3 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX3 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX3 REV Enable" format="checkbox"/>
+					</row>
+				
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				
+				</column>
+				<column>					
+				</column>
+				<separator/>
+				<column>
+				<label>
+						<text>	        </text>
+				</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                                  FX4</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX4 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Brightness" layout="above" label=""/>
+					<display item="FX4 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Dimmer" layout="above" label=""/>
+					<display item="FX4 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Fade Rate" layout="above" label=""/>
+					<display item="FX4 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Flash Rate" layout="above" label=""/>
+					<display item="FX4 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Probability" layout="above" label=""/>
+					<display item="FX4 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX4 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX4 REV Enable" format="checkbox"/>
+					</row>				
+				</column>			
+			</row>
+			<row>
+				<!-- <label> -->
+						<!-- <text>          </text> -->
+					<!-- </label> -->
+					<label>
+						<text>          </text>
+					</label>
+				</row>
+			<separator/>
+			<row>
+			<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                                  FX5</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX5 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX5 Brightness" layout="above" label=""/>
+					<display item="FX5 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX5 Dimmer" layout="above" label=""/>
+					<display item="FX5 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX5 Fade Rate" layout="above" label=""/>
+					<display item="FX5 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX5 Flash Rate" layout="above" label=""/>
+					<display item="FX5 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX5 Probability" layout="above" label=""/>
+					<display item="FX5 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX5 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX5 REV Enable" format="checkbox"/>
+					</row>
+					</column>
+					<column>
+					<label>
+						<text>          </text>
+					</label>				
+				</column>				
+				<separator/>
+				<column>
+				<label>
+						<text>	        </text>
+				</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+				<label>
+					<text>                                  FX6</text>
+				</label>
+					<label>
+						<text>  </text>
+					</label>
+					<display item="FX6 Efects Selection"/>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX6 Brightness" layout="above" label=""/>
+					<display item="FX6 Brightness" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX6 Dimmer" layout="above" label=""/>
+					<display item="FX6 Dimmer" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX4 Fade Rate" layout="above" label=""/>
+					<display item="FX6 Fade Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX6 Flash Rate" layout="above" label=""/>
+					<display item="FX6 Flash Rate" layout="above" format="hslider"/>
+					</row>
+					<label>
+						<text> </text>
+					</label>
+					<row>
+					<display item="FX6 Probability" layout="above" label=""/>
+					<display item="FX6 Probability" layout="above" format="hslider"/>
+					</row>
+					<row>
+					<label>
+						<text>          </text>
+					</label>
+					</row>
+					<row>
+					<display item="FX6 FWD Enable" format="checkbox"/>
+					</row>
+					<row>
+					<display item="FX6 REV Enable" format="checkbox"/>
+					</row>
+					</column>
+			</row>
+		</column>
+	</pane>
+	<pane>
+		<name>Function Map</name>
+		<column>
+		<row>
+		<label>
+			<text>        </text>
+		</label>
+		<label>
+			<text>FX1</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX2</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX3</text>
+		</label>		
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX4</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX5</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX6</text>
+		</label>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F0</text>
+		</label>
+		<label label=" "/>
+		<display item="F0 controls output 1" format="checkbox"/>
+		<display item="F0 controls output 2" format="checkbox"/>
+		<display item="F0 controls output 3" format="checkbox"/>
+		<display item="F0 controls output 4" format="checkbox"/>
+		<display item="F0 controls output 5" format="checkbox"/>
+		<display item="F0 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F1</text>
+		</label>
+		<label label=" "/>
+		<display item="F1 controls output 1" format="checkbox"/>
+		<display item="F1 controls output 2" format="checkbox"/>
+		<display item="F1 controls output 3" format="checkbox"/>
+		<display item="F1 controls output 4" format="checkbox"/>
+		<display item="F1 controls output 5" format="checkbox"/>
+		<display item="F1 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F2</text>
+		</label>
+		<label label=" "/>
+		<display item="F2 controls output 1" format="checkbox"/>
+		<display item="F2 controls output 2" format="checkbox"/>
+		<display item="F2 controls output 3" format="checkbox"/>
+		<display item="F2 controls output 4" format="checkbox"/>
+		<display item="F2 controls output 5" format="checkbox"/>
+		<display item="F2 controls output 6" format="checkbox"/>
+		</row>		
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F3</text>
+		</label>
+		<label label=" "/>
+		<display item="F3 controls output 1" format="checkbox"/>
+		<display item="F3 controls output 2" format="checkbox"/>
+		<display item="F3 controls output 3" format="checkbox"/>
+		<display item="F3 controls output 4" format="checkbox"/>
+		<display item="F3 controls output 5" format="checkbox"/>
+		<display item="F3 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F4</text>
+		</label>
+		<label label=" "/>
+		<display item="F4 controls output 1" format="checkbox"/>
+		<display item="F4 controls output 2" format="checkbox"/>
+		<display item="F4 controls output 3" format="checkbox"/>
+		<display item="F4 controls output 4" format="checkbox"/>
+		<display item="F4 controls output 5" format="checkbox"/>
+		<display item="F4 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F5</text>
+		</label>
+		<label label=" "/>
+		<display item="F5 controls output 1" format="checkbox"/>
+		<display item="F5 controls output 2" format="checkbox"/>
+		<display item="F5 controls output 3" format="checkbox"/>
+		<display item="F5 controls output 4" format="checkbox"/>
+		<display item="F5 controls output 5" format="checkbox"/>
+		<display item="F5 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F6</text>
+		</label>
+		<label label=" "/>
+		<display item="F6 controls output 1" format="checkbox"/>
+		<display item="F6 controls output 2" format="checkbox"/>
+		<display item="F6 controls output 3" format="checkbox"/>
+		<display item="F6 controls output 4" format="checkbox"/>
+		<display item="F6 controls output 5" format="checkbox"/>
+		<display item="F6 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F7</text>
+		</label>
+		<label label=" "/>
+		<display item="F7 controls output 1" format="checkbox"/>
+		<display item="F7 controls output 2" format="checkbox"/>
+		<display item="F7 controls output 3" format="checkbox"/>
+		<display item="F7 controls output 4" format="checkbox"/>
+		<display item="F7 controls output 5" format="checkbox"/>
+		<display item="F7 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F8</text>
+		</label>
+		<label label=" "/>
+		<display item="F8 controls output 1" format="checkbox"/>
+		<display item="F8 controls output 2" format="checkbox"/>
+		<display item="F8 controls output 3" format="checkbox"/>
+		<display item="F8 controls output 4" format="checkbox"/>
+		<display item="F8 controls output 5" format="checkbox"/>
+		<display item="F8 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label label=" "/>
+		<label>
+			<text>F9</text>
+		</label>
+		<label label=" "/>
+		<display item="F9 controls output 1" format="checkbox"/>
+		<display item="F9 controls output 2" format="checkbox"/>
+		<display item="F9 controls output 3" format="checkbox"/>
+		<display item="F9 controls output 4" format="checkbox"/>
+		<display item="F9 controls output 5" format="checkbox"/>
+		<display item="F9 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F10</text>
+		</label>
+		<display item="F10 controls output 1" format="checkbox"/>
+		<display item="F10 controls output 2" format="checkbox"/>
+		<display item="F10 controls output 3" format="checkbox"/>
+		<display item="F10 controls output 4" format="checkbox"/>
+		<display item="F10 controls output 5" format="checkbox"/>
+		<display item="F10 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F11</text>
+		</label>
+		<display item="F11 controls output 1" format="checkbox"/>
+		<display item="F11 controls output 2" format="checkbox"/>
+		<display item="F11 controls output 3" format="checkbox"/>
+		<display item="F11 controls output 4" format="checkbox"/>
+		<display item="F11 controls output 5" format="checkbox"/>
+		<display item="F11 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F12</text>
+		</label>
+		<display item="F12 controls output 1" format="checkbox"/>
+		<display item="F12 controls output 2" format="checkbox"/>
+		<display item="F12 controls output 3" format="checkbox"/>
+		<display item="F12 controls output 4" format="checkbox"/>
+		<display item="F12 controls output 5" format="checkbox"/>
+		<display item="F12 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F13</text>
+		</label>
+		<display item="F13 controls output 1" format="checkbox"/>
+		<display item="F13 controls output 2" format="checkbox"/>
+		<display item="F13 controls output 3" format="checkbox"/>
+		<display item="F13 controls output 4" format="checkbox"/>
+		<display item="F13 controls output 5" format="checkbox"/>
+		<display item="F13 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F14</text>
+		</label>
+		<display item="F14 controls output 1" format="checkbox"/>
+		<display item="F14 controls output 2" format="checkbox"/>
+		<display item="F14 controls output 3" format="checkbox"/>
+		<display item="F14 controls output 4" format="checkbox"/>
+		<display item="F14 controls output 5" format="checkbox"/>
+		<display item="F14 controls output 6" format="checkbox"/>
+		</row>
+		</column>
+		<column>
+		<row>
+		<label>
+			<text>        </text>
+		</label>
+		<label>
+			<text>FX1</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX2</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX3</text>
+		</label>		
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX4</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX5</text>
+		</label>
+		<label>
+			<text>  </text>
+		</label>
+		<label>
+			<text>FX6</text>
+		</label>
+		</row>		
+		<row>
+		<label>
+			<text>F15</text>
+		</label>
+		<display item="F15 controls output 1" format="checkbox"/>
+		<display item="F15 controls output 2" format="checkbox"/>
+		<display item="F15 controls output 3" format="checkbox"/>
+		<display item="F15 controls output 4" format="checkbox"/>
+		<display item="F15 controls output 5" format="checkbox"/>
+		<display item="F15 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F16</text>
+		</label>
+		<display item="F16 controls output 1" format="checkbox"/>
+		<display item="F16 controls output 2" format="checkbox"/>
+		<display item="F16 controls output 3" format="checkbox"/>
+		<display item="F16 controls output 4" format="checkbox"/>
+		<display item="F16 controls output 5" format="checkbox"/>
+		<display item="F16 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F17</text>
+		</label>
+		<display item="F17 controls output 1" format="checkbox"/>
+		<display item="F17 controls output 2" format="checkbox"/>
+		<display item="F17 controls output 3" format="checkbox"/>
+		<display item="F17 controls output 4" format="checkbox"/>
+		<display item="F17 controls output 5" format="checkbox"/>
+		<display item="F17 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F18</text>
+		</label>
+		<display item="F18 controls output 1" format="checkbox"/>
+		<display item="F18 controls output 2" format="checkbox"/>
+		<display item="F18 controls output 3" format="checkbox"/>
+		<display item="F18 controls output 4" format="checkbox"/>
+		<display item="F18 controls output 5" format="checkbox"/>
+		<display item="F18 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F19</text>
+		</label>
+		<display item="F19 controls output 1" format="checkbox"/>
+		<display item="F19 controls output 2" format="checkbox"/>
+		<display item="F19 controls output 3" format="checkbox"/>
+		<display item="F19 controls output 4" format="checkbox"/>
+		<display item="F19 controls output 5" format="checkbox"/>
+		<display item="F19 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F20</text>
+		</label>
+		<display item="F20 controls output 1" format="checkbox"/>
+		<display item="F20 controls output 2" format="checkbox"/>
+		<display item="F20 controls output 3" format="checkbox"/>
+		<display item="F20 controls output 4" format="checkbox"/>
+		<display item="F20 controls output 5" format="checkbox"/>
+		<display item="F20 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F21</text>
+		</label>
+		<display item="F21 controls output 1" format="checkbox"/>
+		<display item="F21 controls output 2" format="checkbox"/>
+		<display item="F21 controls output 3" format="checkbox"/>
+		<display item="F21 controls output 4" format="checkbox"/>
+		<display item="F21 controls output 5" format="checkbox"/>
+		<display item="F21 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F22</text>
+		</label>
+		<display item="F22 controls output 1" format="checkbox"/>
+		<display item="F22 controls output 2" format="checkbox"/>
+		<display item="F22 controls output 3" format="checkbox"/>
+		<display item="F22 controls output 4" format="checkbox"/>
+		<display item="F22 controls output 5" format="checkbox"/>
+		<display item="F22 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F23</text>
+		</label>
+		<display item="F23 controls output 1" format="checkbox"/>
+		<display item="F23 controls output 2" format="checkbox"/>
+		<display item="F23 controls output 3" format="checkbox"/>
+		<display item="F23 controls output 4" format="checkbox"/>
+		<display item="F23 controls output 5" format="checkbox"/>
+		<display item="F23 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F24</text>
+		</label>
+		<display item="F24 controls output 1" format="checkbox"/>
+		<display item="F24 controls output 2" format="checkbox"/>
+		<display item="F24 controls output 3" format="checkbox"/>
+		<display item="F24 controls output 4" format="checkbox"/>
+		<display item="F24 controls output 5" format="checkbox"/>
+		<display item="F24 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F25</text>
+		</label>
+		<display item="F25 controls output 1" format="checkbox"/>
+		<display item="F25 controls output 2" format="checkbox"/>
+		<display item="F25 controls output 3" format="checkbox"/>
+		<display item="F25 controls output 4" format="checkbox"/>
+		<display item="F25 controls output 5" format="checkbox"/>
+		<display item="F25 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F26</text>
+		</label>
+		<display item="F26 controls output 1" format="checkbox"/>
+		<display item="F26 controls output 2" format="checkbox"/>
+		<display item="F26 controls output 3" format="checkbox"/>
+		<display item="F26 controls output 4" format="checkbox"/>
+		<display item="F26 controls output 5" format="checkbox"/>
+		<display item="F26 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F27</text>
+		</label>
+		<display item="F27 controls output 1" format="checkbox"/>
+		<display item="F27 controls output 2" format="checkbox"/>
+		<display item="F27 controls output 3" format="checkbox"/>
+		<display item="F27 controls output 4" format="checkbox"/>
+		<display item="F27 controls output 5" format="checkbox"/>
+		<display item="F27 controls output 6" format="checkbox"/>
+		</row>
+		<row>
+		<label>
+			<text>F28</text>
+		</label>
+		<display item="F28 controls output 1" format="checkbox"/>
+		<display item="F28 controls output 2" format="checkbox"/>
+		<display item="F28 controls output 3" format="checkbox"/>
+		<display item="F28 controls output 4" format="checkbox"/>
+		<display item="F28 controls output 5" format="checkbox"/>
+		<display item="F28 controls output 6" format="checkbox"/>
+		</row>
+		</column>					
+	</pane>
+</decoder-config>
