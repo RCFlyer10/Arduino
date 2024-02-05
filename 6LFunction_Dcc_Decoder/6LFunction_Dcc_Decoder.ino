@@ -80,6 +80,10 @@ struct CVPair {
 
 #define CV_FWD_DIR_EN 45
 #define CV_REV_DIR_EN 46
+#define CV_PROD_ID_1 47
+#define CV_PROD_ID_2 48
+#define CV_PROD_ID_3 49
+#define CV_PROD_ID_4 50
 
 // configuration CVs
 #define CV_FX1_CONFIG 60
@@ -226,7 +230,11 @@ CVPair FactoryDefaultCVs[] = {
   { CV_FN_MAP_FX6_F13_F20, 0},
   { CV_FN_MAP_FX6_F21_F28, 0},
 
-
+  { CV_PROD_ID_1, 0},
+  { CV_PROD_ID_2, 24},
+  { CV_PROD_ID_3, 10},
+  { CV_PROD_ID_4, 20},
+  
   // The CV Below defines Advanced Consist Address
   { CV_CONSIST_ADDR, 0 },
 
