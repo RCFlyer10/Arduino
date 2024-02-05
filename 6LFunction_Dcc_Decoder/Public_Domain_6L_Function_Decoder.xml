@@ -29,7 +29,7 @@
   </revhistory>
   <decoder>
     <family name="6L Function Decoder" mfg="Public-domain and DIY">      
-      <model model="6L Function Decoder v 1.0" numOuts="6" numFns="28"/>
+      <model model="6L Function Decoder v 1.0" lowVersionID="10" highVersionID="20" productID="1575444" numOuts="6" numFns="28"/>
     </family>
     <programming direct="yes" paged="yes" register="yes" ops="yes">
 			<capability>
@@ -264,6 +264,26 @@
 					</enumChoice>
 				</enumVal>
 				<label>Reverse Directionl Control</label>
+			</variable>
+
+			<variable CV="47" item="ProductID1" readOnly="yes" default="0">
+				<decVal/>
+				<label>ProductID1</label>
+			</variable>
+
+			<variable CV="48" item="ProductID2" readOnly="yes" default="24">
+				<decVal/>
+				<label>ProductID2</label>
+			</variable>
+
+			<variable CV="49" item="ProductID3" readOnly="yes" default="10">
+				<decVal/>
+				<label>ProductID3</label>
+			</variable>
+
+			<variable CV="50" item="ProductID4" readOnly="yes" default="20">
+				<decVal/>
+				<label>ProductID4</label>
 			</variable>
 			
 			<variable CV="60" item="FX1 Efects Selection" default="0" minOut="1">
