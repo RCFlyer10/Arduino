@@ -1,6 +1,6 @@
 
 // NMRA Dcc Multifunction Lighting Decoder
-#include <Function_Led_V2.h>
+#include "Function_Led_V2.h"
 #include <NmraDcc.h>
 
 // Uncomment any of the lines below to enable debug messages for different parts of the code
@@ -14,7 +14,7 @@
 #define DEBUG_PRINT
 #endif
 
-#define DEBUG_PRINT
+//#define DEBUG_PRINT
 
 // This section defines the Arduino UNO Pins to use
 #ifdef __AVR_ATmega328P__
@@ -124,36 +124,36 @@ struct CVPair {
 #define CV_FX6_PROBABILITY 95
 
 // function map CVs
-#define CV_FN_MAP_FX1_F0_F4 100
-#define CV_FN_MAP_FX1_F5_F8 101
-#define CV_FN_MAP_FX1_F9_F12 102 
-#define CV_FN_MAP_FX1_F13_F20 103
-#define CV_FN_MAP_FX1_F21_F28 104
-#define CV_FN_MAP_FX2_F0_F4 105
-#define CV_FN_MAP_FX2_F5_F8 106
-#define CV_FN_MAP_FX2_F9_F12 107
-#define CV_FN_MAP_FX2_F13_F20 108
-#define CV_FN_MAP_FX2_F21_F28 109
-#define CV_FN_MAP_FX3_F0_F4 110
-#define CV_FN_MAP_FX3_F5_F8 111
-#define CV_FN_MAP_FX3_F9_F12 112
-#define CV_FN_MAP_FX3_F13_F20 113
-#define CV_FN_MAP_FX3_F21_F28 114
-#define CV_FN_MAP_FX4_F0_F4 115
-#define CV_FN_MAP_FX4_F5_F8 116
-#define CV_FN_MAP_FX4_F9_F12 117
-#define CV_FN_MAP_FX4_F13_F20 118
-#define CV_FN_MAP_FX4_F21_F28 119
-#define CV_FN_MAP_FX5_F0_F4 120
-#define CV_FN_MAP_FX5_F5_F8 121
-#define CV_FN_MAP_FX5_F9_F12 122
-#define CV_FN_MAP_FX5_F13_F20 123
-#define CV_FN_MAP_FX5_F21_F28 124
-#define CV_FN_MAP_FX6_F0_F4 125
-#define CV_FN_MAP_FX6_F5_F8 126
-#define CV_FN_MAP_FX6_F9_F12 127
-#define CV_FN_MAP_FX6_F13_F20 128
-#define CV_FN_MAP_FX6_F21_F28 129
+#define CV_FN_MAP_FX1_F0_F4 120
+#define CV_FN_MAP_FX1_F5_F8 121
+#define CV_FN_MAP_FX1_F9_F12 122 
+#define CV_FN_MAP_FX1_F13_F20 123
+#define CV_FN_MAP_FX1_F21_F28 124
+#define CV_FN_MAP_FX2_F0_F4 125
+#define CV_FN_MAP_FX2_F5_F8 126
+#define CV_FN_MAP_FX2_F9_F12 127
+#define CV_FN_MAP_FX2_F13_F20 128
+#define CV_FN_MAP_FX2_F21_F28 129
+#define CV_FN_MAP_FX3_F0_F4 130
+#define CV_FN_MAP_FX3_F5_F8 131
+#define CV_FN_MAP_FX3_F9_F12 132
+#define CV_FN_MAP_FX3_F13_F20 133
+#define CV_FN_MAP_FX3_F21_F28 134
+#define CV_FN_MAP_FX4_F0_F4 135
+#define CV_FN_MAP_FX4_F5_F8 136
+#define CV_FN_MAP_FX4_F9_F12 137
+#define CV_FN_MAP_FX4_F13_F20 138
+#define CV_FN_MAP_FX4_F21_F28 139
+#define CV_FN_MAP_FX5_F0_F4 140
+#define CV_FN_MAP_FX5_F5_F8 141
+#define CV_FN_MAP_FX5_F9_F12 142
+#define CV_FN_MAP_FX5_F13_F20 143
+#define CV_FN_MAP_FX5_F21_F28 144
+#define CV_FN_MAP_FX6_F0_F4 145
+#define CV_FN_MAP_FX6_F5_F8 146
+#define CV_FN_MAP_FX6_F9_F12 147
+#define CV_FN_MAP_FX6_F13_F20 148
+#define CV_FN_MAP_FX6_F21_F28 149
 
 // Default CV Values Table
 CVPair FactoryDefaultCVs[] = {
@@ -239,7 +239,7 @@ CVPair FactoryDefaultCVs[] = {
   { CV_CONSIST_ADDR, 0 },
 
   // The CV Below defines Advanced Consist Function Enable 1
-  { CV_CONSIST_FUNC_EN, 255 },  
+  { CV_CONSIST_FUNC_EN, 63 },  
 
   // The CV Below defines Forward Direction Enable
   { CV_FWD_DIR_EN, 255 },

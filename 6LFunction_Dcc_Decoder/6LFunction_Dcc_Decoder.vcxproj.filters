@@ -16,9 +16,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="6LFunction_Dcc_Decoder.ino" />
+    <ClCompile Include="Function_Led_V2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.6LFunction_Dcc_Decoder.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Function_Led_V2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
