@@ -1,0 +1,5497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSLT/decoder.xsl"?>
+<!-- Copyright (C) JMRI 2001, 2005, 2007, 2-009, 2010 All rights reserved -->
+<!--                                                                        -->
+<!-- JMRI is free software; you can redistribute it and/or modify it under  -->
+<!-- the terms of version 2 of the GNU General Public License as published  -->
+<!-- by the Free Software Foundation. See the "COPYING" file for a copy     -->
+<!-- of this license.                                                       -->
+<!--                                                                        -->
+<!-- JMRI is distributed in the hope that it will be useful, but WITHOUT    -->
+<!-- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License  -->
+<!-- for more details.                                                      -->
+<decoder-config xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://jmri.org/xml/schema/decoder-4-15-2.xsd">
+  <copyright xmlns="http://docbook.org/ns/docbook">    
+    <year>2022</year>
+    <holder>JMRI</holder>
+  </copyright>
+  <authorgroup xmlns="http://docbook.org/ns/docbook">
+    <author>
+      <personname><firstname>Keith</firstname><surname>Ruberson</surname></personname>
+    </author>    
+  </authorgroup>
+  <revhistory xmlns="http://docbook.org/ns/docbook">
+    <revision>
+      <revnumber>3</revnumber><date>2002?</date><authorinitials>BJ</authorinitials>
+      <revremark>Add consist direction</revremark>
+    </revision>    
+  </revhistory>
+  <decoder>
+    <family name="LocoPwm" mfg="Public-domain and DIY">      
+      <model model="LocoPwm v 2.1" numOuts="20"/>
+    </family>
+    <programming direct="no" paged="yes" register="no" ops="no">
+			<mode>LOCONETOPSBOARD</mode>			
+		</programming>
+		
+		<variables>
+			<variable CV="7" item="Decoder Version" readOnly="yes" default="2">
+				<decVal/>
+				<label>Manufacturer Version No: </label>    
+			</variable>			
+			<variable CV="8" readOnly="yes" item="Manufacturer" default="13">
+				<decVal/>
+				<label>Manufacturer ID: </label>    
+			</variable>			
+			<variable CV="17" item="Long Address" default="15000" comment="Range 1-16383">
+				<longAddressVal/>
+			</variable>
+			
+			<variable CV="60" item="Output 0 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>										
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="61" item="Output 1 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>										
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="62" item="Output 2 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="63" item="Output 3 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="64" item="Output 4 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="65" item="Output 5 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="66" item="Output 6 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="67" item="Output 7 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>													
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="68" item="Output 8 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>													
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="69" item="Output 9 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>													
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="70" item="Output 10 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>													
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="71" item="Output 11 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="72" item="Output 12 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="73" item="Output 13 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="74" item="Output 14 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="75" item="Output 15 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>															
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="76" item="Output 16 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="77" item="Output 17 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="78" item="Output 18 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>
+			
+			<variable CV="79" item="Output 19 Effects" default="0">
+				<enumVal>
+					<enumChoice choice="None">
+					</enumChoice>
+					<enumChoice choice="Normal">        
+					</enumChoice>		
+					<enumChoice choice="Fade">        
+					</enumChoice>								
+					<enumChoice choice="Flicker">        
+					</enumChoice>														
+					<enumChoice choice="Strobe">
+					</enumChoice>
+					<enumChoice choice="Beacon">
+					</enumChoice>
+				</enumVal>		
+				<label>Effects Selection</label>
+				<tooltip>choose one</tooltip>
+			</variable>			
+			
+			<variable CV="80,100" mask="VVVVVVVV XXXXVVVV" item="Output 0 Address" default="2000">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="81,101" mask="VVVVVVVV XXXXVVVV" item="Output 1 Address" default="2000">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="82,102" mask="VVVVVVVV XXXXVVVV" item="Output 2 Address" default="2000">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="83,103" mask="VVVVVVVV XXXXVVVV" item="Output 3 Address" default="2000">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="84,104" mask="VVVVVVVV XXXXVVVV" item="Output 4 Address" default="2000">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="85,105" mask="VVVVVVVV XXXXVVVV" item="Output 5 Address" default="2000">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="86,106" mask="VVVVVVVV XXXXVVVV" item="Output 6 Address" default="2000">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="87,107" mask="VVVVVVVV XXXXVVVV" item="Output 7 Address" default="2000">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="88,108" mask="VVVVVVVV XXXXVVVV" item="Output 8 Address" default="2000">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="89,109" mask="VVVVVVVV XXXXVVVV" item="Output 9 Address" default="2000">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="90,110" mask="VVVVVVVV XXXXVVVV" item="Output 10 Address" default="2000">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier><splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="91,111" mask="VVVVVVVV XXXXVVVV" item="Output 11 Address" default="2000">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="92,112" mask="VVVVVVVV XXXXVVVV" item="Output 12 Address" default="2000">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="93,113" mask="VVVVVVVV XXXXVVVV" item="Output 13 Address" default="2000">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="94,114" mask="VVVVVVVV XXXXVVVV" item="Output 14 Address" default="2000">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="95,115" mask="VVVVVVVV XXXXVVVV" item="Output 15 Address" default="2000">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="96,116" mask="VVVVVVVV XXXXVVVV" item="Output 16 Address" default="2000">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="97,117" mask="VVVVVVVV XXXXVVVV" item="Output 17 Address" default="2000">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="98,118" mask="VVVVVVVV XXXXVVVV" item="Output 18 Address" default="2000">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="99,119" mask="VVVVVVVV XXXXVVVV" item="Output 19 Address" default="2000">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="120" mask="XXXXVVVV" item="Output 0 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="120" mask="VVVVXXXX" item="Output 0 Dim" default="0">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="121" mask="XXXXVVVV" item="Output 1 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="121" mask="VVVVXXXX" item="Output 1 Dim" default="0">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="122" mask="XXXXVVVV" item="Output 2 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="122" mask="VVVVXXXX" item="Output 2 Dim" default="0">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="123" mask="XXXXVVVV" item="Output 3 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="123" mask="VVVVXXXX" item="Output 3 Dim" default="0">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="124" mask="XXXXVVVV" item="Output 4 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="124" mask="VVVVXXXX" item="Output 4 Dim" default="0">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="125" mask="XXXXVVVV" item="Output 5 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="125" mask="VVVVXXXX" item="Output 5 Dim" default="0">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="126" mask="XXXXVVVV" item="Output 6 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="126" mask="VVVVXXXX" item="Output 6 Dim" default="0">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="127" mask="XXXXVVVV" item="Output 7 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="127" mask="VVVVXXXX" item="Output 7 Dim" default="0">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="128" mask="XXXXVVVV" item="Output 8 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="128" mask="VVVVXXXX" item="Output 8 Dim" default="0">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="129" mask="XXXXVVVV" item="Output 9 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="129" mask="VVVVXXXX" item="Output 9 Dim" default="0">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="130" mask="XXXXVVVV" item="Output 10 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="130" mask="VVVVXXXX" item="Output 10 Dim" default="0">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="131" mask="XXXXVVVV" item="Output 11 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="131" mask="VVVVXXXX" item="Output 11 Dim" default="0">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="132" mask="XXXXVVVV" item="Output 12 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="132" mask="VVVVXXXX" item="Output 12 Dim" default="0">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="133" mask="XXXXVVVV" item="Output 13 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="133" mask="VVVVXXXX" item="Output 13 Dim" default="0">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="134" mask="XXXXVVVV" item="Output 14 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="134" mask="VVVVXXXX" item="Output 14 Dim" default="0">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="135" mask="XXXXVVVV" item="Output 15 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="135" mask="VVVVXXXX" item="Output 15 Dim" default="0">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="136" mask="XXXXVVVV" item="Output 16 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="136" mask="VVVVXXXX" item="Output 16 Dim" default="0">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="137" mask="XXXXVVVV" item="Output 17 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="137" mask="VVVVXXXX" item="Output 17 Dim" default="0">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="138" mask="XXXXVVVV" item="Output 18 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="138" mask="VVVVXXXX" item="Output 18 Dim" default="0">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="139" mask="XXXXVVVV" item="Output 19 Brightness" default="15">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>				
+				<decVal min="0" max="15"/>				
+				<label>Brightness</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="139" mask="VVVVXXXX" item="Output 19 Dim" default="0">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>lt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Dim</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+			
+			<variable CV="140" mask="XXXXVVVV" item="Output 0 Fade" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="140" mask="VVVVXXXX" item="Output 0 Timing" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>			
+			
+			<variable CV="141" mask="XXXXVVVV" item="Output 1 Fade" default="7">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="141" mask="VVVVXXXX" item="Output 1 Timing" default="7">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>			
+			
+			<variable CV="142" mask="XXXXVVVV" item="Output 2 Fade" default="7">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="142" mask="VVVVXXXX" item="Output 2 Timing" default="7">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="143" mask="XXXXVVVV" item="Output 3 Fade" default="7">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="143" mask="VVVVXXXX" item="Output 3 Timing" default="7">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>			
+			
+			<variable CV="144" mask="XXXXVVVV" item="Output 4 Fade" default="7">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="144" mask="VVVVXXXX" item="Output 4 Timing" default="7">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>				
+			
+			<variable CV="145" mask="XXXXVVVV" item="Output 5 Fade" default="7">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="145" mask="VVVVXXXX" item="Output 5 Timing" default="7">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="146" mask="XXXXVVVV" item="Output 6 Fade" default="7">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="146" mask="VVVVXXXX" item="Output 6 Timing" default="7">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="147" mask="XXXXVVVV" item="Output 7 Fade" default="7">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="147" mask="VVVVXXXX" item="Output 7 Timing" default="7">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="148" mask="XXXXVVVV" item="Output 8 Fade" default="7">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="148" mask="VVVVXXXX" item="Output 8 Timing" default="7">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="149" mask="XXXXVVVV" item="Output 9 Fade" default="7">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="149" mask="VVVVXXXX" item="Output 9 Timing" default="7">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="150" mask="XXXXVVVV" item="Output 10 Fade" default="7">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="150" mask="VVVVXXXX" item="Output 10 Timing" default="7">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="151" mask="XXXXVVVV" item="Output 11 Fade" default="7">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="151" mask="VVVVXXXX" item="Output 11 Timing" default="7">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="152" mask="XXXXVVVV" item="Output 12 Fade" default="7">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="152" mask="VVVVXXXX" item="Output 12 Timing" default="7">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="153" mask="XXXXVVVV" item="Output 13 Fade" default="7">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="153" mask="VVVVXXXX" item="Output 13 Timing" default="7">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="154" mask="XXXXVVVV" item="Output 14 Fade" default="7">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="154" mask="VVVVXXXX" item="Output 14 Timing" default="7">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="155" mask="XXXXVVVV" item="Output 15 Fade" default="7">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="155" mask="VVVVXXXX" item="Output 15 Timing" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="156" mask="XXXXVVVV" item="Output 16 Fade" default="7">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="156" mask="VVVVXXXX" item="Output 16 Timing" default="7">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="157" mask="XXXXVVVV" item="Output 17 Fade" default="7">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="157" mask="VVVVXXXX" item="Output 17 Timing" default="7">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="158" mask="XXXXVVVV" item="Output 18 Fade" default="7">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="158" mask="VVVVXXXX" item="Output 18 Timing" default="7">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>		
+			
+			<variable CV="159" mask="XXXXVVVV" item="Output 19 Fade" default="7">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>eq</relation>
+							<value>2</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Fade rate</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="159" mask="VVVVXXXX" item="Output 19 Timing" default="7">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Timing</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>
+
+			<variable CV="160" mask="VVVVXXXX" item="Output 0 Durration" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="160" mask="XXXXVVVV" item="Output 0 Period" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="161" mask="VVVVXXXX" item="Output 1 Durration" default="7">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="161" mask="XXXXVVVV" item="Output 1 Period" default="7">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>			
+			
+			<variable CV="162" mask="VVVVXXXX" item="Output 2 Durration" default="7">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="162" mask="XXXXVVVV" item="Output 2 Period" default="7">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="163" mask="VVVVXXXX" item="Output 3 Durration" default="7">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="163" mask="XXXXVVVV" item="Output 3 Period" default="7">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="164" mask="VVVVXXXX" item="Output 4 Durration" default="7">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="164" mask="XXXXVVVV" item="Output 4 Period" default="7">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="165" mask="VVVVXXXX" item="Output 5 Durration" default="7">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="165" mask="XXXXVVVV" item="Output 5 Period" default="7">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="166" mask="VVVVXXXX" item="Output 6 Durration" default="7">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="166" mask="XXXXVVVV" item="Output 6 Period" default="7">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="167" mask="VVVVXXXX" item="Output 7 Durration" default="7">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="167" mask="XXXXVVVV" item="Output 7 Period" default="7">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="168" mask="VVVVXXXX" item="Output 8 Durration" default="7">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="168" mask="XXXXVVVV" item="Output 8 Period" default="7">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="169" mask="VVVVXXXX" item="Output 9 Durration" default="7">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="169" mask="XXXXVVVV" item="Output 9 Period" default="7">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="170" mask="VVVVXXXX" item="Output 10 Durration" default="7">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="170" mask="XXXXVVVV" item="Output 10 Period" default="7">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="171" mask="VVVVXXXX" item="Output 11 Durration" default="7">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="171" mask="XXXXVVVV" item="Output 11 Period" default="7">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="172" mask="VVVVXXXX" item="Output 12 Durration" default="7">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="172" mask="XXXXVVVV" item="Output 12 Period" default="7">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="173" mask="VVVVXXXX" item="Output 13 Durration" default="7">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="173" mask="XXXXVVVV" item="Output 13 Period" default="7">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="174" mask="VVVVXXXX" item="Output 14 Durration" default="7">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="174" mask="XXXXVVVV" item="Output 14 Period" default="7">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="175" mask="VVVVXXXX" item="Output 15 Durration" default="7">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="175" mask="XXXXVVVV" item="Output 15 Period" default="7">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="176" mask="VVVVXXXX" item="Output 16 Durration" default="7">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="176" mask="XXXXVVVV" item="Output 16 Period" default="7">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="177" mask="VVVVXXXX" item="Output 17 Durration" default="7">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="177" mask="XXXXVVVV" item="Output 17 Period" default="7">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="178" mask="VVVVXXXX" item="Output 18 Durration" default="7">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="178" mask="XXXXVVVV" item="Output 18 Period" default="7">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="179" mask="VVVVXXXX" item="Output 19 Durration" default="7">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>eq</relation>
+							<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>				
+				<label>Durration</label>
+				<tooltip>choose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="179" mask="XXXXVVVV" item="Output 19 Period" default="7">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>gt</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>	
+				<label>Period</label>
+				<tooltip>choose a value 0 - 15</tooltip>				
+			</variable>	
+
+			<variable CV="180" item="Output 0 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 0 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="181" item="Output 1 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 1 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="182" item="Output 2 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 2 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="183" item="Output 3 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 3 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="184" item="Output 4 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 4 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="185" item="Output 5 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 5 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="186" item="Output 6 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 6 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="187" item="Output 7 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 7 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="188" item="Output 8 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 8 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="189" item="Output 9 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 9 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="190" item="Output 10 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 10 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="191" item="Output 11 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 11 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="192" item="Output 12 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 12 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="193" item="Output 13 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 13 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="194" item="Output 14 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 14 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="195" item="Output 15 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 15 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="196" item="Output 16 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 16 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="197" item="Output 17 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 17 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="198" item="Output 18 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 18 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>
+			
+			<variable CV="199" item="Output 19 Output Group" default="10">
+				<qualifier>
+							<variableref>Output 19 Effects</variableref>
+							<relation>gt</relation>
+							<value>0</value>
+				</qualifier>
+				<enumVal>
+					<enumChoice choice="0">
+					</enumChoice>
+					<enumChoice choice="1">
+					</enumChoice>
+					<enumChoice choice="2">
+					</enumChoice>
+					<enumChoice choice="3">
+					</enumChoice>
+					<enumChoice choice="4">
+					</enumChoice>
+					<enumChoice choice="5">
+					</enumChoice>
+					<enumChoice choice="6">
+					</enumChoice>
+					<enumChoice choice="7">
+					</enumChoice>
+					<enumChoice choice="8">
+					</enumChoice>
+					<enumChoice choice="9">
+					</enumChoice>
+					<enumChoice choice="None">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group</label>
+				<tooltip>Choose a Group</tooltip>
+			</variable>			
+			
+			<variable CV="200" item="OutputGroup 0 Type" default="0">
+				<enumVal>								
+					<enumChoice choice="Standard">        
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">        
+					</enumChoice>					
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="201" item="OutputGroup 1 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>				
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="202" item="OutputGroup 2 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>				
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="203" item="OutputGroup 3 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>				
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+
+			<variable CV="204" item="OutputGroup 4 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+
+			<variable CV="205" item="OutputGroup 5 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="206" item="OutputGroup 6 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="207" item="OutputGroup 7 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="208" item="OutputGroup 8 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+			
+			<variable CV="209" item="OutputGroup 9 Type" default="0">
+				<enumVal>
+					<enumChoice choice="Standard">
+					</enumChoice>
+					<enumChoice choice="Traffic Signal">
+					</enumChoice>
+					<enumChoice choice="Welder">
+					</enumChoice>
+					<enumChoice choice="Random">
+					</enumChoice>
+				</enumVal>
+				<label>Output Group Type</label>
+				<tooltip>Choose a Type</tooltip>
+			</variable>
+
+			<variable CV="210,220" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 0 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="211,221" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 1 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="212,222" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 2 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="213,223" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 3 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="214,224" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 4 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+
+			<variable CV="215,225" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 5 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="216,226" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 6 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="217,227" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 7 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="218,228" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 8 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="219,229" mask="VVVVVVVV XXXXVVVV" item="OutputGroup 9 Address" default="4000">
+				<splitVal offset="1" />
+				<label>Sensor Address </label>
+				<tooltip>choose a value 1 - 4096</tooltip>
+			</variable>
+			
+			<variable CV="230" mask="VVVVXXXX" item="OutputGroup 0 Probability" default="7">
+				<qualifier>
+							<variableref>OutputGroup 0 Type</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="231" mask="VVVVXXXX" item="OutputGroup 1 Probability" default="7">
+				<qualifier>
+							<variableref>OutputGroup 1 Type</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="232" mask="VVVVXXXX" item="OutputGroup 2 Probability" default="7">
+				<qualifier>
+							<variableref>OutputGroup 2 Type</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>			
+			
+			<variable CV="233" mask="VVVVXXXX" item="OutputGroup 3 Probability" default="7">
+				<qualifier>
+							<variableref>OutputGroup 3 Type</variableref>
+							<relation>eq</relation>
+							<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="234" mask="VVVVXXXX" item="OutputGroup 4 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 4 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="235" mask="VVVVXXXX" item="OutputGroup 5 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 5 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="236" mask="VVVVXXXX" item="OutputGroup 6 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 6 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="237" mask="VVVVXXXX" item="OutputGroup 7 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 7 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="238" mask="VVVVXXXX" item="OutputGroup 8 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 8 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="239" mask="VVVVXXXX" item="OutputGroup 9 Probability" default="7">
+				<qualifier>
+					<variableref>OutputGroup 9 Type</variableref>
+					<relation>eq</relation>
+					<value>3</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Probability</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="230" mask="XXXXVVVV" item="OutputGroup 0 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 0 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="231" mask="XXXXVVVV" item="OutputGroup 1 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 1 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="232" mask="XXXXVVVV" item="OutputGroup 2 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 2 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="233" mask="XXXXVVVV" item="OutputGroup 3 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 3 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="234" mask="XXXXVVVV" item="OutputGroup 4 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 4 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+
+			<variable CV="235" mask="XXXXVVVV" item="OutputGroup 5 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 5 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="236" mask="XXXXVVVV" item="OutputGroup 6 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 6 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="237" mask="XXXXVVVV" item="OutputGroup 7 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 7 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="238" mask="XXXXVVVV" item="OutputGroup 8 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 8 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="239" mask="XXXXVVVV" item="OutputGroup 9 Durration" default="7">
+				<qualifier>
+					<variableref>OutputGroup 9 Type</variableref>
+					<relation>eq</relation>
+					<value>1</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Durration</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+		</variables>
+		
+		<resets>
+					<factReset CV="8" default="8">
+							<label>Restore All CVs to Factory Defaults. Device Address=15000</label>
+					</factReset>					
+			</resets>
+		</decoder>
+		<pane>
+		<name>Ouput 0</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 0 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 0 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 0 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 0 Brightness" layout="left"/>
+					<display item="Output 0 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 0 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 0 Dim" layout="left"/>
+					<display item="Output 0 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 0 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 0 Timing" layout="left"/>
+					<display item="Output 0 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 0 Fade" layout="left"/>
+					<display item="Output 0 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 0 Period" layout="left"/>
+					<display item="Output 0 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 0 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 0 Durration" layout="left"/>
+					<display item="Output 0 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 0 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 0 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 1</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 1 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 1 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 1 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 1 Brightness" layout="left"/>
+					<display item="Output 1 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 1 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 1 Dim" layout="left"/>
+					<display item="Output 1 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 1 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 1 Timing" layout="left"/>
+					<display item="Output 1 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 1 Fade" layout="left"/>
+					<display item="Output 1 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 1 Period" layout="left"/>
+					<display item="Output 1 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 1 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 1 Durration" layout="left"/>
+					<display item="Output 1 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 0 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 1 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 2</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 2 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 2 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 2 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 2 Brightness" layout="left"/>
+					<display item="Output 2 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 2 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 2 Dim" layout="left"/>
+					<display item="Output 2 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 2 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 2 Timing" layout="left"/>
+					<display item="Output 2 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 2 Fade" layout="left"/>
+					<display item="Output 2 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 2 Period" layout="left"/>
+					<display item="Output 2 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 2 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 2 Durration" layout="left"/>
+					<display item="Output 2 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 2 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 2 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 3</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 3 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 3 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 3 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 3 Brightness" layout="left"/>
+					<display item="Output 3 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 3 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 3 Dim" layout="left"/>
+					<display item="Output 3 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 3 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 3 Timing" layout="left"/>
+					<display item="Output 3 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 3 Fade" layout="left"/>
+					<display item="Output 3 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 3 Period" layout="left"/>
+					<display item="Output 3 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 3 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 3 Durration" layout="left"/>
+					<display item="Output 3 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 3 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 3 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 4</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 4 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 4 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 4 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 4 Brightness" layout="left"/>
+					<display item="Output 4 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 4 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 4 Dim" layout="left"/>
+					<display item="Output 4 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 4 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 4 Timing" layout="left"/>
+					<display item="Output 4 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 4 Fade" layout="left"/>
+					<display item="Output 4 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 4 Period" layout="left"/>
+					<display item="Output 4 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 4 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 4 Durration" layout="left"/>
+					<display item="Output 4 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 4 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 4 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 5</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 5 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 5 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 5 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 5 Brightness" layout="left"/>
+					<display item="Output 5 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 5 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 5 Dim" layout="left"/>
+					<display item="Output 5 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 5 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 5 Timing" layout="left"/>
+					<display item="Output 5 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 5 Fade" layout="left"/>
+					<display item="Output 5 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 5 Period" layout="left"/>
+					<display item="Output 5 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 5 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 5 Durration" layout="left"/>
+					<display item="Output 5 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 5 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 5 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 6</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 6 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 6 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 6 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 6 Brightness" layout="left"/>
+					<display item="Output 6 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 6 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 6 Dim" layout="left"/>
+					<display item="Output 6 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 6 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 6 Timing" layout="left"/>
+					<display item="Output 6 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 6 Fade" layout="left"/>
+					<display item="Output 6 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 6 Period" layout="left"/>
+					<display item="Output 6 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 6 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 6 Durration" layout="left"/>
+					<display item="Output 6 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 6 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 6 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 7</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 7 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 7 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 7 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 7 Brightness" layout="left"/>
+					<display item="Output 7 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 7 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 7 Dim" layout="left"/>
+					<display item="Output 7 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 7 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 7 Timing" layout="left"/>
+					<display item="Output 7 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 7 Fade" layout="left"/>
+					<display item="Output 7 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 7 Period" layout="left"/>
+					<display item="Output 7 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 7 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 7 Durration" layout="left"/>
+					<display item="Output 7 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 7 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 7 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 8</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 8 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 8 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 8 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 8 Brightness" layout="left"/>
+					<display item="Output 8 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 8 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 8 Dim" layout="left"/>
+					<display item="Output 8 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 8 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 8 Timing" layout="left"/>
+					<display item="Output 8 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 8 Fade" layout="left"/>
+					<display item="Output 8 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 8 Period" layout="left"/>
+					<display item="Output 8 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 8 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 8 Durration" layout="left"/>
+					<display item="Output 8 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 8 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 8 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 9</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 9 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 9 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 9 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 9 Brightness" layout="left"/>
+					<display item="Output 9 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 9 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 9 Dim" layout="left"/>
+					<display item="Output 9 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 9 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 9 Timing" layout="left"/>
+					<display item="Output 9 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 9 Fade" layout="left"/>
+					<display item="Output 9 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 9 Period" layout="left"/>
+					<display item="Output 9 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 9 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 9 Durration" layout="left"/>
+					<display item="Output 9 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 9 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 9 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 10</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 10 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 10 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 10 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 10 Brightness" layout="left"/>
+					<display item="Output 10 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 10 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 10 Dim" layout="left"/>
+					<display item="Output 10 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 10 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 10 Timing" layout="left"/>
+					<display item="Output 10 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 10 Fade" layout="left"/>
+					<display item="Output 10 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 10 Period" layout="left"/>
+					<display item="Output 10 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 10 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 10 Durration" layout="left"/>
+					<display item="Output 10 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 10 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 10 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 11</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 11 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 11 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 11 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 11 Brightness" layout="left"/>
+					<display item="Output 11 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 11 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 11 Dim" layout="left"/>
+					<display item="Output 11 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 11 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 11 Timing" layout="left"/>
+					<display item="Output 11 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 11 Fade" layout="left"/>
+					<display item="Output 11 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 11 Period" layout="left"/>
+					<display item="Output 11 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 11 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 11 Durration" layout="left"/>
+					<display item="Output 11 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 11 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 11 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 12</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 12 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 12 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 12 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 12 Brightness" layout="left"/>
+					<display item="Output 12 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 12 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 12 Dim" layout="left"/>
+					<display item="Output 12 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 12 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 12 Timing" layout="left"/>
+					<display item="Output 12 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 12 Fade" layout="left"/>
+					<display item="Output 12 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 12 Period" layout="left"/>
+					<display item="Output 12 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 12 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 12 Durration" layout="left"/>
+					<display item="Output 12 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 12 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 12 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 13</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 13 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 13 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 13 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 13 Brightness" layout="left"/>
+					<display item="Output 13 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 13 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 13 Dim" layout="left"/>
+					<display item="Output 13 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 13 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 13 Timing" layout="left"/>
+					<display item="Output 13 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 13 Fade" layout="left"/>
+					<display item="Output 13 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 13 Period" layout="left"/>
+					<display item="Output 13 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 13 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 13 Durration" layout="left"/>
+					<display item="Output 13 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 13 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 13 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 14</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 14 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 14 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 14 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 14 Brightness" layout="left"/>
+					<display item="Output 14 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 14 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 14 Dim" layout="left"/>
+					<display item="Output 14 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 14 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 14 Timing" layout="left"/>
+					<display item="Output 14 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 14 Fade" layout="left"/>
+					<display item="Output 14 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 14 Period" layout="left"/>
+					<display item="Output 14 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 14 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 14 Durration" layout="left"/>
+					<display item="Output 14 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 14 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 14 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 15</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 15 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 15 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 15 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 15 Brightness" layout="left"/>
+					<display item="Output 15 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 15 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 15 Dim" layout="left"/>
+					<display item="Output 15 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 15 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 15 Timing" layout="left"/>
+					<display item="Output 15 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 15 Fade" layout="left"/>
+					<display item="Output 15 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 15 Period" layout="left"/>
+					<display item="Output 15 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 15 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 15 Durration" layout="left"/>
+					<display item="Output 15 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 15 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 15 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 16</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 16 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 16 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 16 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 16 Brightness" layout="left"/>
+					<display item="Output 16 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 16 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 16 Dim" layout="left"/>
+					<display item="Output 16 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 16 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 16 Timing" layout="left"/>
+					<display item="Output 16 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 16 Fade" layout="left"/>
+					<display item="Output 16 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 16 Period" layout="left"/>
+					<display item="Output 16 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 16 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 16 Durration" layout="left"/>
+					<display item="Output 16 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 16 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 16 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 17</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 17 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 17 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 17 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 17 Brightness" layout="left"/>
+					<display item="Output 17 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 17 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 17 Dim" layout="left"/>
+					<display item="Output 17 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 17 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 17 Timing" layout="left"/>
+					<display item="Output 17 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 17 Fade" layout="left"/>
+					<display item="Output 17 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 17 Period" layout="left"/>
+					<display item="Output 17 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 17 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 17 Durration" layout="left"/>
+					<display item="Output 17 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 17 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 17 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 18</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 18 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 18 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 18 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 18 Brightness" layout="left"/>
+					<display item="Output 18 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 18 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 18 Dim" layout="left"/>
+					<display item="Output 18 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 18 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 18 Timing" layout="left"/>
+					<display item="Output 18 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 18 Fade" layout="left"/>
+					<display item="Output 18 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 18 Period" layout="left"/>
+					<display item="Output 18 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 18 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 18 Durration" layout="left"/>
+					<display item="Output 18 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 18 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 18 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput 19</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT 19 EFFECTS AND CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 19 Effects"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="Output 19 Address"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="Output 19 Brightness" layout="left"/>
+					<display item="Output 19 Brightness" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 19 Effects</variableref>
+						  <relation>lt</relation>
+						  <value>4</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 19 Dim" layout="left"/>
+					<display item="Output 19 Dim" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 19 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>1</value>
+						</qualifier>
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 19 Timing" layout="left"/>
+					<display item="Output 19 Timing" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+					<display item="Output 19 Fade" layout="left"/>
+					<display item="Output 19 Fade" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+					<display item="Output 19 Period" layout="left"/>
+					<display item="Output 19 Period" layout="left" label="" format="hslider"/>
+					</row>					
+					<label>
+						<qualifier>
+						  <variableref>Output 19 Effects</variableref>
+						  <relation>ne</relation>
+						  <value>5</value>
+						</qualifier>
+						<text>          </text>
+					</label>					
+					<row>															
+					<display item="Output 19 Durration" layout="left"/>
+					<display item="Output 19 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+						<qualifier>
+						  <variableref>Output 19 Effects</variableref>
+						  <relation>gt</relation>
+						  <value>3</value>
+						</qualifier>					
+						<text>          </text>
+					</label>
+					<row>					
+					<display item="Output 19 Output Group" layout="left"/>					
+					</row>										
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput Group 0</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 0 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 0 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="OutputGroup 0 Probability" layout="left"/>
+					<display item="OutputGroup 0 Probability" layout="left" label="" format="hslider"/>
+					</row>					
+					<row>
+						<display item="OutputGroup 0 Durration" layout="left"/>
+						<display item="OutputGroup 0 Durration" layout="left" label="" format="hslider"/>
+					</row>
+
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput Group 1</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>				
+					<display item="OutputGroup 1 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 1 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="OutputGroup 1 Probability" layout="left"/>
+					<display item="OutputGroup 1 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 1 Durration" layout="left"/>
+						<display item="OutputGroup 1 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput Group 2</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 2 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 2 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="OutputGroup 2 Probability" layout="left"/>
+					<display item="OutputGroup 2 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 2 Durration" layout="left"/>
+						<display item="OutputGroup 2 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>			
+			</row>
+			</column>
+		</pane>
+		
+		<pane>
+		<name>Ouput Group 3</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>        
+				</label>
+			</row>				
+				<label>
+					<text> </text>
+				</label>
+				<separator/>				
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 3 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 3 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>													
+					<row>
+					<display item="OutputGroup 3 Probability" layout="left"/>
+					<display item="OutputGroup 3 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 3 Durration" layout="left"/>
+						<display item="OutputGroup 3 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>			
+			</row>
+			</column>
+		</pane>
+
+	<pane>
+		<name>Ouput Group 4</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 4 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 4 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 4 Probability" layout="left"/>
+						<display item="OutputGroup 4 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 4 Durration" layout="left"/>
+						<display item="OutputGroup 4 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>
+
+	<pane>
+		<name>Ouput Group 5</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 5 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 5 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 5 Probability" layout="left"/>
+						<display item="OutputGroup 5 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 5 Durration" layout="left"/>
+						<display item="OutputGroup 5 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>
+	
+	<pane>
+		<name>Ouput Group 66</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 6 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 6 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 6 Probability" layout="left"/>
+						<display item="OutputGroup 6 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 6 Durration" layout="left"/>
+						<display item="OutputGroup 6 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>
+	
+	<pane>
+		<name>Ouput Group 7</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 7 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 7 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 7 Probability" layout="left"/>
+						<display item="OutputGroup 7 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 7 Durration" layout="left"/>
+						<display item="OutputGroup 7 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>
+	
+	<pane>
+		<name>Ouput Group 8</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 8 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 8 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 8 Probability" layout="left"/>
+						<display item="OutputGroup 8 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 8 Durration" layout="left"/>
+						<display item="OutputGroup 8 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>
+	
+	<pane>
+		<name>Ouput Group 9</name>
+		<column>
+			<row>
+				<label>
+					<text>OUTPUT GROUP CONTROLS</text>
+				</label>
+			</row>
+			<label>
+				<text> </text>
+			</label>
+			<separator/>
+			<row>
+				<column>
+					<label>
+						<text>  </text>
+					</label>
+				</column>
+				<column>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 9 Type" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<display item="OutputGroup 9 Address" layout="left"/>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+						<display item="OutputGroup 9 Probability" layout="left"/>
+						<display item="OutputGroup 9 Probability" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 9 Durration" layout="left"/>
+						<display item="OutputGroup 9 Durration" layout="left" label="" format="hslider"/>
+					</row>
+				</column>
+			</row>
+		</column>
+	</pane>			
+</decoder-config>

@@ -10,7 +10,6 @@
 #define LNtxPin               7       // LocoNet Transmit pin (LocoShield uses pin 9)
 #define addrPE               15
 #define addrPLed             14
-#define FEATURES              6
 #define On                    1
 #define Off                   0
 #define addrLSBset            0
@@ -21,12 +20,14 @@
 // Comment this line out after first initialization
 //#define InitializeCVs
 
+//#define DEBUG
+
 Flags flags = Flags();
 
 uint8_t FactoryDefaultCVIndex = 0;
 
 const int OUTPUTS = 20;
-const int OUTPUTGROUPS = 4;
+const int OUTPUTGROUPS = 10;
 unsigned long progMillis = 0;
 uint16_t BoardAddress;
 
@@ -36,7 +37,7 @@ struct CVPair {
   uint8_t Value;
 };
 
-#define CV_VERSION 2
+#define CV_VERSION 7
 #define CV_MANUFACTURE 8
 #define CV_LONG_ADDRESS_MSB 17
 #define CV_LONG_ADDRESS_LSB 18
@@ -61,6 +62,7 @@ struct CVPair {
 #define CV_OUTPUT_17_EFFECTS 77
 #define CV_OUTPUT_18_EFFECTS 78
 #define CV_OUTPUT_19_EFFECTS 79
+
 #define CV_OUTPUT_0_ADDRESS_LSB 80
 #define CV_OUTPUT_1_ADDRESS_LSB 81
 #define CV_OUTPUT_2_ADDRESS_LSB 82
@@ -81,6 +83,7 @@ struct CVPair {
 #define CV_OUTPUT_17_ADDRESS_LSB 97
 #define CV_OUTPUT_18_ADDRESS_LSB 98
 #define CV_OUTPUT_19_ADDRESS_LSB 99
+
 #define CV_OUTPUT_0_ADDRESS_MSB 100
 #define CV_OUTPUT_1_ADDRESS_MSB 101
 #define CV_OUTPUT_2_ADDRESS_MSB 102
@@ -101,6 +104,7 @@ struct CVPair {
 #define CV_OUTPUT_17_ADDRESS_MSB 117
 #define CV_OUTPUT_18_ADDRESS_MSB 118
 #define CV_OUTPUT_19_ADDRESS_MSB 119
+
 #define CV_OUTPUT_0_CONFIG_1 120
 #define CV_OUTPUT_1_CONFIG_1 121
 #define CV_OUTPUT_2_CONFIG_1 122
@@ -121,6 +125,7 @@ struct CVPair {
 #define CV_OUTPUT_17_CONFIG_1 137
 #define CV_OUTPUT_18_CONFIG_1 138
 #define CV_OUTPUT_19_CONFIG_1 139
+
 #define CV_OUTPUT_0_CONFIG_2 140
 #define CV_OUTPUT_1_CONFIG_2 141
 #define CV_OUTPUT_2_CONFIG_2 142
@@ -141,6 +146,7 @@ struct CVPair {
 #define CV_OUTPUT_17_CONFIG_2 157
 #define CV_OUTPUT_18_CONFIG_2 158
 #define CV_OUTPUT_19_CONFIG_2 159
+
 #define CV_OUTPUT_0_CONFIG_3 160
 #define CV_OUTPUT_1_CONFIG_3 161
 #define CV_OUTPUT_2_CONFIG_3 162
@@ -161,6 +167,7 @@ struct CVPair {
 #define CV_OUTPUT_17_CONFIG_3 177
 #define CV_OUTPUT_18_CONFIG_3 178
 #define CV_OUTPUT_19_CONFIG_3 179
+
 #define CV_OUTPUT_0_OUTPUTGROUP 180
 #define CV_OUTPUT_1_OUTPUTGROUP 181
 #define CV_OUTPUT_2_OUTPUTGROUP 182
@@ -181,34 +188,62 @@ struct CVPair {
 #define CV_OUTPUT_17_OUTPUTGROUP 197
 #define CV_OUTPUT_18_OUTPUTGROUP 198
 #define CV_OUTPUT_19_OUTPUTGROUP 199
+
 #define CV_OUTPUTGROUP_0_TYPE 200
 #define CV_OUTPUTGROUP_1_TYPE 201
 #define CV_OUTPUTGROUP_2_TYPE 202
 #define CV_OUTPUTGROUP_3_TYPE 203
-#define CV_OUTPUTGROUP_0_ADDRESS_LSB 204
-#define CV_OUTPUTGROUP_1_ADDRESS_LSB 205
-#define CV_OUTPUTGROUP_2_ADDRESS_LSB 206
-#define CV_OUTPUTGROUP_3_ADDRESS_LSB 207
-#define CV_OUTPUTGROUP_0_ADDRESS_MSB 208
-#define CV_OUTPUTGROUP_1_ADDRESS_MSB 209
-#define CV_OUTPUTGROUP_2_ADDRESS_MSB 210
-#define CV_OUTPUTGROUP_3_ADDRESS_MSB 211
-#define CV_OUTPUTGROUP_0_PROBABILITY 212
-#define CV_OUTPUTGROUP_1_PROBABILITY 213
-#define CV_OUTPUTGROUP_2_PROBABILITY 214
-#define CV_OUTPUTGROUP_3_PROBABILITY 215
+#define CV_OUTPUTGROUP_4_TYPE 204
+#define CV_OUTPUTGROUP_5_TYPE 205
+#define CV_OUTPUTGROUP_6_TYPE 206
+#define CV_OUTPUTGROUP_7_TYPE 207
+#define CV_OUTPUTGROUP_8_TYPE 208
+#define CV_OUTPUTGROUP_9_TYPE 209
+
+#define CV_OUTPUTGROUP_0_ADDRESS_LSB 210
+#define CV_OUTPUTGROUP_1_ADDRESS_LSB 211
+#define CV_OUTPUTGROUP_2_ADDRESS_LSB 212
+#define CV_OUTPUTGROUP_3_ADDRESS_LSB 213
+#define CV_OUTPUTGROUP_4_ADDRESS_LSB 214
+#define CV_OUTPUTGROUP_5_ADDRESS_LSB 215
+#define CV_OUTPUTGROUP_6_ADDRESS_LSB 216
+#define CV_OUTPUTGROUP_7_ADDRESS_LSB 217
+#define CV_OUTPUTGROUP_8_ADDRESS_LSB 218
+#define CV_OUTPUTGROUP_9_ADDRESS_LSB 219
+
+#define CV_OUTPUTGROUP_0_ADDRESS_MSB 220
+#define CV_OUTPUTGROUP_1_ADDRESS_MSB 221
+#define CV_OUTPUTGROUP_2_ADDRESS_MSB 222
+#define CV_OUTPUTGROUP_3_ADDRESS_MSB 223
+#define CV_OUTPUTGROUP_4_ADDRESS_MSB 224
+#define CV_OUTPUTGROUP_5_ADDRESS_MSB 225
+#define CV_OUTPUTGROUP_6_ADDRESS_MSB 226
+#define CV_OUTPUTGROUP_7_ADDRESS_MSB 227
+#define CV_OUTPUTGROUP_8_ADDRESS_MSB 228
+#define CV_OUTPUTGROUP_9_ADDRESS_MSB 229
+
+#define CV_OUTPUTGROUP_0_CONFIG 230
+#define CV_OUTPUTGROUP_1_CONFIG 231
+#define CV_OUTPUTGROUP_2_CONFIG 232
+#define CV_OUTPUTGROUP_3_CONFIG 233
+#define CV_OUTPUTGROUP_4_CONFIG 234
+#define CV_OUTPUTGROUP_5_CONFIG 235
+#define CV_OUTPUTGROUP_6_CONFIG 236
+#define CV_OUTPUTGROUP_7_CONFIG 237
+#define CV_OUTPUTGROUP_8_CONFIG 238
+#define CV_OUTPUTGROUP_9_CONFIG 239
 
 
 // Default CV Values Table
 const CVPair FactoryDefaultCVs[] PROGMEM = {
 
-  { CV_VERSION, 7 },
-  { CV_MANUFACTURE, 8 },
+  { CV_VERSION, 2 },
+  { CV_MANUFACTURE, 13 },
 
   // These two CVs define the Long DCC Address
   { CV_LONG_ADDRESS_MSB, 250 },
-  { CV_LONG_ADDRESS_LSB, 152 },  
-  
+  { CV_LONG_ADDRESS_LSB, 152 },
+
   { CV_OUTPUT_0_EFFECTS, 0 },
   { CV_OUTPUT_1_EFFECTS, 0 },
   { CV_OUTPUT_2_EFFECTS, 0 },
@@ -229,6 +264,7 @@ const CVPair FactoryDefaultCVs[] PROGMEM = {
   { CV_OUTPUT_17_EFFECTS, 0 },
   { CV_OUTPUT_18_EFFECTS, 0 },
   { CV_OUTPUT_19_EFFECTS, 0 },
+
   { CV_OUTPUT_0_ADDRESS_LSB, 208 },
   { CV_OUTPUT_1_ADDRESS_LSB, 208 },
   { CV_OUTPUT_2_ADDRESS_LSB, 208 },
@@ -248,7 +284,8 @@ const CVPair FactoryDefaultCVs[] PROGMEM = {
   { CV_OUTPUT_16_ADDRESS_LSB, 208 },
   { CV_OUTPUT_17_ADDRESS_LSB, 208 },
   { CV_OUTPUT_18_ADDRESS_LSB, 208 },
-  { CV_OUTPUT_19_ADDRESS_LSB, 208 },  
+  { CV_OUTPUT_19_ADDRESS_LSB, 208 },
+
   { CV_OUTPUT_0_ADDRESS_MSB, 7 },
   { CV_OUTPUT_1_ADDRESS_MSB, 7 },
   { CV_OUTPUT_2_ADDRESS_MSB, 7 },
@@ -269,102 +306,134 @@ const CVPair FactoryDefaultCVs[] PROGMEM = {
   { CV_OUTPUT_17_ADDRESS_MSB, 7 },
   { CV_OUTPUT_18_ADDRESS_MSB, 7 },
   { CV_OUTPUT_19_ADDRESS_MSB, 7 },
-  { CV_OUTPUT_0_CONFIG_1, 255 },
-  { CV_OUTPUT_1_CONFIG_1, 255 },
-  { CV_OUTPUT_2_CONFIG_1, 255 },
-  { CV_OUTPUT_3_CONFIG_1, 255 },
-  { CV_OUTPUT_4_CONFIG_1, 255 },
-  { CV_OUTPUT_5_CONFIG_1, 255 },
-  { CV_OUTPUT_6_CONFIG_1, 255 },
-  { CV_OUTPUT_7_CONFIG_1, 255 },
-  { CV_OUTPUT_8_CONFIG_1, 255 },
-  { CV_OUTPUT_9_CONFIG_1, 255 },
-  { CV_OUTPUT_10_CONFIG_1, 255 },
-  { CV_OUTPUT_11_CONFIG_1, 255 },
-  { CV_OUTPUT_12_CONFIG_1, 255 },
-  { CV_OUTPUT_13_CONFIG_1, 255 },
-  { CV_OUTPUT_14_CONFIG_1, 255 },
-  { CV_OUTPUT_15_CONFIG_1, 255 },
-  { CV_OUTPUT_16_CONFIG_1, 255 },
-  { CV_OUTPUT_17_CONFIG_1, 255 },
-  { CV_OUTPUT_18_CONFIG_1, 255 },
-  { CV_OUTPUT_19_CONFIG_1, 255 },
-  { CV_OUTPUT_0_CONFIG_2, 255 },  
-  { CV_OUTPUT_1_CONFIG_2, 255 },  
-  { CV_OUTPUT_2_CONFIG_2, 255 }, 
-  { CV_OUTPUT_3_CONFIG_2, 255 }, 
-  { CV_OUTPUT_4_CONFIG_2, 255 },  
-  { CV_OUTPUT_5_CONFIG_2, 255 },  
-  { CV_OUTPUT_6_CONFIG_2, 255 },  
-  { CV_OUTPUT_7_CONFIG_2, 255 }, 
-  { CV_OUTPUT_8_CONFIG_2, 255 },  
-  { CV_OUTPUT_9_CONFIG_2, 255 },
-  { CV_OUTPUT_10_CONFIG_2, 255 },  
-  { CV_OUTPUT_11_CONFIG_2, 255 },  
-  { CV_OUTPUT_12_CONFIG_2, 255 },  
-  { CV_OUTPUT_13_CONFIG_2, 255 },  
-  { CV_OUTPUT_14_CONFIG_2, 255 },  
-  { CV_OUTPUT_15_CONFIG_2, 255 },  
-  { CV_OUTPUT_16_CONFIG_2, 255 },  
-  { CV_OUTPUT_17_CONFIG_2, 255 }, 
-  { CV_OUTPUT_18_CONFIG_2, 255 },  
-  { CV_OUTPUT_19_CONFIG_2, 255 },
-  { CV_OUTPUT_0_CONFIG_3, 0 },
-  { CV_OUTPUT_1_CONFIG_3, 0 },
-  { CV_OUTPUT_2_CONFIG_3, 0 },
-  { CV_OUTPUT_3_CONFIG_3, 0 },
-  { CV_OUTPUT_4_CONFIG_3, 0 },
-  { CV_OUTPUT_5_CONFIG_3, 0 },
-  { CV_OUTPUT_6_CONFIG_3, 0 },
-  { CV_OUTPUT_7_CONFIG_3, 0 },
-  { CV_OUTPUT_8_CONFIG_3, 0 },
-  { CV_OUTPUT_9_CONFIG_3, 0 },
-  { CV_OUTPUT_10_CONFIG_3, 0 },
-  { CV_OUTPUT_11_CONFIG_3, 0 },
-  { CV_OUTPUT_12_CONFIG_3, 0 },
-  { CV_OUTPUT_13_CONFIG_3, 0 },
-  { CV_OUTPUT_14_CONFIG_3, 0 },
-  { CV_OUTPUT_15_CONFIG_3, 0 },
-  { CV_OUTPUT_16_CONFIG_3, 0 },
-  { CV_OUTPUT_17_CONFIG_3, 0 },
-  { CV_OUTPUT_18_CONFIG_3, 0 },
-  { CV_OUTPUT_19_CONFIG_3, 0 },
-  { CV_OUTPUT_0_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_1_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_2_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_3_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_4_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_5_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_6_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_7_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_8_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_9_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_10_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_11_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_12_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_13_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_14_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_15_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_16_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_17_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_18_OUTPUTGROUP, 4 },
-  { CV_OUTPUT_19_OUTPUTGROUP, 4 },
+
+  { CV_OUTPUT_0_CONFIG_1, 15 },
+  { CV_OUTPUT_1_CONFIG_1, 15 },
+  { CV_OUTPUT_2_CONFIG_1, 15 },
+  { CV_OUTPUT_3_CONFIG_1, 15 },
+  { CV_OUTPUT_4_CONFIG_1, 15 },
+  { CV_OUTPUT_5_CONFIG_1, 15 },
+  { CV_OUTPUT_6_CONFIG_1, 15 },
+  { CV_OUTPUT_7_CONFIG_1, 15 },
+  { CV_OUTPUT_8_CONFIG_1, 15 },
+  { CV_OUTPUT_9_CONFIG_1, 15 },
+  { CV_OUTPUT_10_CONFIG_1, 15 },
+  { CV_OUTPUT_11_CONFIG_1, 15 },
+  { CV_OUTPUT_12_CONFIG_1, 15 },
+  { CV_OUTPUT_13_CONFIG_1, 15 },
+  { CV_OUTPUT_14_CONFIG_1, 15 },
+  { CV_OUTPUT_15_CONFIG_1, 15 },
+  { CV_OUTPUT_16_CONFIG_1, 15 },
+  { CV_OUTPUT_17_CONFIG_1, 15 },
+  { CV_OUTPUT_18_CONFIG_1, 15 },
+  { CV_OUTPUT_19_CONFIG_1, 15 },
+
+  { CV_OUTPUT_0_CONFIG_2, 119 },
+  { CV_OUTPUT_1_CONFIG_2, 119 },
+  { CV_OUTPUT_2_CONFIG_2, 119 },
+  { CV_OUTPUT_3_CONFIG_2, 119 },
+  { CV_OUTPUT_4_CONFIG_2, 119 },
+  { CV_OUTPUT_5_CONFIG_2, 119 },
+  { CV_OUTPUT_6_CONFIG_2, 119 },
+  { CV_OUTPUT_7_CONFIG_2, 119 },
+  { CV_OUTPUT_8_CONFIG_2, 119 },
+  { CV_OUTPUT_9_CONFIG_2, 119 },
+  { CV_OUTPUT_10_CONFIG_2, 119 },
+  { CV_OUTPUT_11_CONFIG_2, 119 },
+  { CV_OUTPUT_12_CONFIG_2, 119 },
+  { CV_OUTPUT_13_CONFIG_2, 119 },
+  { CV_OUTPUT_14_CONFIG_2, 119 },
+  { CV_OUTPUT_15_CONFIG_2, 119 },
+  { CV_OUTPUT_16_CONFIG_2, 119 },
+  { CV_OUTPUT_17_CONFIG_2, 119 },
+  { CV_OUTPUT_18_CONFIG_2, 119 },
+  { CV_OUTPUT_19_CONFIG_2, 119 },
+
+  { CV_OUTPUT_0_CONFIG_3, 119 },
+  { CV_OUTPUT_1_CONFIG_3, 119 },
+  { CV_OUTPUT_2_CONFIG_3, 119 },
+  { CV_OUTPUT_3_CONFIG_3, 119 },
+  { CV_OUTPUT_4_CONFIG_3, 119 },
+  { CV_OUTPUT_5_CONFIG_3, 119 },
+  { CV_OUTPUT_6_CONFIG_3, 119 },
+  { CV_OUTPUT_7_CONFIG_3, 119 },
+  { CV_OUTPUT_8_CONFIG_3, 119 },
+  { CV_OUTPUT_9_CONFIG_3, 119 },
+  { CV_OUTPUT_10_CONFIG_3, 119 },
+  { CV_OUTPUT_11_CONFIG_3, 119 },
+  { CV_OUTPUT_12_CONFIG_3, 119 },
+  { CV_OUTPUT_13_CONFIG_3, 119 },
+  { CV_OUTPUT_14_CONFIG_3, 119 },
+  { CV_OUTPUT_15_CONFIG_3, 119 },
+  { CV_OUTPUT_16_CONFIG_3, 119 },
+  { CV_OUTPUT_17_CONFIG_3, 119 },
+  { CV_OUTPUT_18_CONFIG_3, 119 },
+  { CV_OUTPUT_19_CONFIG_3, 119 },
+
+  { CV_OUTPUT_0_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_1_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_2_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_3_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_4_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_5_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_6_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_7_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_8_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_9_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_10_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_11_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_12_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_13_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_14_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_15_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_16_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_17_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_18_OUTPUTGROUP, OUTPUTGROUPS },
+  { CV_OUTPUT_19_OUTPUTGROUP, OUTPUTGROUPS },
+
   { CV_OUTPUTGROUP_0_TYPE, 0},
   { CV_OUTPUTGROUP_1_TYPE, 0},
   { CV_OUTPUTGROUP_2_TYPE, 0},
   { CV_OUTPUTGROUP_3_TYPE, 0},
+  { CV_OUTPUTGROUP_4_TYPE, 0 },
+  { CV_OUTPUTGROUP_5_TYPE, 0 },
+  { CV_OUTPUTGROUP_6_TYPE, 0 },
+  { CV_OUTPUTGROUP_7_TYPE, 0 },
+  { CV_OUTPUTGROUP_8_TYPE, 0 },
+  { CV_OUTPUTGROUP_9_TYPE, 0 },
+
   { CV_OUTPUTGROUP_0_ADDRESS_LSB, 160 },
   { CV_OUTPUTGROUP_1_ADDRESS_LSB, 160 },
   { CV_OUTPUTGROUP_2_ADDRESS_LSB, 160 },
   { CV_OUTPUTGROUP_3_ADDRESS_LSB, 160 },
-  { CV_OUTPUTGROUP_0_ADDRESS_MSB, 15 },  
-  { CV_OUTPUTGROUP_1_ADDRESS_MSB, 15 },  
-  { CV_OUTPUTGROUP_2_ADDRESS_MSB, 15 },  
+  { CV_OUTPUTGROUP_4_ADDRESS_LSB, 160 },
+  { CV_OUTPUTGROUP_5_ADDRESS_LSB, 160 },
+  { CV_OUTPUTGROUP_6_ADDRESS_LSB, 160 },
+  { CV_OUTPUTGROUP_7_ADDRESS_LSB, 160 },
+  { CV_OUTPUTGROUP_8_ADDRESS_LSB, 160 },
+  { CV_OUTPUTGROUP_9_ADDRESS_LSB, 160 },
+
+  { CV_OUTPUTGROUP_0_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_1_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_2_ADDRESS_MSB, 15 },
   { CV_OUTPUTGROUP_3_ADDRESS_MSB, 15 },
-  { CV_OUTPUTGROUP_0_PROBABILITY, 50 },
-  { CV_OUTPUTGROUP_1_PROBABILITY, 50 },
-  { CV_OUTPUTGROUP_2_PROBABILITY, 50 },
-  { CV_OUTPUTGROUP_3_PROBABILITY, 50 }
+  { CV_OUTPUTGROUP_4_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_5_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_6_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_7_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_8_ADDRESS_MSB, 15 },
+  { CV_OUTPUTGROUP_9_ADDRESS_MSB, 15 },
+
+  { CV_OUTPUTGROUP_0_CONFIG, 119 },
+  { CV_OUTPUTGROUP_1_CONFIG, 119 },
+  { CV_OUTPUTGROUP_2_CONFIG, 119 },
+  { CV_OUTPUTGROUP_3_CONFIG, 119 },
+  { CV_OUTPUTGROUP_4_CONFIG, 119 },
+  { CV_OUTPUTGROUP_5_CONFIG, 119 },
+  { CV_OUTPUTGROUP_6_CONFIG, 119 },
+  { CV_OUTPUTGROUP_7_CONFIG, 119 },
+  { CV_OUTPUTGROUP_8_CONFIG, 119 },
+  { CV_OUTPUTGROUP_9_CONFIG, 119 }
 };
 
 LocoPWMOutput outputs[OUTPUTS];
@@ -380,12 +449,15 @@ void createOutputGroups() {
   }
 }
 
-void createOuputs() {  
+void createOuputs() { 
+
+    // On chip PWM outputs
   outputs[0] = LocoPWMOutput(11, false); 
-  outputs[1] = LocoPWMOutput(3, false); 
-  outputs[2] = LocoPWMOutput(6, false); 
-  outputs[3] = LocoPWMOutput(5, false);
+  outputs[1] = LocoPWMOutput(6, false); 
+  outputs[2] = LocoPWMOutput(5, false); 
+  outputs[3] = LocoPWMOutput(3, false);
   
+    // PWM Servo Driver outputs
   for (uint8_t index = 0; index < OUTPUTS - 4; index++) {
     outputs[index + 4] = LocoPWMOutput(index, true);    
   } 
@@ -396,26 +468,26 @@ void updateOuputSettings(uint16_t CV, uint8_t Value) {
 
   switch (CV) {
     case CV_OUTPUT_0_EFFECTS ... (CV_OUTPUT_0_EFFECTS + OUTPUTS) - 1:      
-      outputs[index].setEffect(Value);
-      break;
+        outputs[index].setEffect(Value);
+        break;
     case CV_OUTPUT_0_ADDRESS_LSB ... (CV_OUTPUT_0_ADDRESS_LSB + OUTPUTS) - 1:      
-      outputs[index].setAddressLSB(Value);      
-      break;
+        outputs[index].setAddressLSB(Value);      
+        break;
     case CV_OUTPUT_0_ADDRESS_MSB ... (CV_OUTPUT_0_ADDRESS_MSB + OUTPUTS) - 1:
-      outputs[index].setAddressMSB(Value);
-      break;
+        outputs[index].setAddressMSB(Value);
+        break;
     case CV_OUTPUT_0_CONFIG_1 ... (CV_OUTPUT_0_CONFIG_1 + OUTPUTS) - 1:
-      outputs[index].setConfig_1(Value);      
-      break;
+        outputs[index].setConfig_1(Value);      
+        break;
     case CV_OUTPUT_0_CONFIG_2 ... (CV_OUTPUT_0_CONFIG_2 + OUTPUTS) - 1:
-      outputs[index].setConfig_2(Value);
-      break;
+        outputs[index].setConfig_2(Value);
+        break;
     case CV_OUTPUT_0_CONFIG_3 ... (CV_OUTPUT_0_CONFIG_3 + OUTPUTS) - 1:      
-      outputs[index].setConfig_3(Value);
-      break;
+        outputs[index].setConfig_3(Value);
+        break;
     case CV_OUTPUT_0_OUTPUTGROUP ... (CV_OUTPUT_0_OUTPUTGROUP + OUTPUTS) - 1:      
-      outputs[index].setOutputGroup(Value);
-      break;          
+        outputs[index].setOutputGroup(Value);
+        break;          
   }  
 }
 
@@ -424,17 +496,17 @@ void updateOutputGroupSettings(uint16_t CV, uint8_t Value) {
 
   switch (CV) {
     case CV_OUTPUTGROUP_0_TYPE ... (CV_OUTPUTGROUP_0_TYPE + OUTPUTGROUPS) - 1:
-      outputGroups[index].setRandom(Value);
-      break;
+        outputGroups[index].setGroupType(Value);
+        break;
     case CV_OUTPUTGROUP_0_ADDRESS_LSB ... (CV_OUTPUTGROUP_0_ADDRESS_LSB + OUTPUTGROUPS) - 1:
-      outputGroups[index].setAddressLSB(Value);
-      break;
+        outputGroups[index].setAddressLSB(Value);
+        break;
     case CV_OUTPUTGROUP_0_ADDRESS_MSB ... (CV_OUTPUTGROUP_0_ADDRESS_MSB + OUTPUTGROUPS) -1:
-      outputGroups[index].setAddressMSB(Value);
-      break;
-    case CV_OUTPUTGROUP_0_PROBABILITY ... (CV_OUTPUTGROUP_0_PROBABILITY + OUTPUTGROUPS) - 1:
-      outputGroups[index].setProbability(Value);
-      break;
+        outputGroups[index].setAddressMSB(Value);
+        break;
+    case CV_OUTPUTGROUP_0_CONFIG ... (CV_OUTPUTGROUP_0_CONFIG + OUTPUTGROUPS) - 1:
+        outputGroups[index].setConfig(Value);
+        break;    
   }
 }
 
@@ -442,7 +514,8 @@ lnMsg *LnPacket;
 
 unsigned long previousMillis;
 
-void setup() {
+void setup() 
+{
   // First initialize the LocoNet interface
   LocoNet.init(LNtxPin); 
 
@@ -463,7 +536,7 @@ void setup() {
   createOuputs(); 
 
   // load output group settings
-  for (uint16_t CV = CV_OUTPUTGROUP_0_TYPE; CV <= CV_OUTPUTGROUP_3_PROBABILITY; CV++) {
+  for (uint16_t CV = CV_OUTPUTGROUP_0_TYPE; CV <= CV_OUTPUTGROUP_9_CONFIG; CV++) {
       uint8_t value = EEPROM.read(CV);
       updateOutputGroupSettings(CV, value);       
   }    
@@ -472,23 +545,22 @@ void setup() {
   for (uint16_t CV = CV_OUTPUT_0_EFFECTS; CV <= CV_OUTPUT_19_OUTPUTGROUP; CV++ ) {
       uint8_t value = EEPROM.read(CV);
       updateOuputSettings(CV, value);        
-  }  
+  } 
+
+#ifdef DEBUG
+  // Configure the serial port for 115200 baud
+  Serial.begin(115200);
+  //delay(2000);
+  Serial.println(F("Loco PWM"));
+  Serial.print(F("Board Address "));
+  BoardAddress = getBoardAddress();
+  Serial.println(BoardAddress);
+#endif
   
 #ifdef InitializeCVs
   notifyCVResetFactoryDefault();
   #warning "Initializing CVs, please configure to not do so next upload!!!!!!!!!!!!!!"
-#endif
-
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_2_EFFECTS, 2);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_2_CONFIG_2, 2);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_2_OUTPUTGROUP, 0);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_19_EFFECTS, 10);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_19_CONFIG_2, 128);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_19_CONFIG_3, 50);
-      //outputs[19].setOn(On);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUT_19_OUTPUTGROUP, 0);
-      //notifyOpsModeByteWrite(15000, CV_OUTPUTGROUP_0_TYPE, 1);
-      outputGroups[0].setOn(On);
+#endif      
 }
 
 void notifyCVResetFactoryDefault() {
@@ -506,8 +578,7 @@ void loop() {
      // Process the packet for Program Task Message
     if (!LocoNetHelper.processProgramTaskMessage(LnPacket)) {
       // Process the packet for Switch or Sensor Message
-      if (!LocoNet.processSwitchSensorMessage(LnPacket)) {
-        Serial.println();         
+      if (!LocoNet.processSwitchSensorMessage(LnPacket)) {               
         // Process the packet for Stationary Decoder Interrogate Message
         LocoNetHelper.processStationaryDecoderInterrogate(LnPacket);
       }
