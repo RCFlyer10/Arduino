@@ -19,6 +19,7 @@
 #define RANDOM 4
 #define BEACON 5
 #define MARS 6
+#define FLICKER 7
 
 // Fade mode config
 #define STEP 2
@@ -62,7 +63,7 @@ class Function_Led {
 		uint8_t _dimValue;
 		uint8_t _fadeRate;
 		uint8_t _flashRate;		
-		uint8_t _brightness;
+		uint8_t _brightValue;
 		uint8_t _probability;
 		uint8_t _beaconDelaySP;
 		bool _dimmerOn;

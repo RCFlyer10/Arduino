@@ -2756,7 +2756,9 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">        
-					</enumChoice>					
+					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2771,7 +2773,9 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
-					</enumChoice>				
+					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2786,7 +2790,9 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
-					</enumChoice>				
+					</enumChoice>	
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2801,7 +2807,9 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
-					</enumChoice>				
+					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2816,6 +2824,8 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
+					</enumChoice>
+					<enumChoice choice="Chase">        
 					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
@@ -2832,6 +2842,8 @@
 					</enumChoice>
 					<enumChoice choice="Random">
 					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2846,6 +2858,8 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
+					</enumChoice>
+					<enumChoice choice="Chase">        
 					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
@@ -2862,6 +2876,8 @@
 					</enumChoice>
 					<enumChoice choice="Random">
 					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2877,6 +2893,8 @@
 					</enumChoice>
 					<enumChoice choice="Random">
 					</enumChoice>
+					<enumChoice choice="Chase">        
+					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
 				<tooltip>Choose a Type</tooltip>
@@ -2891,6 +2909,8 @@
 					<enumChoice choice="Welder">
 					</enumChoice>
 					<enumChoice choice="Random">
+					</enumChoice>
+					<enumChoice choice="Chase">        
 					</enumChoice>
 				</enumVal>
 				<label>Output Group Type</label>
@@ -3176,6 +3196,390 @@
 				<label>Durration</label>
 				<tooltip>chose a value 0 - 15</tooltip>
 			</variable>
+			
+			<variable CV="240" mask="XXXXVVVV" item="OutputGroup 0 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 0 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="241" mask="XXXXVVVV" item="OutputGroup 1 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 1 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="242" mask="XXXXVVVV" item="OutputGroup 2 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 2 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="243" mask="XXXXVVVV" item="OutputGroup 3 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 3 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="244" mask="XXXXVVVV" item="OutputGroup 4 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 4 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="245" mask="XXXXVVVV" item="OutputGroup 5 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 0 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="246" mask="XXXXVVVV" item="OutputGroup 6 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 6 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="247" mask="XXXXVVVV" item="OutputGroup 7 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 7 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="248" mask="XXXXVVVV" item="OutputGroup 8 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 8 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="249" mask="XXXXVVVV" item="OutputGroup 9 Rate" default="7">
+				<qualifier>
+					<variableref>OutputGroup 9 Type</variableref>
+					<relation>eq</relation>
+					<value>4</value>
+				</qualifier>
+				<decVal min="0" max="15"/>
+				<label>Rate</label>
+				<tooltip>chose a value 0 - 15</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 0 StartUp" mask="XXXXXXXV" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 0 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 1 StartUp" mask="XXXXXXVX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 1 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 2 StartUp" mask="XXXXXVXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 2 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 3 StartUp" mask="XXXXVXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 3 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 4 StartUp" mask="XXXVXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 4 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 5 StartUp" mask="XXVXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 5 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 6 StartUp" mask="XVXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 6 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 7 StartUp" mask="VXXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 7 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="250" item="Output 8 StartUp" mask="XXXXXXXV" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 8 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 9 StartUp" mask="XXXXXXVX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 9 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 10 StartUp" mask="XXXXXVXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 10 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 11 StartUp" mask="XXXXVXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 11 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 12 StartUp" mask="XXXVXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 12 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 13 StartUp" mask="XXVXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 13 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 14 StartUp" mask="XVXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 14 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="251" item="Output 15 StartUp" mask="VXXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 15 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="Output 16 StartUp" mask="XXXXXXXV" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 16 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="Output 17 StartUp" mask="XXXXXXVX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 17 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="Output 18 StartUp" mask="XXXXXVXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 18 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="Output 19 StartUp" mask="XXXXVXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<qualifier>
+					<variableref>Output 19 Effects</variableref>
+					<relation>gt</relation>
+					<value>0</value>
+				</qualifier>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="OutputGroup 0 StartUp" mask="XXVXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="OutputGroup 1 StartUp" mask="XVXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="252" item="OutputGroup 2 StartUp" mask="VXXXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 4 StartUp" mask="XXXXXXXV" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 5 StartUp" mask="XXXXXXVX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 6 StartUp" mask="XXXXXVXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 7 StartUp" mask="XXXXVXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 8 StartUp" mask="XXXVXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>
+			
+			<variable CV="253" item="OutputGroup 9 StartUp" mask="XXVXXXXX" default ="0">
+				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
+				<label>On at StartUp</label>
+				<tooltip>check for on</tooltip>
+			</variable>			
 		</variables>
 		
 		<resets>
@@ -3272,7 +3676,13 @@
 					</label>
 					<row>					
 					<display item="Output 0 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 0 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3366,7 +3776,13 @@
 					</label>
 					<row>					
 					<display item="Output 1 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 1 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3460,7 +3876,13 @@
 					</label>
 					<row>					
 					<display item="Output 2 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 2 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3554,7 +3976,13 @@
 					</label>
 					<row>					
 					<display item="Output 3 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 3 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3648,7 +4076,13 @@
 					</label>
 					<row>					
 					<display item="Output 4 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 4 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3742,7 +4176,13 @@
 					</label>
 					<row>					
 					<display item="Output 5 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 5 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3836,7 +4276,13 @@
 					</label>
 					<row>					
 					<display item="Output 6 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 6 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -3930,7 +4376,13 @@
 					</label>
 					<row>					
 					<display item="Output 7 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 7 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4024,7 +4476,13 @@
 					</label>
 					<row>					
 					<display item="Output 8 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 8 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4118,7 +4576,13 @@
 					</label>
 					<row>					
 					<display item="Output 9 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 9 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4212,7 +4676,13 @@
 					</label>
 					<row>					
 					<display item="Output 10 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 10 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4306,7 +4776,13 @@
 					</label>
 					<row>					
 					<display item="Output 11 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 11 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4400,7 +4876,13 @@
 					</label>
 					<row>					
 					<display item="Output 12 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 12 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4494,7 +4976,13 @@
 					</label>
 					<row>					
 					<display item="Output 13 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 13 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4588,7 +5076,13 @@
 					</label>
 					<row>					
 					<display item="Output 14 Output Group" layout="left"/>					
-					</row>										
+					</row>		
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 14 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4682,7 +5176,13 @@
 					</label>
 					<row>					
 					<display item="Output 15 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 15 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4776,7 +5276,13 @@
 					</label>
 					<row>					
 					<display item="Output 16 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 16 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4870,7 +5376,13 @@
 					</label>
 					<row>					
 					<display item="Output 17 Output Group" layout="left"/>					
-					</row>										
+					</row>
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 17 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -4964,7 +5476,13 @@
 					</label>
 					<row>					
 					<display item="Output 18 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 18 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -5058,7 +5576,13 @@
 					</label>
 					<row>					
 					<display item="Output 19 Output Group" layout="left"/>					
-					</row>										
+					</row>	
+					<label>
+						<text>          </text>
+					</label>
+					<row>
+					<display item="Output 19 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -5069,7 +5593,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>        
+					<text>OUTPUT GROUP 0 CONTROLS</text>        
 				</label>
 			</row>				
 				<label>
@@ -5102,6 +5626,29 @@
 						<display item="OutputGroup 0 Durration" layout="left"/>
 						<display item="OutputGroup 0 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 0 Rate" layout="left"/>
+						<display item="OutputGroup 0 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 0 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 0 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 0 StartUp" format="checkbox"/>
+					</row>
 
 				</column>			
 			</row>
@@ -5113,7 +5660,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>        
+					<text>OUTPUT GROUP 1 CONTROLS</text>        
 				</label>
 			</row>				
 				<label>
@@ -5146,6 +5693,29 @@
 						<display item="OutputGroup 1 Durration" layout="left"/>
 						<display item="OutputGroup 1 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 1 Rate" layout="left"/>
+						<display item="OutputGroup 1 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 1 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 1 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 1 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -5156,7 +5726,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>        
+					<text>OUTPUT GROUP 2 CONTROLS</text>        
 				</label>
 			</row>				
 				<label>
@@ -5189,6 +5759,29 @@
 						<display item="OutputGroup 2 Durration" layout="left"/>
 						<display item="OutputGroup 2 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 2 Rate" layout="left"/>
+						<display item="OutputGroup 2 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 2 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 2 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 2 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -5199,7 +5792,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>        
+					<text>OUTPUT GROUP 3 CONTROLS</text>        
 				</label>
 			</row>				
 				<label>
@@ -5232,6 +5825,29 @@
 						<display item="OutputGroup 3 Durration" layout="left"/>
 						<display item="OutputGroup 3 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 3 Rate" layout="left"/>
+						<display item="OutputGroup 3 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 3 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 3 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 3 StartUp" format="checkbox"/>
+					</row>
 				</column>			
 			</row>
 			</column>
@@ -5242,7 +5858,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 4 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5275,6 +5891,29 @@
 						<display item="OutputGroup 4 Durration" layout="left"/>
 						<display item="OutputGroup 4 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 4 Rate" layout="left"/>
+						<display item="OutputGroup 4 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 4 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 4 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 4 StartUp" format="checkbox"/>
+					</row>
 				</column>
 			</row>
 		</column>
@@ -5285,7 +5924,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 5 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5318,17 +5957,40 @@
 						<display item="OutputGroup 5 Durration" layout="left"/>
 						<display item="OutputGroup 5 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 5 Rate" layout="left"/>
+						<display item="OutputGroup 5 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 5 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 5 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 5 StartUp" format="checkbox"/>
+					</row>
 				</column>
 			</row>
 		</column>
 	</pane>
 	
 	<pane>
-		<name>Ouput Group 66</name>
+		<name>Ouput Group 6</name>
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 6 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5361,6 +6023,29 @@
 						<display item="OutputGroup 6 Durration" layout="left"/>
 						<display item="OutputGroup 6 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 6 Rate" layout="left"/>
+						<display item="OutputGroup 6 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 6 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 6 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 6 StartUp" format="checkbox"/>
+					</row>
 				</column>
 			</row>
 		</column>
@@ -5371,7 +6056,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 7 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5404,6 +6089,29 @@
 						<display item="OutputGroup 7 Durration" layout="left"/>
 						<display item="OutputGroup 7 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 7 Rate" layout="left"/>
+						<display item="OutputGroup 7 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 7 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 7 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 7 StartUp" format="checkbox"/>
+					</row>
 				</column>
 			</row>
 		</column>
@@ -5414,7 +6122,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 8 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5447,6 +6155,29 @@
 						<display item="OutputGroup 8 Durration" layout="left"/>
 						<display item="OutputGroup 8 Durration" layout="left" label="" format="hslider"/>
 					</row>
+					<row>
+						<display item="OutputGroup 8 Rate" layout="left"/>
+						<display item="OutputGroup 8 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 8 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 8 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 8 StartUp" format="checkbox"/>
+					</row>
 				</column>
 			</row>
 		</column>
@@ -5457,7 +6188,7 @@
 		<column>
 			<row>
 				<label>
-					<text>OUTPUT GROUP CONTROLS</text>
+					<text>OUTPUT GROUP 9 CONTROLS</text>
 				</label>
 			</row>
 			<label>
@@ -5489,6 +6220,29 @@
 					<row>
 						<display item="OutputGroup 9 Durration" layout="left"/>
 						<display item="OutputGroup 9 Durration" layout="left" label="" format="hslider"/>
+					</row>
+					<row>
+						<display item="OutputGroup 9 Rate" layout="left"/>
+						<display item="OutputGroup 9 Rate" layout="left" label="" format="hslider"/>
+					</row>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 9 Type</variableref>
+						  <relation>eq</relation>
+						  <value>1</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<label>
+					<qualifier>
+						  <variableref>OutputGroup 9 Type</variableref>
+						  <relation>gt</relation>
+						  <value>2</value>
+					</qualifier>						
+						<text>          </text>
+					</label>
+					<row>
+					<display item="OutputGroup 9 StartUp" format="checkbox"/>
 					</row>
 				</column>
 			</row>

@@ -20,7 +20,7 @@
 // Comment this line out after first initialization
 //#define InitializeCVs
 
-//#define DEBUG
+#define DEBUG
 
 Flags flags = Flags();
 
@@ -222,16 +222,33 @@ struct CVPair {
 #define CV_OUTPUTGROUP_8_ADDRESS_MSB 228
 #define CV_OUTPUTGROUP_9_ADDRESS_MSB 229
 
-#define CV_OUTPUTGROUP_0_CONFIG 230
-#define CV_OUTPUTGROUP_1_CONFIG 231
-#define CV_OUTPUTGROUP_2_CONFIG 232
-#define CV_OUTPUTGROUP_3_CONFIG 233
-#define CV_OUTPUTGROUP_4_CONFIG 234
-#define CV_OUTPUTGROUP_5_CONFIG 235
-#define CV_OUTPUTGROUP_6_CONFIG 236
-#define CV_OUTPUTGROUP_7_CONFIG 237
-#define CV_OUTPUTGROUP_8_CONFIG 238
-#define CV_OUTPUTGROUP_9_CONFIG 239
+#define CV_OUTPUTGROUP_0_CONFIG_1 230
+#define CV_OUTPUTGROUP_1_CONFIG_1 231
+#define CV_OUTPUTGROUP_2_CONFIG_1 232
+#define CV_OUTPUTGROUP_3_CONFIG_1 233
+#define CV_OUTPUTGROUP_4_CONFIG_1 234
+#define CV_OUTPUTGROUP_5_CONFIG_1 235
+#define CV_OUTPUTGROUP_6_CONFIG_1 236
+#define CV_OUTPUTGROUP_7_CONFIG_1 237
+#define CV_OUTPUTGROUP_8_CONFIG_1 238
+#define CV_OUTPUTGROUP_9_CONFIG_1 239
+
+#define CV_OUTPUTGROUP_0_CONFIG_2 240
+#define CV_OUTPUTGROUP_1_CONFIG_2 241
+#define CV_OUTPUTGROUP_2_CONFIG_2 242
+#define CV_OUTPUTGROUP_3_CONFIG_2 243
+#define CV_OUTPUTGROUP_4_CONFIG_2 244
+#define CV_OUTPUTGROUP_5_CONFIG_2 245
+#define CV_OUTPUTGROUP_6_CONFIG_2 246
+#define CV_OUTPUTGROUP_7_CONFIG_2 247
+#define CV_OUTPUTGROUP_8_CONFIG_2 248
+#define CV_OUTPUTGROUP_9_CONFIG_2 249
+
+#define CV_START_UP_BYTE_0 250
+#define CV_START_UP_BYTE_1 251
+#define CV_START_UP_BYTE_2 252
+#define CV_START_UP_BYTE_3 253
+
 
 
 // Default CV Values Table
@@ -424,16 +441,32 @@ const CVPair FactoryDefaultCVs[] PROGMEM = {
   { CV_OUTPUTGROUP_8_ADDRESS_MSB, 15 },
   { CV_OUTPUTGROUP_9_ADDRESS_MSB, 15 },
 
-  { CV_OUTPUTGROUP_0_CONFIG, 119 },
-  { CV_OUTPUTGROUP_1_CONFIG, 119 },
-  { CV_OUTPUTGROUP_2_CONFIG, 119 },
-  { CV_OUTPUTGROUP_3_CONFIG, 119 },
-  { CV_OUTPUTGROUP_4_CONFIG, 119 },
-  { CV_OUTPUTGROUP_5_CONFIG, 119 },
-  { CV_OUTPUTGROUP_6_CONFIG, 119 },
-  { CV_OUTPUTGROUP_7_CONFIG, 119 },
-  { CV_OUTPUTGROUP_8_CONFIG, 119 },
-  { CV_OUTPUTGROUP_9_CONFIG, 119 }
+  { CV_OUTPUTGROUP_0_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_1_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_2_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_3_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_4_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_5_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_6_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_7_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_8_CONFIG_1, 119 },
+  { CV_OUTPUTGROUP_9_CONFIG_1, 119 },
+
+  { CV_OUTPUTGROUP_0_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_1_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_2_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_3_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_4_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_5_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_6_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_7_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_8_CONFIG_2, 7 },
+  { CV_OUTPUTGROUP_9_CONFIG_2, 7 },
+  
+  { CV_START_UP_BYTE_0, 0 },
+  { CV_START_UP_BYTE_1, 0 },
+  { CV_START_UP_BYTE_2, 0 },
+  { CV_START_UP_BYTE_3, 0 }
 };
 
 LocoPWMOutput outputs[OUTPUTS];
@@ -467,26 +500,33 @@ void updateOuputSettings(uint16_t CV, uint8_t Value) {
   int index = CV % OUTPUTS; 
 
   switch (CV) {
-    case CV_OUTPUT_0_EFFECTS ... (CV_OUTPUT_0_EFFECTS + OUTPUTS) - 1:      
-        outputs[index].setEffect(Value);
+      case CV_OUTPUT_0_EFFECTS ... (CV_OUTPUT_0_EFFECTS + OUTPUTS) - 1: {
+          outputs[index].setEffect(Value);
+      }
         break;
-    case CV_OUTPUT_0_ADDRESS_LSB ... (CV_OUTPUT_0_ADDRESS_LSB + OUTPUTS) - 1:      
-        outputs[index].setAddressLSB(Value);      
+      case CV_OUTPUT_0_ADDRESS_LSB ... (CV_OUTPUT_0_ADDRESS_LSB + OUTPUTS) - 1: {
+          outputs[index].setAddressLSB(Value);
+      }
         break;
-    case CV_OUTPUT_0_ADDRESS_MSB ... (CV_OUTPUT_0_ADDRESS_MSB + OUTPUTS) - 1:
-        outputs[index].setAddressMSB(Value);
+      case CV_OUTPUT_0_ADDRESS_MSB ... (CV_OUTPUT_0_ADDRESS_MSB + OUTPUTS) - 1: {
+          outputs[index].setAddressMSB(Value);
+      }
         break;
-    case CV_OUTPUT_0_CONFIG_1 ... (CV_OUTPUT_0_CONFIG_1 + OUTPUTS) - 1:
-        outputs[index].setConfig_1(Value);      
+      case CV_OUTPUT_0_CONFIG_1 ... (CV_OUTPUT_0_CONFIG_1 + OUTPUTS) - 1: {
+          outputs[index].setConfig_1(Value);
+      }
         break;
-    case CV_OUTPUT_0_CONFIG_2 ... (CV_OUTPUT_0_CONFIG_2 + OUTPUTS) - 1:
-        outputs[index].setConfig_2(Value);
+      case CV_OUTPUT_0_CONFIG_2 ... (CV_OUTPUT_0_CONFIG_2 + OUTPUTS) - 1: {
+          outputs[index].setConfig_2(Value);
+      }
         break;
-    case CV_OUTPUT_0_CONFIG_3 ... (CV_OUTPUT_0_CONFIG_3 + OUTPUTS) - 1:      
-        outputs[index].setConfig_3(Value);
+      case CV_OUTPUT_0_CONFIG_3 ... (CV_OUTPUT_0_CONFIG_3 + OUTPUTS) - 1: {
+          outputs[index].setConfig_3(Value);
+      }
         break;
-    case CV_OUTPUT_0_OUTPUTGROUP ... (CV_OUTPUT_0_OUTPUTGROUP + OUTPUTS) - 1:      
-        outputs[index].setOutputGroup(Value);
+      case CV_OUTPUT_0_OUTPUTGROUP ... (CV_OUTPUT_0_OUTPUTGROUP + OUTPUTS) - 1: {
+          outputs[index].setOutputGroup(Value);
+      }
         break;          
   }  
 }
@@ -495,19 +535,52 @@ void updateOutputGroupSettings(uint16_t CV, uint8_t Value) {
   int index = CV % OUTPUTGROUPS;
 
   switch (CV) {
-    case CV_OUTPUTGROUP_0_TYPE ... (CV_OUTPUTGROUP_0_TYPE + OUTPUTGROUPS) - 1:
-        outputGroups[index].setGroupType(Value);
+      case CV_OUTPUTGROUP_0_TYPE ... (CV_OUTPUTGROUP_0_TYPE + OUTPUTGROUPS) - 1: {
+          outputGroups[index].setGroupType(Value);
+      }
         break;
-    case CV_OUTPUTGROUP_0_ADDRESS_LSB ... (CV_OUTPUTGROUP_0_ADDRESS_LSB + OUTPUTGROUPS) - 1:
-        outputGroups[index].setAddressLSB(Value);
+      case CV_OUTPUTGROUP_0_ADDRESS_LSB ... (CV_OUTPUTGROUP_0_ADDRESS_LSB + OUTPUTGROUPS) - 1: {
+          outputGroups[index].setAddressLSB(Value);
+      }
         break;
-    case CV_OUTPUTGROUP_0_ADDRESS_MSB ... (CV_OUTPUTGROUP_0_ADDRESS_MSB + OUTPUTGROUPS) -1:
-        outputGroups[index].setAddressMSB(Value);
+      case CV_OUTPUTGROUP_0_ADDRESS_MSB ... (CV_OUTPUTGROUP_0_ADDRESS_MSB + OUTPUTGROUPS) - 1: {
+          outputGroups[index].setAddressMSB(Value);
+      }
         break;
-    case CV_OUTPUTGROUP_0_CONFIG ... (CV_OUTPUTGROUP_0_CONFIG + OUTPUTGROUPS) - 1:
-        outputGroups[index].setConfig(Value);
+      case CV_OUTPUTGROUP_0_CONFIG_1 ... (CV_OUTPUTGROUP_0_CONFIG_1 + OUTPUTGROUPS) - 1: {
+          outputGroups[index].setConfig1(Value);
+      }
+      case CV_OUTPUTGROUP_0_CONFIG_2 ... (CV_OUTPUTGROUP_0_CONFIG_2 + OUTPUTGROUPS) - 1: {
+          outputGroups[index].setConfig2(Value);
+      }
         break;    
   }
+}
+
+void updateStartupItems() {
+
+    uint32_t items;
+    uint8_t shift = 0;
+
+    EEPROM.get(CV_START_UP_BYTE_0, items); // get startup items
+
+    for (uint8_t index; index < OUTPUTS; index++) { // turn on appropriate outputs
+
+        if (items & (1 << shift)) {
+
+            outputs[index].setOn(On);
+            shift += 1;
+        }
+    }
+
+    for (uint8_t index; index < OUTPUTGROUPS; index++) { // turn on appropriate outputgroups
+
+        if (items & (1 << shift)) {
+
+            outputGroups[index].setOn(On);
+            shift += 1;
+        }
+    }
 }
 
 lnMsg *LnPacket;
@@ -536,7 +609,7 @@ void setup()
   createOuputs(); 
 
   // load output group settings
-  for (uint16_t CV = CV_OUTPUTGROUP_0_TYPE; CV <= CV_OUTPUTGROUP_9_CONFIG; CV++) {
+  for (uint16_t CV = CV_OUTPUTGROUP_0_TYPE; CV <= CV_OUTPUTGROUP_9_CONFIG_2; CV++) {
       uint8_t value = EEPROM.read(CV);
       updateOutputGroupSettings(CV, value);       
   }    
@@ -545,12 +618,14 @@ void setup()
   for (uint16_t CV = CV_OUTPUT_0_EFFECTS; CV <= CV_OUTPUT_19_OUTPUTGROUP; CV++ ) {
       uint8_t value = EEPROM.read(CV);
       updateOuputSettings(CV, value);        
-  } 
+  }
+
+  updateStartupItems();
 
 #ifdef DEBUG
   // Configure the serial port for 115200 baud
   Serial.begin(115200);
-  //delay(2000);
+  delay(2000);
   Serial.println(F("Loco PWM"));
   Serial.print(F("Board Address "));
   BoardAddress = getBoardAddress();
@@ -577,10 +652,10 @@ void loop() {
     
      // Process the packet for Program Task Message
     if (!LocoNetHelper.processProgramTaskMessage(LnPacket)) {
-      // Process the packet for Switch or Sensor Message
-      if (!LocoNet.processSwitchSensorMessage(LnPacket)) {               
-        // Process the packet for Stationary Decoder Interrogate Message
-        LocoNetHelper.processStationaryDecoderInterrogate(LnPacket);
+      // Process the packet for Stationary Decoder Interrogate Message
+      if (!LocoNetHelper.processStationaryDecoderInterrogate(LnPacket)) {
+        // Process the packet for Switch or Sensor Message        
+        LocoNet.processSwitchSensorMessage(LnPacket);
       }
     }   
   } 
@@ -626,7 +701,17 @@ void notifyStationaryDecoderInterrogate(uint8_t AddressRange) {
     if (responseAddr == AddressRange) {       
       LocoNet.reportSensor(address, outputs[index].getOn());
     }
-  }  
+  }
+
+  for (uint8_t index = 0; index < OUTPUTGROUPS; index++) {
+      uint16_t address = outputGroups[index].getAddress();
+      int responseAddr = address % 8;
+
+
+      if (responseAddr == AddressRange) {
+          LocoNet.reportSensor(address, outputGroups[index].getOn());
+      }
+  }
 }
 
 // This call-back function is called from LocoNet.processSwitchSensorMessage

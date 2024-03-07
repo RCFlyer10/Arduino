@@ -7,16 +7,19 @@
 #include "Flags.h"
 #include "List.h"
 
-#define GROUP_ON 0
-#define BRAKE_ON 1
-#define ARC_ON 2
-#define ARC_LED_ON 3
+enum {
+    GROUP_ON,
+    BRAKE_ON,
+    ARC_ON,
+    ARC_LED_ON
+} GROUP_FLAGS;
 
 enum {
     STANDARD = 0,
     TRAFFIC_SIGNAL = 1,
     WELDER = 2,
-    RANDOM = 3
+    RANDOM = 3,
+    CHASE = 4
 } TYPE;
 
 enum {
@@ -24,7 +27,6 @@ enum {
     YELLOW,
     RED
 } TSC;
-
 
 class OutputGroup {		
 	public:
@@ -38,15 +40,19 @@ class OutputGroup {
 	    bool getOn();
 	    void setAddressLSB(uint8_t value);
 	    void setAddressMSB(uint8_t value); 
-        void setConfig(uint8_t value);
+        void setConfig1(uint8_t value);
+        void setConfig2(uint8_t value);
         void heartbeat();
 
 	private:
         uint8_t getProbability();
         uint8_t getDurration();
+        uint8_t getRate();
         // Instance variables
         Flags _flags;
-        uint8_t _config;
+        uint8_t _config1;
+        uint8_t _config2;
+        uint8_t _count;
         uint8_t _groupType = STANDARD;
         uint8_t _tsc = RED;        
 	    uint16_t _address = 0;

@@ -64,8 +64,7 @@ class LocoPWMOutput {
 		void setRemote(bool on);
 		uint8_t getEffect();
 		void setOn(bool on);		
-		bool getOn();
-		//uint8_t getOutputNumber();
+		bool getOn();		
 		void heartbeat();
 		void setOutput(uint8_t value);
 		uint8_t getBright();
@@ -80,8 +79,7 @@ class LocoPWMOutput {
 
 	protected:
 		// Instance variables
-		Flags _flags = Flags();
-		//uint8_t _outputNumber = 0;
+		Flags _flags = Flags();		
 		uint8_t _effect = 0;
 		uint8_t _pin = 0;
 		uint8_t _config_1 = 0;

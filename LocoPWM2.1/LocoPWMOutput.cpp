@@ -6,9 +6,7 @@ LocoPWMOutput::LocoPWMOutput() {
 }
 
 LocoPWMOutput::LocoPWMOutput(uint8_t pin, bool resolution) {
-	_pin = pin;
-	//_outputNumber = outputNumber++;
-	
+	_pin = pin;	
 
 	if (resolution) {
 		_flags.setFlag(RESOLUTION_HIGH);
@@ -68,21 +66,18 @@ void LocoPWMOutput::setOutputGroup(uint8_t group) {
 
 void LocoPWMOutput::setRemote(bool on)
 {
-	if (on)
-	{
+	if (on)	{
 		_flags.setFlag(REMOTE);
 	}
 
-	else 
-	{
+	else 	{
 		_flags.clearFlag(REMOTE);
 	}
 }
 
 void LocoPWMOutput::setOn(bool on) {
 
-	if (on)
-	{		
+	if (on)	{		
 		_flags.setFlag(OUTPUT_ON);
 		_flags.clearFlag(LED_ON);
 		_fade = 0;
@@ -90,7 +85,9 @@ void LocoPWMOutput::setOn(bool on) {
 		setValues();
 	}
 
-	else _flags.clearFlag(OUTPUT_ON);
+	else {
+		_flags.clearFlag(OUTPUT_ON);
+	}
 }
 
 void LocoPWMOutput::setValues() {	
@@ -155,69 +152,53 @@ void LocoPWMOutput::setOutput(uint8_t value) {
 
 void LocoPWMOutput::heartbeat() {
 
-	if (_flags.getNotSet(REMOTE))
-	{
+	if (_flags.getNotSet(REMOTE))	{
 		unsigned long currentMillis = millis();
 
-		switch (getEffect())
-		{
-		case NORMAL:
-		{
-			if (_flags.getSet(OUTPUT_ON))
-			{
-				setOutput(getBright());
+		switch (getEffect()) {
+			case NORMAL: {
+				if (_flags.getSet(OUTPUT_ON)) {
+					setOutput(getBright());
+				}
+
+				else {
+					setOutput(getDim());
+				}
+				break;
 			}
 
-			else
-			{
-				setOutput(getDim());
-			}
-
-			break;
-		}
-
-		case FADE:
-		{
+			case FADE: {
 			if (currentMillis - _previousMillis >= getRate() * 5) {
 				_previousMillis = currentMillis;
 
-				if (_flags.getSet(OUTPUT_ON))
-				{
+				if (_flags.getSet(OUTPUT_ON)) {
 					uint8_t bright = getBright();
 
-					if (_fade < bright)
-					{
+					if (_fade < bright)	{
 						_fade += _step;    				// increase fade by step											
 					}
 
-					if (_fade > bright)
-					{
+					if (_fade > bright)	{
 						
 						_fade = bright;					// keep fade in bounds
 					}
-
 					_flags.setFlag(FADING);
 				}
 
-				else
-				{
+				else {
 					uint8_t dim = getDim();
 
-					if (_fade > dim)
-					{
+					if (_fade > dim) {
 						_fade -= _step;    				// decrease fade by step
 					}
 
-					if (_fade < dim)
-					{
+					if (_fade < dim) {
 						_fade = dim;					// keep fade in bounds				
 					}
-
 					_flags.setFlag(FADING);
 				}
 
-				if (_flags.getSet(FADING))
-				{
+				if (_flags.getSet(FADING)) {
 					setOutput((uint8_t)_fade);
 					_flags.clearFlag(FADING);
 				}
@@ -226,60 +207,48 @@ void LocoPWMOutput::heartbeat() {
 			break;
 		}
 
-		case FLICKER:
-		{
-			if (_flags.getSet(OUTPUT_ON))
-			{
+			case FLICKER: {
+			if (_flags.getSet(OUTPUT_ON)) {
 
-				if (currentMillis - _previousMillis >= 255 - random(getTiming()))
-				{
+				if (currentMillis - _previousMillis >= 255 - random(getTiming())) {
 					_previousMillis = currentMillis;
 					uint8_t temp = random(getDim(), getBright());
 					setOutput(temp);
 				}
 			}
 
-			else
-			{
+			else {
 				setOutput(Off);
 			}
 
 			break;
 		}
 
-		case STROBE:
-		{
-			if (_flags.getSet(OUTPUT_ON))
-			{
-				if (currentMillis - _previousMillis >= PERIOD - (getPeriod() * 2))
-				{
+			case STROBE: {
+			if (_flags.getSet(OUTPUT_ON)) {
+				if (currentMillis - _previousMillis >= PERIOD - (getPeriod() * 2)) {
 					if (_flags.getNotSet(LED_ON)) {
 						_previousMillis = currentMillis;
 						_flags.setFlag(LED_ON);
 					}
 				}
 
-				else if (currentMillis - _previousMillis >= getDurration())
-				{
-					if (_flags.getSet(LED_ON))
-					{
+				else if (currentMillis - _previousMillis >= getDurration())	{
+					if (_flags.getSet(LED_ON)) {
 						_flags.clearFlag(LED_ON);
 					}
 				}
 
-				if (_flags.getSet(LED_ON))
-				{
+				if (_flags.getSet(LED_ON)) {
 					setOutput(getBright());
 				}
 
-				else
-				{
+				else {
 					setOutput(Off);
 				}
 			}
 
-			else if (_flags.getSet(LED_ON))
-			{
+			else if (_flags.getSet(LED_ON))	{
 				setOutput(Off);
 				_flags.clearFlag(LED_ON);
 			}
@@ -287,19 +256,16 @@ void LocoPWMOutput::heartbeat() {
 			break;
 		}
 
-		case BEACON:
-		{
+			case BEACON: {
 			if (_flags.getSet(OUTPUT_ON))
 			{
-				if (currentMillis - _previousMillis >= 8U)
-				{
+				if (currentMillis - _previousMillis >= 8U) {
 					_previousMillis = currentMillis;
 					_fade += _step;                             // increase angle by step
 				}
 
-				if (_fade >= MAX_ANGLE)
-				{                                   			// keep angle in bounds
-					_fade = START_ANGLE;
+				if (_fade >= MAX_ANGLE)	{                                   			
+					_fade = START_ANGLE;						// keep angle in bounds
 				}
 
 				uint8_t top = getBright() >> 2;
@@ -308,16 +274,15 @@ void LocoPWMOutput::heartbeat() {
 
 			}
 
-			else
-			{
+			else {
 				setOutput(Off);
 			}
 
 			break;
 		}
 
-		default: {
-		}
+			default: {
+			}
 		}
 	}
 }

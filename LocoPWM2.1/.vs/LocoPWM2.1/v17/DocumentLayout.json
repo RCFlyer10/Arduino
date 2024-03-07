@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|solutionrelative:OutputGroup.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|solutionrelative:OutputGroup.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWM2.1.ino||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|solutionrelative:LocoPWM2.1.ino||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|solutionrelative:LocoPWMOutput.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}|LocoPWM2.1.vcxproj|solutionrelative:LocoPWMOutput.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LocoPWMOutput.h",
+              "DocumentMoniker": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.h",
+              "RelativeDocumentMoniker": "LocoPWMOutput.h",
+              "ToolTip": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.h",
+              "RelativeToolTip": "LocoPWMOutput.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFEAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-19T12:07:20.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LocoPWMOutput.cpp",
+              "DocumentMoniker": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.cpp",
+              "RelativeDocumentMoniker": "LocoPWMOutput.cpp",
+              "ToolTip": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWMOutput.cpp",
+              "RelativeToolTip": "LocoPWMOutput.cpp",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAABIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-19T12:07:11.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OutputGroup.cpp",
+              "DocumentMoniker": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.cpp",
+              "RelativeDocumentMoniker": "OutputGroup.cpp",
+              "ToolTip": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.cpp",
+              "RelativeToolTip": "OutputGroup.cpp",
+              "ViewState": "AQIAAC8BAAAAAAAAAAAAAEkBAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-19T11:49:23.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OutputGroup.h",
+              "DocumentMoniker": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.h",
+              "RelativeDocumentMoniker": "OutputGroup.h",
+              "ToolTip": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\OutputGroup.h",
+              "RelativeToolTip": "OutputGroup.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-18T08:41:46.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LocoPWM2.1.ino",
+              "DocumentMoniker": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWM2.1.ino",
+              "RelativeDocumentMoniker": "LocoPWM2.1.ino",
+              "ToolTip": "C:\\Users\\Keith\\OneDrive\\Documents\\GitHub\\Arduino\\LocoPWM2.1\\LocoPWM2.1.ino",
+              "RelativeToolTip": "LocoPWM2.1.ino",
+              "ViewState": "AQIAAEcBAAAAAAAAAAAowBACAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-18T05:53:46.695Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,7 +18,7 @@ void Function_Led::setConfig(uint8_t config) {
 }
 
 void Function_Led::setBrightness(uint8_t brightness) {
-	_brightness = brightness;
+	_brightValue = brightness;
 }
 
 void Function_Led::setDimValue(uint8_t value) {
@@ -63,7 +63,7 @@ void Function_Led::heartbeat() {
 					analogWrite(_pin, 255 - _dimValue);
 				}
 				else {
-					analogWrite(_pin, 255 - _brightness);
+					analogWrite(_pin, 255 - _brightValue);
 				}
 			}
 			else {
@@ -75,11 +75,11 @@ void Function_Led::heartbeat() {
 			if (currentMillis - _previousMillis >= 256U - _fadeRate) {   	
 				_previousMillis = currentMillis;			
 				if (_state  == On) { 
-					if (_fade < _brightness) {
+					if (_fade < _brightValue) {
 						_fade = _fade + STEP;    															// increase fade by step					
 					}				
-					if (_fade > _brightness) {
-						_fade = _brightness;      														// keep fade in bounds					
+					if (_fade > _brightValue) {
+						_fade = _brightValue;      														// keep fade in bounds					
 					}
 					analogWrite(_pin, 255 - _fade);				
 				}		
@@ -105,7 +105,7 @@ void Function_Led::heartbeat() {
 					_ledState = LOW; 
 				}				
 				if (_ledState ==  HIGH) {
-					analogWrite(_pin, 255 - _brightness);
+					analogWrite(_pin, 255 - _brightValue);
 				}				
 				else {
 					analogWrite(_pin, 255);
@@ -126,7 +126,7 @@ void Function_Led::heartbeat() {
 							_ledState = LOW;						
 						}
 						else {
-							analogWrite(_pin, 255 - _brightness);
+							analogWrite(_pin, 255 - _brightValue);
 							_ledState = HIGH;						
 						}					
 					}
@@ -140,7 +140,7 @@ void Function_Led::heartbeat() {
 		}
 		case BEACON : {
 			if (_state == On) {
-				uint8_t intensity = _brightness / 2;
+				uint8_t intensity = _brightValue / 2;
 				if (currentMillis - _previousMillis >= 8U) {
 					_previousMillis = currentMillis;
 					_angle = _angle + _step;                                		// increase angle by step
@@ -160,7 +160,7 @@ void Function_Led::heartbeat() {
 			if (_state == On) {
 				static uint8_t fade = 0;
 				static uint8_t count = 0;
-				uint8_t intensity = _brightness / 12;
+				uint8_t intensity = _brightValue / 12;
 				if (currentMillis - _previousMillis >= 24U - (_flashRate / 16) && _fading) {
 					_previousMillis = currentMillis;
 					if (_fadeDir) {
@@ -171,7 +171,7 @@ void Function_Led::heartbeat() {
 						_fadeDir = false;
 						count++;
 						if (count >= 3){
-							analogWrite(_pin, 255 - _brightness);
+							analogWrite(_pin, 255 - _brightValue);
 							_fading = false;
 							count = 0;
 						}
@@ -197,9 +197,23 @@ void Function_Led::heartbeat() {
 			}
 			break;
 		}
+		case FLICKER: {
+			if (_state == On) {
+
+				if (currentMillis - _previousMillis >= 255 - random(_flashRate)) {
+					_previousMillis = currentMillis;
+					uint8_t temp = random(_dimValue, _brightValue);
+					analogWrite(_pin, 255 - temp);
+				}
+			}
+			else {
+				analogWrite(_pin, 255);
+			}
+			break;
+		}
 		default : { // NORMAL
 			if (_state == On) {
-				analogWrite(_pin, 255 - _brightness);
+				analogWrite(_pin, 255 - _brightValue);
 			}
 			else {
 				analogWrite(_pin, 255);

@@ -22,12 +22,12 @@
 // Define the Arduino input Pin number for the DCC Signal
 #define DCC_PIN 2
 #define ACK_PIN 8
-#define FX1_PIN 6
+#define FX1_PIN 3
 #define FX2_PIN 5
-#define FX3_PIN 9
-#define FX4_PIN 10
-#define FX5_PIN 11
-#define FX6_PIN 3
+#define FX3_PIN 6
+#define FX4_PIN 11
+#define FX5_PIN 10
+#define FX6_PIN 9
 
 #else
 #error "Unsupported CPU, you need to add another configuration section for your CPU"
@@ -47,6 +47,7 @@ uint8_t functionState [FUNCTIONS];
 // cache consist direction, status and enable
 bool consistFwd = true;
 bool consisted = false;
+bool toggle = false;
 uint8_t consistFuncEnable = 0;
 
 // cache direction enable
@@ -436,7 +437,22 @@ void notifyDccFunc(uint16_t Addr, DCC_ADDR_TYPE AddrType, FN_GROUP FuncGrp, uint
         }        
       }
       functionList[x]->setState(functionState[x]);
-    }    
+    }
+    // test function refresh rate
+    /*if (toggle) {
+        functionList[0]->setState(On);
+        toggle = false;
+        if (FuncGrp == FN_9_12) {
+            functionList[3]->setState(On);
+        }
+    }
+    else {
+        functionList[0]->setState(Off);
+        toggle = true;
+        if (FuncGrp == FN_9_12) {
+            functionList[3]->setState(Off);
+        }
+    }*/
   }
 #ifdef DEBUG_FUNCTIONS
   Serial.println();

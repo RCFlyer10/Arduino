@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <Keyword>Linux</Keyword>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectName>LocoPWM2.1</ProjectName>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2B}</LinuxProjectType>
+    <ProjectGuid>{5DBF23BE-FAB7-429D-8A44-A61D0EC4E0FF}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <LinuxIncludePath>c:\visualmicro\ignore</LinuxIncludePath>
+    <wiringPiIncludePath>c:\visualmicro\pi-ignore</wiringPiIncludePath>
+    <TargetOSAndVersion>Arduino</TargetOSAndVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <IncludePath>$(ProjectDir)..\LocoPWM2.1;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library\utility;$(ProjectDir)..\libraries\Adafruit_BusIO\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include-fixed;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\utility;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src</IncludePath>
+    <RemoteCCompileToolExe>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</RemoteCppCompileToolExe>
+    <ValidateArchitecture>false</ValidateArchitecture>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectCapability Include="VisualMicro" />
+    <ProjectCapability Include="VisualMicroLinux" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="List.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="LocoNetHelper.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="LocoPWM2.1.ino">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="LocoPWMOutput.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="OutputGroup.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Flags.h">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="List.h">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="LocoNetHelper.h">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="LocoPWMOutput.h">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="OutputGroup.h">
+      <FileType>CppCode</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClInclude Include="__vm\.LocoPWM2.1.vsarduino.h" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <IncludePath>$(ProjectDir)..\LocoPWM2.1;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library\utility;$(ProjectDir)..\libraries\Adafruit_BusIO\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include-fixed;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\utility;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src</IncludePath>
+    <RemoteCCompileToolExe>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</RemoteCppCompileToolExe>
+    <ValidateArchitecture>false</ValidateArchitecture>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\LocoPWM2.1;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library\utility;$(ProjectDir)..\libraries\Adafruit_BusIO\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include-fixed;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\utility;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GccToolChain>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</GccToolChain>
+      <CppLanguageStandard>gnu++11</CppLanguageStandard>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+      <CAdditionalWarning />
+      <CppAdditionalWarning />
+      <ForcedIncludeFiles>$(ProjectDir)..\..\..\..\..\..\..\program files\microsoft visual studio\2022\community\common7\ide\extensions\svweahcw.fnr\Micro Platforms\default\vm-intelli-pre.h;$(ProjectDir)..\..\..\..\..\AppData\Local\Temp\VMBuilds\LocoPWM2.1\uno\Release\.vmintelli\92c4fb6d121363a74d75b9798182c301\vm-intelli-gcc-defines.h;$(ProjectDir)..\..\..\..\..\..\..\program files\microsoft visual studio\2022\community\common7\ide\extensions\svweahcw.fnr\Micro Platforms\default\vm-intelli-post.h;$(ProjectDir)__vm\.LocoPWM2.1.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>_VMICRO_INTELLISENSE;__AVR_atmega328p__;__AVR_ATmega328P__;__AVR_ATmega328p__;F_CPU=16000000L;ARDUINO=108010;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\LocoPWM2.1;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library\utility;$(ProjectDir)..\libraries\Adafruit_BusIO\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino;$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\lib\gcc\avr\7.3.0\include-fixed;$(ProjectDir)..\..\..\..\..\appdata\local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\EEPROM\src;$(ProjectDir)..\libraries\Adafruit_PWM_Servo_Driver_Library;$(ProjectDir)..\libraries\Adafruit_BusIO;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\utility;$(ProjectDir)..\libraries\LocoNet;$(ProjectDir)..\libraries\LocoNet\utility;$(ProjectDir)..\..\..\..\..\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GccToolChain>$(ProjectDir)..\..\..\..\..\..\..\\Users\\Keith\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\bin\avr-g++</GccToolChain>
+      <CppLanguageStandard>gnu++11</CppLanguageStandard>
+      <CLanguageStandard>gnu11</CLanguageStandard>
+      <CAdditionalWarning />
+      <CppAdditionalWarning />
+      <ForcedIncludeFiles>$(ProjectDir)..\..\..\..\..\..\..\program files\microsoft visual studio\2022\community\common7\ide\extensions\svweahcw.fnr\Micro Platforms\default\vm-intelli-pre.h;$(ProjectDir)..\..\..\..\..\AppData\Local\Temp\VMBuilds\LocoPWM2.1\uno\Debug\.vmintelli\92c4fb6d121363a74d75b9798182c301\vm-intelli-gcc-defines.h;$(ProjectDir)..\..\..\..\..\..\..\program files\microsoft visual studio\2022\community\common7\ide\extensions\svweahcw.fnr\Micro Platforms\default\vm-intelli-post.h;$(ProjectDir)__vm\.LocoPWM2.1.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>_VMICRO_INTELLISENSE;__AVR_atmega328p__;__AVR_ATmega328P__;__AVR_ATmega328p__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=108010;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM4" config.Debug.customdebug_uno_debugger_type="universal" debug.local.portname="COM4" debug.local.portspeed="115200" debug.remote.portname="" debug.remote.portspeed="" debug.view.AnalogPins="" debug.view.DigitalPins="" debug.view.FreeMemory="" debug.view.RunMonitorsOnAllBP="" VM.DebugTextMessages.SerialWindow="1" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

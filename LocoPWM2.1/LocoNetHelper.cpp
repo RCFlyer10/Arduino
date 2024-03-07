@@ -5,7 +5,7 @@ LocoNetHelperClass::LocoNetHelperClass() {
 
 uint8_t LocoNetHelperClass::processStationaryDecoderInterrogate(lnMsg* LnPacket) {	
 	if (LnPacket->sr.command == OPC_SW_REQ) {
-		
+		Serial.println("Yes");
 		if ((!(((LnPacket->srq.sw2 & 0xCF) == 0x0F) && ((LnPacket->srq.sw1 & 0xFC) == 0x78))) 
 			&& (!(((LnPacket->srq.sw2 & 0xCF) == 0x07) && ((LnPacket->srq.sw1 & 0xFC) == 0x78)))) {	
 			// ordinary form, LPU V1.0 page 9

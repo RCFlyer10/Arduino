@@ -28,6 +28,7 @@ void OutputGroup::setOn(bool on) {
 		_previousMillis = 0;
 		_previousMillisArc = 0;
 		_previousMillisFlicker = 0;
+		_count = 0;
 		_flags.setFlag(GROUP_ON);		
 	}
 
@@ -44,16 +45,24 @@ void OutputGroup::setOn(bool on) {
 	}
 }
 
-void OutputGroup::setConfig(uint8_t value) {
-	_config = value;
+void OutputGroup::setConfig1(uint8_t value) {
+	_config1 = value;
+}
+
+void OutputGroup::setConfig2(uint8_t value) {
+	_config2 = value;
 }
 
 uint8_t OutputGroup::getDurration() {
-	return (_config & 0x0F) * 17;
+	return (_config1 & 0x0F) * 17;
 }
 
 uint8_t	OutputGroup::getProbability() {
-	return ((_config & 0xF0) >> 4) * 17;
+	return ((_config1 & 0xF0) >> 4) * 17;
+}
+
+uint8_t OutputGroup::getRate() {
+	return (_config2 & 0x0F) * 17;
 }
 
 bool OutputGroup::getOn() {
@@ -289,6 +298,40 @@ void OutputGroup::heartbeat()
 
 				break;
 				
+			}
+
+			case CHASE: {
+				if (_flags.getSet(GROUP_ON)) {
+					if (_outputList.Count() > 1) {
+						if (currentMillis - _previousMillis > getRate()) {
+							if (_count == 0) {
+								_outputList[_outputList.Count() - 1]->setOn(Off);
+								LocoNet.reportSensor(_outputList[_outputList.Count() - 1]->getAddress(), Off);
+								_outputList[_count]->setOn(On);
+								LocoNet.reportSensor(_outputList[_count]->getAddress(), On);
+							}
+							else {
+								_outputList[_count - 1]->setOn(Off);
+								LocoNet.reportSensor(_outputList[_count - 1]->getAddress(), Off);
+								_outputList[_count]->setOn(On);
+								LocoNet.reportSensor(_outputList[_count]->getAddress(), On);
+							}
+							_count++;
+
+							if (_count == _outputList.Count()) {
+								_count = 0;
+							}
+						}
+					}
+						
+				}
+				else {
+					for (uint8_t index = 0; index < _outputList.Count(); index++) {
+						_outputList[index]->setOn(Off);
+						LocoNet.reportSensor(_outputList[index]->getAddress(), Off);
+					}
+
+				}
 			}
 
 			default:
