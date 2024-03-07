@@ -44,12 +44,12 @@ class Function_Led {
 		// Constructor
 		Function_Led(uint8_t pin);
 		// Methods
-		void setConfig(uint8_t config);		
+		void setEffect(uint8_t effect);		
 		void setState(bool state);		
-		void setBrightness(uint8_t brightness);
+		void setBrightValue(uint8_t value);
 		void setDimValue(uint8_t value);
-		void setFadeRate(uint8_t fadeRate);
-		void setFlashRate(uint8_t flashRate);
+		void setFadeRate(uint8_t rate);
+		void setFlashRate(uint8_t rate);
 		void setProbability(uint8_t probability);
 		void setDimmerOn(bool on);		
 		void heartbeat();				
@@ -59,13 +59,12 @@ class Function_Led {
 		unsigned long _previousMillis;
 		uint8_t _randomNumber;		
 		uint8_t _pin;		
-		uint8_t _config;
+		uint8_t _effect;
 		uint8_t _dimValue;
 		uint8_t _fadeRate;
 		uint8_t _flashRate;		
 		uint8_t _brightValue;
-		uint8_t _probability;
-		uint8_t _beaconDelaySP;
+		uint8_t _probability;		
 		bool _dimmerOn;
 		bool _fading;
 		bool _fadeDir;

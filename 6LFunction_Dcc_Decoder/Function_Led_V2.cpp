@@ -7,17 +7,17 @@
 Function_Led::Function_Led(uint8_t pin) {	
 	_pin = pin;
 	_state = Off;
-	_config = 0;	
+	_effect = 0;	
 	_dimmerOn = false;
 	pinMode(_pin, OUTPUT);	
 }
 
-void Function_Led::setConfig(uint8_t config) {	
-	_config = config;	
+void Function_Led::setEffect(uint8_t config) {	
+	_effect = config;	
 	setState(Off);
 }
 
-void Function_Led::setBrightness(uint8_t brightness) {
+void Function_Led::setBrightValue(uint8_t brightness) {
 	_brightValue = brightness;
 }
 
@@ -56,7 +56,7 @@ void Function_Led::setState(bool state) {
 
 void Function_Led::heartbeat() {
 	unsigned long currentMillis = millis();
-	switch (_config) {
+	switch (_effect) {
 		case DIMMABLE : {
 			if (_state == On) {
 				if (_dimmerOn) {
@@ -76,19 +76,19 @@ void Function_Led::heartbeat() {
 				_previousMillis = currentMillis;			
 				if (_state  == On) { 
 					if (_fade < _brightValue) {
-						_fade = _fade + STEP;    															// increase fade by step					
+						_fade = _fade + STEP;    							// increase fade by step					
 					}				
 					if (_fade > _brightValue) {
-						_fade = _brightValue;      														// keep fade in bounds					
+						_fade = _brightValue;      							// keep fade in bounds					
 					}
 					analogWrite(_pin, 255 - _fade);				
 				}		
 				else if (_state == Off) {
 					if (_fade > 0) {
-						_fade = _fade - (STEP + 2);     											// decrease fade by step
+						_fade = _fade - (STEP + 2);     					// decrease fade by step
 					}				
 					if (_fade < 0)	{
-						_fade = 0;                        										// keep fade in bounds				
+						_fade = 0;                        					// keep fade in bounds				
 					}
 					analogWrite(_pin, 255 - _fade);				
 				}
@@ -143,13 +143,13 @@ void Function_Led::heartbeat() {
 				uint8_t intensity = _brightValue / 2;
 				if (currentMillis - _previousMillis >= 8U) {
 					_previousMillis = currentMillis;
-					_angle = _angle + _step;                                		// increase angle by step
+					_angle = _angle + _step;                                	// increase angle by step
 				}
 				if (_angle >= MAX_ANGLE) {                                   	// keep angle in bounds
 					_angle = START_ANGLE;
 				}      
-				_value = sin(_angle) * intensity + intensity;         				// calculate fade, will follow sine wave
-				analogWrite(_pin, 255 - _value);                   						// set beacon to fade value
+				_value = sin(_angle) * intensity + intensity;         			// calculate fade, will follow sine wave
+				analogWrite(_pin, 255 - _value);                   				// set beacon to fade value
 			}
 			else {
 				analogWrite(_pin, 255);

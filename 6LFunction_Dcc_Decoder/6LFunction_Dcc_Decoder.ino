@@ -87,12 +87,12 @@ struct CVPair {
 #define CV_PROD_ID_4 50
 
 // configuration CVs
-#define CV_FX1_CONFIG 60
-#define CV_FX2_CONFIG 61
-#define CV_FX3_CONFIG 62
-#define CV_FX4_CONFIG 63
-#define CV_FX5_CONFIG 64
-#define CV_FX6_CONFIG 65
+#define CV_FX1_EFFECT 60
+#define CV_FX2_EFFECT 61
+#define CV_FX3_EFFECT 62
+#define CV_FX4_EFFECT 63
+#define CV_FX5_EFFECT 64
+#define CV_FX6_EFFECT 65
 #define CV_FX1_BRIGHT 66
 #define CV_FX2_BRIGHT 67
 #define CV_FX3_BRIGHT 68
@@ -162,12 +162,12 @@ CVPair FactoryDefaultCVs[] = {
   { CV_MULTIFUNCTION_PRIMARY_ADDRESS, DEFAULT_MULTIFUNCTION_DECODER_ADDRESS },
   
   // The CVs below define the lighting configuration
-  { CV_FX1_CONFIG, 0 },
-  { CV_FX2_CONFIG, 0 },
-  { CV_FX3_CONFIG, 0 },
-  { CV_FX4_CONFIG, 0 },
-  { CV_FX5_CONFIG, 0 },
-  { CV_FX6_CONFIG, 0 },
+  { CV_FX1_EFFECT, 0 },
+  { CV_FX2_EFFECT, 0 },
+  { CV_FX3_EFFECT, 0 },
+  { CV_FX4_EFFECT, 0 },
+  { CV_FX5_EFFECT, 0 },
+  { CV_FX6_EFFECT, 0 },
   { CV_FX1_BRIGHT, 255 },
   { CV_FX2_BRIGHT, 255 },  
   { CV_FX3_BRIGHT, 255 },
@@ -284,7 +284,7 @@ void notifyCVChange(uint16_t CV, uint8_t Value) {
     case CV_REV_DIR_EN:
       revDirEnable = Value;
       break;
-    case CV_FX1_CONFIG ... CV_FX1_CONFIG + (FUNCTIONS * FEATURES) - 1:
+    case CV_FX1_EFFECT ... CV_FX1_EFFECT + (FUNCTIONS * FEATURES) - 1:
       updateFunctions(CV, Value);
       break;      
     case CV_FN_MAP_FX1_F0_F4 ... CV_FN_MAP_FX1_F0_F4 + (FUNCTION_GROUPS * FUNCTIONS) - 1:    
@@ -303,11 +303,11 @@ void updateFunctions(uint16_t CV, uint8_t Value) {
   int index = CV % FUNCTIONS;  
   Function_Led *function = functionList[index];
   switch (CV) {
-    case CV_FX1_CONFIG ... (CV_FX1_CONFIG + FUNCTIONS) -1:
-      function->setConfig(Value);
+    case CV_FX1_EFFECT ... (CV_FX1_EFFECT + FUNCTIONS) -1:
+      function->setEffect(Value);
       break;
     case CV_FX1_BRIGHT ... (CV_FX1_BRIGHT + FUNCTIONS) -1:
-      function->setBrightness(Value);
+      function->setBrightValue(Value);
       break;
     case CV_FX1_DIM_VALUE ... (CV_FX1_DIM_VALUE + FUNCTIONS) -1:
       function->setDimValue(Value);
@@ -538,7 +538,7 @@ void setup() {
   }
 
   // load funtion settings
-  for (int index = CV_FX1_CONFIG; index < CV_FX1_CONFIG + (FEATURES * FUNCTIONS); index++ ) {
+  for (int index = CV_FX1_EFFECT; index < CV_FX1_EFFECT + (FEATURES * FUNCTIONS); index++ ) {
     updateFunctions(index, Dcc.getCV(index));
   }  
   
