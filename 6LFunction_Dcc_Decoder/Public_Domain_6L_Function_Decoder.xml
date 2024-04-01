@@ -424,186 +424,186 @@
 				<tooltip>choose one</tooltip>
 			</variable>	
 			
-			<variable CV="66" item="FX1 Brightness" default="255" minOut="1">
-				<decVal min="0" max="255"/>
+			<variable CV="66" item="FX1 Brightness" mask="XXXXVVVV" default="15" minOut="1">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="67" item="FX2 Brightness" default="255" minOut="2">
-				<decVal min="0" max="255"/>
+			<variable CV="67" item="FX2 Brightness" mask="XXXXVVVV" default="15" minOut="2">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="68" item="FX3 Brightness" default="255" minOut="3">
-				<decVal min="0" max="255"/>
+			<variable CV="68" item="FX3 Brightness" mask="XXXXVVVV" default="15" minOut="3">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="69" item="FX4 Brightness" default="255" minOut="4">
-				<decVal min="0" max="255"/>
+			<variable CV="69" item="FX4 Brightness" mask="XXXXVVVV" default="15" minOut="4">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="70" item="FX5 Brightness" default="255" minOut="5">
-				<decVal min="0" max="255"/>
+			<variable CV="70" item="FX5 Brightness" mask="XXXXVVVV" default="15" minOut="5">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="71" item="FX6 Brightness" default="255" minOut="6">
-				<decVal min="0" max="255"/>
+			<variable CV="71" item="FX6 Brightness" mask="XXXXVVVV" default="15" minOut="6">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="72" item="FX1 Dimmer" default="128" minOut="1">
-				<decVal min="0" max="255"/>
+			<variable CV="66" item="FX1 Dimmer" mask="VVVVXXXX" default="7" minOut="1">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="73" item="FX2 Dimmer" default="128" minOut="2">
-				<decVal min="0" max="255"/>
+			<variable CV="67" item="FX2 Dimmer" mask="VVVVXXXX" default="7" minOut="2">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="74" item="FX3 Dimmer" default="128" minOut="3">
-				<decVal min="0" max="255"/>
+			<variable CV="68" item="FX3 Dimmer" mask="VVVVXXXX" default="7" minOut="3">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="75" item="FX4 Dimmer" default="128" minOut="4">
-				<decVal min="0" max="255"/>
+			<variable CV="69" item="FX4 Dimmer" mask="VVVVXXXX" default="7" minOut="4">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="76" item="FX5 Dimmer" default="128" minOut="5">
-				<decVal min="0" max="255"/>
+			<variable CV="70" item="FX5 Dimmer" mask="VVVVXXXX" default="7" minOut="5">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="77" item="FX6 Dimmer" default="128" minOut="6">
-				<decVal min="0" max="255"/>
+			<variable CV="71" item="FX6 Dimmer" mask="VVVVXXXX" default="7" minOut="6">
+				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="78" item="FX1 Fade Rate" default="128" minOut="1">
-				<decVal min="0" max="255"/>
+			<variable CV="72" item="FX1 Fade Rate" mask="XXXXVVVV" default="7" minOut="1">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="79" item="FX2 Fade Rate" default="128" minOut="2">
-				<decVal min="0" max="255"/>
+			<variable CV="73" item="FX2 Fade Rate" mask="XXXXVVVV" default="7" minOut="2">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="80" item="FX3 Fade Rate" default="128" minOut="3">
-				<decVal min="0" max="255"/>
+			<variable CV="74" item="FX3 Fade Rate" mask="XXXXVVVV" default="7" minOut="3">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="81" item="FX4 Fade Rate" default="128" minOut="4">
-				<decVal min="0" max="255"/>
+			<variable CV="75" item="FX4 Fade Rate" mask="XXXXVVVV" default="7" minOut="4">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="82" item="FX5 Fade Rate" default="128" minOut="5">
-				<decVal min="0" max="255"/>
+			<variable CV="76" item="FX5 Fade Rate" mask="XXXXVVVV" default="7" minOut="5">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="83" item="FX6 Fade Rate" default="128" minOut="6">
-				<decVal min="0" max="255"/>
+			<variable CV="77" item="FX6 Fade Rate" mask="XXXXVVVV" default="7" minOut="6">
+				<decVal min="0" max="15"/>
 				<label>Fade Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="84" item="FX1 Flash Rate" default="128" minOut="1">
-				<decVal min="0" max="255"/>
+			<variable CV="72" item="FX1 Flash Rate" mask="VVVVXXXX" default="7" minOut="1">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="85" item="FX2 Flash Rate" default="128" minOut="2">
-				<decVal min="0" max="255"/>
+			<variable CV="73" item="FX2 Flash Rate" mask="VVVVXXXX" default="7" minOut="2">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="86" item="FX3 Flash Rate" default="128" minOut="3">
-				<decVal min="0" max="255"/>
+			<variable CV="74" item="FX3 Flash Rate" mask="VVVVXXXX" default="7" minOut="3">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="87" item="FX4 Flash Rate" default="128" minOut="4">
-				<decVal min="0" max="255"/>
+			<variable CV="75" item="FX4 Flash Rate" mask="VVVVXXXX" default="7" minOut="4">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 
-			<variable CV="88" item="FX5 Flash Rate" default="128" minOut="5">
-				<decVal min="0" max="255"/>
+			<variable CV="76" item="FX5 Flash Rate" mask="VVVVXXXX" default="7" minOut="5">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="89" item="FX6 Flash Rate" default="128" minOut="6">
-				<decVal min="0" max="255"/>
+			<variable CV="77" item="FX6 Flash Rate" mask="VVVVXXXX" default="7" minOut="6">
+				<decVal min="0" max="15"/>
 				<label>Flash Rate</label>
-				<tooltip>choose a value 0 - 255</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="90" item="FX1 Probability" default="50" minOut="1">
-				<decVal min="0" max="100"/>
-				<label>Random Probability</label>
-				<tooltip>choose a value 0 - 100</tooltip>
-			</variable>		
-			
-			<variable CV="91" item="FX2 Probability" default="50" minOut="2">
-				<decVal min="0" max="100"/>
-				<label>Random Probability</label>
-				<tooltip>choose a value 0 - 100</tooltip>
-			</variable>			
-			
-			<variable CV="92" item="FX3 Probability" default="50" minOut="3">
-				<decVal min="0" max="100"/>
-				<label>Random Probability</label>
-				<tooltip>choose a value 0 - 100</tooltip>
-			</variable>			
-			
-			<variable CV="93" item="FX4 Probability" default="50" minOut="4">
+			<variable CV="78" item="FX1 Probability" default="50" minOut="1">
 				<decVal min="0" max="100"/>
 				<label>Random Probability</label>
 				<tooltip>choose a value 0 - 100</tooltip>
 			</variable>
 
-			<variable CV="94" item="FX5 Probability" default="50" minOut="5">
+			<variable CV="79" item="FX2 Probability" default="50" minOut="1">
 				<decVal min="0" max="100"/>
 				<label>Random Probability</label>
 				<tooltip>choose a value 0 - 100</tooltip>
 			</variable>
-			
-			<variable CV="95" item="FX6 Probability" default="50" minOut="6">
+
+			<variable CV="80" item="FX3 Probability" default="50" minOut="1">
 				<decVal min="0" max="100"/>
 				<label>Random Probability</label>
 				<tooltip>choose a value 0 - 100</tooltip>
 			</variable>
-			
+
+			<variable CV="81" item="FX4 Probability" default="50" minOut="1">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+
+			<variable CV="82" item="FX5 Probability" default="50" minOut="1">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+
+			<variable CV="83" item="FX6 Probability" default="50" minOut="1">
+				<decVal min="0" max="100"/>
+				<label>Random Probability</label>
+				<tooltip>choose a value 0 - 100</tooltip>
+			</variable>
+
 			<variable CV="120" item="F0 controls output 1" mask="XXXVXXXX" minOut="1" default= "1">
 				<xi:include href="http://jmri.org/xml/decoders/parts/enum-NoYes.xml"/>
 				<label> </label>				

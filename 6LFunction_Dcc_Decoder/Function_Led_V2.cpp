@@ -9,34 +9,29 @@ Function_Led::Function_Led(uint8_t pin) {
 	_state = Off;
 	_effect = 0;	
 	_dimmerOn = false;
-	pinMode(_pin, OUTPUT);	
-}
-
-void Function_Led::setEffect(uint8_t config) {	
-	_effect = config;	
+	pinMode(_pin, OUTPUT);
 	setState(Off);
 }
 
-void Function_Led::setBrightValue(uint8_t brightness) {
-	_brightValue = brightness;
+void Function_Led::setEffect(uint8_t effect) {
+	_effect = effect;	
+	setState(Off);
 }
 
-void Function_Led::setDimValue(uint8_t value) {
-	_dimValue = value;
+void Function_Led::setConfig_1(uint8_t value) {
+	_brightValue = (value & 0x0f) * 15;
+	_dimValue = ((value & 0xf0) >> 4) * 15;
 }
 
-void Function_Led::setFadeRate(uint8_t fadeRate) {
-	_fadeRate = fadeRate;
+void Function_Led::setConfig_2(uint8_t value) {
+	_fadeRate = (value & 0x0f) * 17;
+	_flashRate = ((value & 0xf0) >> 4) * 17;
+	//float freq = (_flashRate / 500.0) + 0.74;
+	_step = (TWO_PI / 125) * ((_flashRate / 500.0) + 0.74);
 }
 
-void Function_Led::setFlashRate(uint8_t flashRate) {	
-	_flashRate = flashRate;
-	float freq = (_flashRate / 500.0) + 0.74;	
-	_step = (TWO_PI / 125) * freq;	
-}
-
-void Function_Led::setProbability(uint8_t probability) {
-	_probability = probability;
+void Function_Led::setProbability(uint8_t value) {
+	_probability = value;
 }
 
 void Function_Led::setDimmerOn(bool on) {

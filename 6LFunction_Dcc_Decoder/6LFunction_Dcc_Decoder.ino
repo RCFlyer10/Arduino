@@ -29,6 +29,11 @@
 #define FX5_PIN 10
 #define FX6_PIN 9
 
+#define FUNCTION_GROUPS 5
+#define FUNCTIONS 6
+#define FEATURES 4
+
+
 #else
 #error "Unsupported CPU, you need to add another configuration section for your CPU"
 #endif
@@ -36,9 +41,6 @@
 // Comment this line out after first initia
 //#define InitalizeCVs
 
-#define FUNCTION_GROUPS 5
-#define FUNCTIONS 6
-#define FEATURES 6
 
 // cache function map and current function state
 uint8_t functionMap [FUNCTIONS][FUNCTION_GROUPS];
@@ -93,36 +95,51 @@ struct CVPair {
 #define CV_FX4_EFFECT 63
 #define CV_FX5_EFFECT 64
 #define CV_FX6_EFFECT 65
-#define CV_FX1_BRIGHT 66
-#define CV_FX2_BRIGHT 67
-#define CV_FX3_BRIGHT 68
-#define CV_FX4_BRIGHT 69
-#define CV_FX5_BRIGHT 70
-#define CV_FX6_BRIGHT 71
-#define CV_FX1_DIM_VALUE 72
-#define CV_FX2_DIM_VALUE 73
-#define CV_FX3_DIM_VALUE 74
-#define CV_FX4_DIM_VALUE 75
-#define CV_FX5_DIM_VALUE 76
-#define CV_FX6_DIM_VALUE 77
-#define CV_FX1_FADE_RATE 78
-#define CV_FX2_FADE_RATE 79
-#define CV_FX3_FADE_RATE 80
-#define CV_FX4_FADE_RATE 81
-#define CV_FX5_FADE_RATE 82
-#define CV_FX6_FADE_RATE 83
-#define CV_FX1_FLASH_RATE 84
-#define CV_FX2_FLASH_RATE 85
-#define CV_FX3_FLASH_RATE 86
-#define CV_FX4_FLASH_RATE 87
-#define CV_FX5_FLASH_RATE 88
-#define CV_FX6_FLASH_RATE 89
-#define CV_FX1_PROBABILITY 90
-#define CV_FX2_PROBABILITY 91
-#define CV_FX3_PROBABILITY 92
-#define CV_FX4_PROBABILITY 93
-#define CV_FX5_PROBABILITY 94
-#define CV_FX6_PROBABILITY 95
+#define CV_FX1_CONFIG_1 66
+#define CV_FX2_CONFIG_1 67
+#define CV_FX3_CONFIG_1 68
+#define CV_FX4_CONFIG_1 69
+#define CV_FX5_CONFIG_1 70
+#define CV_FX6_CONFIG_1 71
+#define CV_FX1_CONFIG_2 72
+#define CV_FX2_CONFIG_2 73
+#define CV_FX3_CONFIG_2 74
+#define CV_FX4_CONFIG_2 75
+#define CV_FX5_CONFIG_2 76
+#define CV_FX6_CONFIG_2 77
+#define CV_FX1_PROBABILITY 78
+#define CV_FX2_PROBABILITY 79
+#define CV_FX3_PROBABILITY 80
+#define CV_FX4_PROBABILITY 81
+#define CV_FX5_PROBABILITY 82
+#define CV_FX6_PROBABILITY 83
+
+
+//#define CV_FX1_BRIGHT 66
+//#define CV_FX2_BRIGHT 67
+//#define CV_FX3_BRIGHT 68
+//#define CV_FX4_BRIGHT 69
+//#define CV_FX5_BRIGHT 70
+//#define CV_FX6_BRIGHT 71
+//#define CV_FX1_DIM_VALUE 72
+//#define CV_FX2_DIM_VALUE 73
+//#define CV_FX3_DIM_VALUE 74
+//#define CV_FX4_DIM_VALUE 75
+//#define CV_FX5_DIM_VALUE 76
+//#define CV_FX6_DIM_VALUE 77
+//#define CV_FX1_FADE_RATE 78
+//#define CV_FX2_FADE_RATE 79
+//#define CV_FX3_FADE_RATE 80
+//#define CV_FX4_FADE_RATE 81
+//#define CV_FX5_FADE_RATE 82
+//#define CV_FX6_FADE_RATE 83
+//#define CV_FX1_FLASH_RATE 84
+//#define CV_FX2_FLASH_RATE 85
+//#define CV_FX3_FLASH_RATE 86
+//#define CV_FX4_FLASH_RATE 87
+//#define CV_FX5_FLASH_RATE 88
+//#define CV_FX6_FLASH_RATE 89
+
 
 // function map CVs
 #define CV_FN_MAP_FX1_F0_F4 120
@@ -156,6 +173,8 @@ struct CVPair {
 #define CV_FN_MAP_FX6_F13_F20 148
 #define CV_FN_MAP_FX6_F21_F28 149
 
+#define CONFIG_END CV_FX1_EFFECT + (FEATURES * FUNCTIONS) - 1
+
 // Default CV Values Table
 CVPair FactoryDefaultCVs[] = {
   // The CV Below defines the Short DCC Address
@@ -168,33 +187,21 @@ CVPair FactoryDefaultCVs[] = {
   { CV_FX4_EFFECT, 0 },
   { CV_FX5_EFFECT, 0 },
   { CV_FX6_EFFECT, 0 },
-  { CV_FX1_BRIGHT, 255 },
-  { CV_FX2_BRIGHT, 255 },  
-  { CV_FX3_BRIGHT, 255 },
-  { CV_FX4_BRIGHT, 255 },
-  { CV_FX5_BRIGHT, 255 },
-  { CV_FX6_BRIGHT, 255 },
-  { CV_FX1_DIM_VALUE, 128 },
-  { CV_FX2_DIM_VALUE, 128 },
-  { CV_FX3_DIM_VALUE, 128 },
-  { CV_FX4_DIM_VALUE, 128 },
-  { CV_FX5_DIM_VALUE, 128 },
-  { CV_FX6_DIM_VALUE, 128 }, 
-  { CV_FX1_FADE_RATE, 128 },
-  { CV_FX2_FADE_RATE, 128 },
-  { CV_FX3_FADE_RATE, 128 },
-  { CV_FX4_FADE_RATE, 128 },
-  { CV_FX5_FADE_RATE, 128 },
-  { CV_FX6_FADE_RATE, 128 },
-  { CV_FX1_FLASH_RATE, 128 },
-  { CV_FX2_FLASH_RATE, 128 },
-  { CV_FX3_FLASH_RATE, 128 },
-  { CV_FX4_FLASH_RATE, 128 },
-  { CV_FX5_FLASH_RATE, 128 },
-  { CV_FX6_FLASH_RATE, 128 },
-  { CV_FX1_PROBABILITY, 50 }, 
-  { CV_FX2_PROBABILITY, 50 },  
-  { CV_FX3_PROBABILITY, 50 },  
+  { CV_FX1_CONFIG_1, 127 },
+  { CV_FX2_CONFIG_1, 127 },
+  { CV_FX3_CONFIG_1, 127 },
+  { CV_FX4_CONFIG_1, 127 },
+  { CV_FX5_CONFIG_1, 127 },
+  { CV_FX6_CONFIG_1, 127 },
+  { CV_FX1_CONFIG_2, 119 },
+  { CV_FX2_CONFIG_2, 119 },  
+  { CV_FX3_CONFIG_2, 119 },
+  { CV_FX4_CONFIG_2, 119 },
+  { CV_FX5_CONFIG_2, 119 },
+  { CV_FX6_CONFIG_2, 119 },  
+  { CV_FX1_PROBABILITY, 50 },
+  { CV_FX2_PROBABILITY, 50 },
+  { CV_FX3_PROBABILITY, 50 },
   { CV_FX4_PROBABILITY, 50 },
   { CV_FX5_PROBABILITY, 50 },
   { CV_FX6_PROBABILITY, 50 },  
@@ -284,7 +291,7 @@ void notifyCVChange(uint16_t CV, uint8_t Value) {
     case CV_REV_DIR_EN:
       revDirEnable = Value;
       break;
-    case CV_FX1_EFFECT ... CV_FX1_EFFECT + (FUNCTIONS * FEATURES) - 1:
+    case CV_FX1_EFFECT ... CONFIG_END:
       updateFunctions(CV, Value);
       break;      
     case CV_FN_MAP_FX1_F0_F4 ... CV_FN_MAP_FX1_F0_F4 + (FUNCTION_GROUPS * FUNCTIONS) - 1:    
@@ -303,23 +310,18 @@ void updateFunctions(uint16_t CV, uint8_t Value) {
   int index = CV % FUNCTIONS;  
   Function_Led *function = functionList[index];
   switch (CV) {
-    case CV_FX1_EFFECT ... (CV_FX1_EFFECT + FUNCTIONS) -1:
+    case CV_FX1_EFFECT ... (CV_FX1_EFFECT + FUNCTIONS) - 1:
       function->setEffect(Value);
       break;
-    case CV_FX1_BRIGHT ... (CV_FX1_BRIGHT + FUNCTIONS) -1:
-      function->setBrightValue(Value);
+    case CV_FX1_CONFIG_1 ... (CV_FX1_CONFIG_1 + FUNCTIONS) -1:
+      function->setConfig_1(Value);
       break;
-    case CV_FX1_DIM_VALUE ... (CV_FX1_DIM_VALUE + FUNCTIONS) -1:
-      function->setDimValue(Value);
+    case CV_FX1_CONFIG_2 ... (CV_FX1_CONFIG_2 + FUNCTIONS) -1:
+      function->setConfig_2(Value);
       break;
-    case CV_FX1_FADE_RATE ... (CV_FX1_FADE_RATE + FUNCTIONS) -1:
-      function->setFadeRate(Value);
-      break;
-    case CV_FX1_FLASH_RATE ... (CV_FX1_FLASH_RATE + FUNCTIONS) -1:
-      function->setFlashRate(Value);
-      break;
-    default:
-      function->setProbability(Value);    
+    case CV_FX1_PROBABILITY ... (CV_FX1_PROBABILITY + FUNCTIONS) -1:
+      function->setProbability(Value);
+      break;        
   }
 }
 
@@ -538,7 +540,7 @@ void setup() {
   }
 
   // load funtion settings
-  for (int index = CV_FX1_EFFECT; index < CV_FX1_EFFECT + (FEATURES * FUNCTIONS); index++ ) {
+  for (int index = CV_FX1_CONFIG_1; index < CONFIG_END; index++ ) {
     updateFunctions(index, Dcc.getCV(index));
   }  
   
