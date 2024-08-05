@@ -22,16 +22,11 @@
 // Define the Arduino input Pin number for the DCC Signal
 #define DCC_PIN 2
 #define ACK_PIN 8
-#define FX1_PIN 3
-#define FX2_PIN 5
-#define FX3_PIN 6
-#define FX4_PIN 11
-#define FX5_PIN 10
-#define FX6_PIN 9
 
 #define FUNCTION_GROUPS 5
 #define FUNCTIONS 6
 #define FEATURES 4
+#define UNUSED_PINS 23 - 3 - FUNCTIONS 
 
 
 #else
@@ -63,12 +58,6 @@ DCC_DIRECTION direction = DCC_DIR_FWD;
 
 // function list
 Function_Led *functionList[FUNCTIONS];
-Function_Led functionFX1 = Function_Led(FX1_PIN);
-Function_Led functionFX2 = Function_Led(FX2_PIN);
-Function_Led functionFX3 = Function_Led(FX3_PIN);
-Function_Led functionFX4 = Function_Led(FX4_PIN);
-Function_Led functionFX5 = Function_Led(FX5_PIN);
-Function_Led functionFX6 = Function_Led(FX6_PIN);
 
 // Structure for CV Values Table
 struct CVPair {
@@ -113,32 +102,6 @@ struct CVPair {
 #define CV_FX4_PROBABILITY 81
 #define CV_FX5_PROBABILITY 82
 #define CV_FX6_PROBABILITY 83
-
-
-//#define CV_FX1_BRIGHT 66
-//#define CV_FX2_BRIGHT 67
-//#define CV_FX3_BRIGHT 68
-//#define CV_FX4_BRIGHT 69
-//#define CV_FX5_BRIGHT 70
-//#define CV_FX6_BRIGHT 71
-//#define CV_FX1_DIM_VALUE 72
-//#define CV_FX2_DIM_VALUE 73
-//#define CV_FX3_DIM_VALUE 74
-//#define CV_FX4_DIM_VALUE 75
-//#define CV_FX5_DIM_VALUE 76
-//#define CV_FX6_DIM_VALUE 77
-//#define CV_FX1_FADE_RATE 78
-//#define CV_FX2_FADE_RATE 79
-//#define CV_FX3_FADE_RATE 80
-//#define CV_FX4_FADE_RATE 81
-//#define CV_FX5_FADE_RATE 82
-//#define CV_FX6_FADE_RATE 83
-//#define CV_FX1_FLASH_RATE 84
-//#define CV_FX2_FLASH_RATE 85
-//#define CV_FX3_FLASH_RATE 86
-//#define CV_FX4_FLASH_RATE 87
-//#define CV_FX5_FLASH_RATE 88
-//#define CV_FX6_FLASH_RATE 89
 
 
 // function map CVs
@@ -187,12 +150,12 @@ CVPair FactoryDefaultCVs[] = {
   { CV_FX4_EFFECT, 0 },
   { CV_FX5_EFFECT, 0 },
   { CV_FX6_EFFECT, 0 },
-  { CV_FX1_CONFIG_1, 127 },
-  { CV_FX2_CONFIG_1, 127 },
-  { CV_FX3_CONFIG_1, 127 },
-  { CV_FX4_CONFIG_1, 127 },
-  { CV_FX5_CONFIG_1, 127 },
-  { CV_FX6_CONFIG_1, 127 },
+  { CV_FX1_CONFIG_1, 119 },
+  { CV_FX2_CONFIG_1, 119 },
+  { CV_FX3_CONFIG_1, 119 },
+  { CV_FX4_CONFIG_1, 119 },
+  { CV_FX5_CONFIG_1, 119 },
+  { CV_FX6_CONFIG_1, 119 },
   { CV_FX1_CONFIG_2, 119 },
   { CV_FX2_CONFIG_2, 119 },  
   { CV_FX3_CONFIG_2, 119 },
@@ -363,6 +326,21 @@ void setAddress() {
   }  
 } 
 
+
+void configureUnusedPins() {
+    uint8_t unusedPins [] = { 0, 1, 4, 7, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
+    for (uint8_t i = 0; i < UNUSED_PINS; i++) {
+        pinMode(unusedPins[i], INPUT_PULLUP);
+    }
+}
+
+void createFunctions() {
+    uint8_t pins[FUNCTIONS] = { 3, 5, 6 , 11 , 10, 9 };
+    for (uint8_t i = 0; i < FUNCTIONS; i++) {        
+        functionList[i] = new Function_Led(pins[i]);
+    }
+}
+
 void notifyCVResetFactoryDefault() {
   // Make FactoryDefaultCVIndex non-zero and equal to num CV's to be reset
   // to flag to the loop() function that a reset to Factory Defaults needs to be done
@@ -439,22 +417,7 @@ void notifyDccFunc(uint16_t Addr, DCC_ADDR_TYPE AddrType, FN_GROUP FuncGrp, uint
         }        
       }
       functionList[x]->setState(functionState[x]);
-    }
-    // test function refresh rate
-    /*if (toggle) {
-        functionList[0]->setState(On);
-        toggle = false;
-        if (FuncGrp == FN_9_12) {
-            functionList[3]->setState(On);
-        }
-    }
-    else {
-        functionList[0]->setState(Off);
-        toggle = true;
-        if (FuncGrp == FN_9_12) {
-            functionList[3]->setState(Off);
-        }
-    }*/
+    }    
   }
 #ifdef DEBUG_FUNCTIONS
   Serial.println();
@@ -496,6 +459,8 @@ void setup() {
   Serial.println("NMRA Dcc Multifunction Motor Decoder Demo");
 #endif
 
+  configureUnusedPins();
+
   // Setup the Pin for the ACK  
   pinMode(ACK_PIN, OUTPUT);
 
@@ -511,15 +476,10 @@ void setup() {
 
   Dcc.init(MAN_ID_DIY, 10, FLAGS_OUTPUT_ADDRESS_MODE | FLAGS_AUTO_FACTORY_DEFAULT, 0);
 
-  // Load the Function List
-  functionList[0] = &functionFX1;
-  functionList[1] = &functionFX2;
-  functionList[2] = &functionFX3;
-  functionList[3] = &functionFX4;
-  functionList[4] = &functionFX5;
-  functionList[5] = &functionFX6; 
+  createFunctions();
 
   setAddress();
+
   // Read the current CV values into cache 
   consistFuncEnable = Dcc.getCV(CV_CONSIST_FUNC_EN);  
   fwdDirEnable = Dcc.getCV(CV_FWD_DIR_EN);
@@ -540,7 +500,7 @@ void setup() {
   }
 
   // load funtion settings
-  for (int index = CV_FX1_CONFIG_1; index < CONFIG_END; index++ ) {
+  for (int index = CV_FX1_EFFECT; index < CONFIG_END; index++ ) {
     updateFunctions(index, Dcc.getCV(index));
   }  
   
