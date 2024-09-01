@@ -137,12 +137,12 @@ CVPair FactoryDefaultCVs[] = {
 	{ CV_FX4_EFFECT, 0 },
 	{ CV_FX5_EFFECT, 0 },
 	{ CV_FX6_EFFECT, 0 },
-	{ CV_FX1_CONFIG_1, 119 },
-	{ CV_FX2_CONFIG_1, 119 },
-	{ CV_FX3_CONFIG_1, 119 },
-	{ CV_FX4_CONFIG_1, 119 },
-	{ CV_FX5_CONFIG_1, 119 },
-	{ CV_FX6_CONFIG_1, 119 },
+	{ CV_FX1_CONFIG_1, 4 },
+	{ CV_FX2_CONFIG_1, 4 },
+	{ CV_FX3_CONFIG_1, 4 },
+	{ CV_FX4_CONFIG_1, 4 },
+	{ CV_FX5_CONFIG_1, 4 },
+	{ CV_FX6_CONFIG_1, 4 },
 	{ CV_FX1_CONFIG_2, 119 },
 	{ CV_FX2_CONFIG_2, 119 },
 	{ CV_FX3_CONFIG_2, 119 },
@@ -345,9 +345,11 @@ void notifyDccFunc(uint16_t Addr, DCC_ADDR_TYPE AddrType, FN_GROUP FuncGrp, uint
 	bool state = false;
 	uint8_t functionBits;
 	uint8_t functionEnableBits;
+
 	if (Addr == myAddress) {
 		for (int x = 0; x < FUNCTIONS; x++) {
 			functionBits = functionMap[x][FuncGrp - 1];
+
 			if (functionBits) {
 				functionEnableBits = 1 << x;
 				if (consisted) {
@@ -374,6 +376,10 @@ void notifyDccFunc(uint16_t Addr, DCC_ADDR_TYPE AddrType, FN_GROUP FuncGrp, uint
 				}
 			}
 			functionList[x]->setState(functionState[x]);
+
+			if (FuncGrp == FN_0_4 && (FuncState & FN_BIT_02)) {
+				functionList[x]->activateCrossing();
+			}
 		}
 	}
 }

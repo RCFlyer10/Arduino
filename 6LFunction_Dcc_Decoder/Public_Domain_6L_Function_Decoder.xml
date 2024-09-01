@@ -285,212 +285,237 @@
 				<decVal/>
 				<label>ProductID4</label>
 			</variable>
-			
-			<variable CV="60" item="FX1 Efects Selection" default="0" minOut="1">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>
-					<enumChoice choice="Mars">
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>	
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>
-			
-			<variable CV="61" item="FX2 Efects Selection" default="0" minOut="2">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>
-					<enumChoice choice="Mars">        
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>
-			
-			<variable CV="62" item="FX3 Efects Selection" default="0" minOut="3">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>	
-					<enumChoice choice="Mars">        
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>
-			
-			<variable CV="63" item="FX4 Efects Selection" default="0" minOut="4">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>	
-					<enumChoice choice="Mars">        
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>	
-			
-			<variable CV="64" item="FX5 Efects Selection" default="0" minOut="5">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>	
-					<enumChoice choice="Mars">        
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>
 
-			<variable CV="65" item="FX6 Efects Selection" default="0" minOut="6">
-				<enumVal>
-					<enumChoice choice="Normal">        
-					</enumChoice>
-					<enumChoice choice="Dimable">
-					</enumChoice>
-					<enumChoice choice="Fade">        
-					</enumChoice>
-					<enumChoice choice="Strobe">
-					</enumChoice>
-					<enumChoice choice="Random">        
-					</enumChoice>
-					<enumChoice choice="Beacon">        
-					</enumChoice>	
-					<enumChoice choice="Mars">        
-					</enumChoice>
-					<enumChoice choice="Flicker">
-					</enumChoice>
-				</enumVal>		
-				<label>Effects Selection</label>
-				<tooltip>choose one</tooltip>
-			</variable>	
-			
-			<variable CV="66" item="FX1 Brightness" mask="XXXXVVVV" default="15" minOut="1">
-				<decVal min="0" max="15"/>
+		<variable CV="60" item="FX1 Efects Selection" default="0" minOut="1">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+		<variable CV="61" item="FX2 Efects Selection" default="0" minOut="2">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+		<variable CV="62" item="FX3 Efects Selection" default="0" minOut="3">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+		<variable CV="63" item="FX4 Efects Selection" default="0" minOut="4">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+		<variable CV="64" item="FX5 Efects Selection" default="0" minOut="5">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+		<variable CV="65" item="FX6 Efects Selection" default="0" minOut="6">
+			<enumVal>
+				<enumChoice choice="Normal">
+				</enumChoice>
+				<enumChoice choice="Dimable">
+				</enumChoice>
+				<enumChoice choice="Fade">
+				</enumChoice>
+				<enumChoice choice="Strobe">
+				</enumChoice>
+				<enumChoice choice="Random">
+				</enumChoice>
+				<enumChoice choice="Beacon">
+				</enumChoice>
+				<enumChoice choice="Mars">
+				</enumChoice>
+				<enumChoice choice="Flicker">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase A">
+				</enumChoice>
+				<enumChoice choice="Ditch Phase B">
+				</enumChoice>
+			</enumVal>
+			<label>Effects Selection</label>
+			<tooltip>choose one</tooltip>
+		</variable>
+
+
+		<variable CV="66" item="FX1 Brightness" mask="XXXXVVVV" default="4" minOut="1">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="67" item="FX2 Brightness" mask="XXXXVVVV" default="15" minOut="2">
-				<decVal min="0" max="15"/>
+			<variable CV="67" item="FX2 Brightness" mask="XXXXVVVV" default="4" minOut="2">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="68" item="FX3 Brightness" mask="XXXXVVVV" default="15" minOut="3">
-				<decVal min="0" max="15"/>
+			<variable CV="68" item="FX3 Brightness" mask="XXXXVVVV" default="4" minOut="3">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="69" item="FX4 Brightness" mask="XXXXVVVV" default="15" minOut="4">
-				<decVal min="0" max="15"/>
+			<variable CV="69" item="FX4 Brightness" mask="XXXXVVVV" default="4" minOut="4">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="70" item="FX5 Brightness" mask="XXXXVVVV" default="15" minOut="5">
-				<decVal min="0" max="15"/>
+			<variable CV="70" item="FX5 Brightness" mask="XXXXVVVV" default="4" minOut="5">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="71" item="FX6 Brightness" mask="XXXXVVVV" default="15" minOut="6">
-				<decVal min="0" max="15"/>
+			<variable CV="71" item="FX6 Brightness" mask="XXXXVVVV" default="4" minOut="6">
+				<decVal min="0" max="8"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 15</tooltip>
+				<tooltip>choose a value 0 - 8</tooltip>
 			</variable>
 			
-			<variable CV="66" item="FX1 Dimmer" mask="VVVVXXXX" default="7" minOut="1">
+			<variable CV="66" item="FX1 Dimmer" mask="VVVVXXXX" default="0" minOut="1">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="67" item="FX2 Dimmer" mask="VVVVXXXX" default="7" minOut="2">
+			<variable CV="67" item="FX2 Dimmer" mask="VVVVXXXX" default="0" minOut="2">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="68" item="FX3 Dimmer" mask="VVVVXXXX" default="7" minOut="3">
+			<variable CV="68" item="FX3 Dimmer" mask="VVVVXXXX" default="0" minOut="3">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="69" item="FX4 Dimmer" mask="VVVVXXXX" default="7" minOut="4">
+			<variable CV="69" item="FX4 Dimmer" mask="VVVVXXXX" default="0" minOut="4">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="70" item="FX5 Dimmer" mask="VVVVXXXX" default="7" minOut="5">
+			<variable CV="70" item="FX5 Dimmer" mask="VVVVXXXX" default="0" minOut="5">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="71" item="FX6 Dimmer" mask="VVVVXXXX" default="7" minOut="6">
+			<variable CV="71" item="FX6 Dimmer" mask="VVVVXXXX" default="0" minOut="6">
 				<decVal min="0" max="15"/>
 				<label>Dimmer</label>
 				<tooltip>choose a value 0 - 15</tooltip>

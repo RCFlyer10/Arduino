@@ -13,6 +13,10 @@
 #define On 1
 #define Off 0
 
+#define A 1
+#define B 0
+
+
 // Modes
 #define NORMAL 0
 #define DIMMABLE 1
@@ -22,17 +26,23 @@
 #define BEACON 5
 #define MARS 6
 #define FLICKER 7
+#define DITCH_A 8
+#define DITCH_B 9
+
 
 // Fade mode config
 #define STEP 2
 
+// Beacon mode config
+#define STEP_FACTOR TWO_PI * .008
+
 // Strobe mode config
-#define PERIOD 1128UL
-#define DURATION 50
+#define PERIOD 1128U
+#define DURATION 50U
 
 // Random mode config
-#define TIME 10000
-#define PROBABILITY 50
+#define TIME 10000U
+#define PROBABILITY 50U
 
 // Beacon mode congig
 #define START_ANGLE PI * 1.5
@@ -53,11 +63,14 @@ public:
 	void setConfig_1(uint8_t value);
 	void setConfig_2(uint8_t value);
 	void setProbability(uint8_t value);
+	void activateCrossing();
 	void heartbeat();
 
 private:
 	// Instance variables
 	unsigned long _previousMillis;
+	unsigned long _crossingTimer;
+
 	uint8_t _randomNumber;
 	uint8_t _pin;
 	uint8_t _effect;
@@ -66,6 +79,8 @@ private:
 	uint8_t _flashRate;
 	uint8_t _brightValue;
 	uint8_t _probability;
+	bool _crossingActive;
+	bool _phase;
 	bool _fading;
 	bool _fadeDir;
 	bool _state;

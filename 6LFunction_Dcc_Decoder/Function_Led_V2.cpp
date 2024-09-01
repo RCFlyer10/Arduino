@@ -3,8 +3,7 @@
 Function_Led::Function_Led(uint8_t pin) {
 	_pin = pin;
 	_state = Off;
-	_effect = 0;
-	pinMode(_pin, OUTPUT);
+	_effect = 0;	
 	setState(Off);
 }
 
@@ -14,15 +13,16 @@ void Function_Led::setEffect(uint8_t effect) {
 }
 
 void Function_Led::setConfig_1(uint8_t value) {
-	_brightValue = (value & 0x0f) * 15;
-	_dimValue = ((value & 0xf0) >> 4) * 15;
+	uint16_t temp = value & 0x0f;
+	_brightValue = (1 << temp) - 1;
+	temp = (value & 0xf0) >> 4;
+	_dimValue = (1 << temp) - 1;
 }
 
 void Function_Led::setConfig_2(uint8_t value) {
 	_fadeRate = (value & 0x0f) * 17;
-	_flashRate = ((value & 0xf0) >> 4) * 17;
-	//float freq = (_flashRate / 500.0) + 0.74;
-	_step = (TWO_PI / 125) * ((_flashRate / 500.0) + 0.74);
+	_flashRate = ((value & 0xf0) >> 4) * 17;	
+	_step = STEP_FACTOR * ((_flashRate * .002) + 0.74);
 }
 
 void Function_Led::setProbability(uint8_t value) {
@@ -34,15 +34,39 @@ void Function_Led::setState(bool state) {
 		_ledState = LOW;
 		_fadeDir = true;
 		_fading = true;
+		_phase = true;
+		_crossingActive = false;
+		_crossingTimer = 0;
 		_previousMillis = 0;
 		_randomNumber = 0;
+
 	}
 	_state = state;
 }
 
+void Function_Led::activateCrossing() {
+	if (_effect == DITCH_A || _effect == DITCH_B) {
+		if (_crossingActive == false) {
+			_crossingActive = true;
+			_phase = true;
+			_previousMillis = 0;
+		}
+		_crossingTimer = millis();
+	}
+}
+
+
 void Function_Led::heartbeat() {
 	unsigned long currentMillis = millis();
 	switch (_effect) {
+	case NORMAL: {
+		if (_state == On) {
+			analogWrite(_pin, 255 - _brightValue);
+		}
+		else {
+			analogWrite(_pin, 255);
+		}
+	}
 	case DIMMABLE: {
 		if (_state == On) {
 			if (direction == DCC_DIR_REV) {
@@ -62,7 +86,7 @@ void Function_Led::heartbeat() {
 			_previousMillis = currentMillis;
 			if (_state == On) {
 				if (_fade < _brightValue) {
-					_fade = _fade + STEP;    							// increase fade by step					
+					_fade += STEP;    									// increase fade by step					
 				}
 				if (_fade > _brightValue) {
 					_fade = _brightValue;      							// keep fade in bounds					
@@ -71,7 +95,7 @@ void Function_Led::heartbeat() {
 			}
 			else if (_state == Off) {
 				if (_fade > 0) {
-					_fade = _fade - (STEP + 2);     					// decrease fade by step
+					_fade += (STEP + 2);     							// decrease fade by step
 				}
 				if (_fade < 0) {
 					_fade = 0;                        					// keep fade in bounds				
@@ -83,7 +107,7 @@ void Function_Led::heartbeat() {
 	}
 	case STROBE: {
 		if (_state == On) {
-			if (currentMillis - _previousMillis >= PERIOD - (2 * _flashRate) && _ledState == LOW) {
+			if (currentMillis - _previousMillis >= PERIOD - (_flashRate << 1) && _ledState == LOW) {
 				_previousMillis = currentMillis;
 				_ledState = HIGH;
 			}
@@ -126,8 +150,8 @@ void Function_Led::heartbeat() {
 	}
 	case BEACON: {
 		if (_state == On) {
-			uint8_t intensity = _brightValue / 2;
-			if (currentMillis - _previousMillis >= 8U) {
+			uint8_t intensity = _brightValue >> 1;
+			if (currentMillis - _previousMillis >= 8) {
 				_previousMillis = currentMillis;
 				_angle = _angle + _step;                                	// increase angle by step
 			}
@@ -146,8 +170,8 @@ void Function_Led::heartbeat() {
 		if (_state == On) {
 			static uint8_t fade = 0;
 			static uint8_t count = 0;
-			uint8_t intensity = _brightValue / 12;
-			if (currentMillis - _previousMillis >= 24U - (_flashRate / 16) && _fading) {
+			uint8_t intensity = _brightValue >> 3;
+			if (currentMillis - _previousMillis >= 44U - (_flashRate >> 3) && _fading) {
 				_previousMillis = currentMillis;
 				if (_fadeDir) {
 					fade++;
@@ -186,7 +210,7 @@ void Function_Led::heartbeat() {
 	case FLICKER: {
 		if (_state == On) {
 
-			if (currentMillis - _previousMillis >= 255 - random(_flashRate)) {
+			if (currentMillis - _previousMillis >= 255U - random(_flashRate)) {
 				_previousMillis = currentMillis;
 				uint8_t temp = random(_dimValue, _brightValue);
 				analogWrite(_pin, 255 - temp);
@@ -197,9 +221,53 @@ void Function_Led::heartbeat() {
 		}
 		break;
 	}
-	default: { // NORMAL
+	case DITCH_A: {
 		if (_state == On) {
-			analogWrite(_pin, 255 - _brightValue);
+			if (_crossingActive) {
+				if (currentMillis - _previousMillis > 1400U - (_flashRate << 2)) {
+					if (_phase == A) {
+						analogWrite(_pin, 255 - _brightValue);
+						_phase = B;
+					}
+					else {
+						analogWrite(_pin, 255 - _dimValue);
+						_phase = A;
+					}
+					_previousMillis = currentMillis;
+				}
+				if (currentMillis - _crossingTimer > 15000) {
+					_crossingActive = false;
+				}
+			}
+			else {
+				analogWrite(_pin, 255 - _brightValue);
+			}
+		}
+		else {
+			analogWrite(_pin, 255);
+		}
+	}
+	case DITCH_B: {
+		if (_state == On) {
+			if (_crossingActive) {
+				if (currentMillis - _previousMillis > 1400U - (_flashRate << 2)) {
+					if (_phase == B) {
+						analogWrite(_pin, 255 - _brightValue);
+						_phase = A;
+					}
+					else {
+						analogWrite(_pin, 255 - _dimValue);
+						_phase = B;
+					}
+					_previousMillis = currentMillis;
+				}
+				if (currentMillis - _crossingTimer > 15000) {
+					_crossingActive = false;
+				}
+			}
+			else {
+				analogWrite(_pin, 255 - _brightValue);
+			}
 		}
 		else {
 			analogWrite(_pin, 255);
