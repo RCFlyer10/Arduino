@@ -29,7 +29,7 @@
   </revhistory>
   <decoder>
     <family name="6L Function Decoder" mfg="Public-domain and DIY">      
-      <model model="6L Function Decoder v 1.0" lowVersionID="10" highVersionID="20" productID="1575444" numOuts="6" numFns="28"/>
+      <model model="6L Function Decoder v 1.1" lowVersionID="11" highVersionID="20" productID="1575444" numOuts="6" numFns="28"/>
     </family>
     <programming direct="yes" paged="yes" register="yes" ops="yes">
 			<capability>
@@ -43,14 +43,20 @@
 				<label>Primary Address</label>
 			</variable>
 			
-			<variable CV="7" item="Decoder Version" readOnly="yes" default="10">
+			<variable CV="7" item="Decoder Version" readOnly="yes">
 				<decVal/>
 				<label>Manufacturer Version No: </label>    
 			</variable>
 			
-			<variable CV="8" readOnly="yes" item="Manufacturer" default="13">
+			<variable CV="8" readOnly="yes" item="Manufacturer">
 				<decVal/>
 				<label>Manufacturer ID: </label>    
+			</variable>
+
+			<variable CV="11" item="Packet Time-out" default="255">
+				<decVal/>
+				<label>Packet Time-out Value</label>
+				<tooltip>time in seconds 0 - 255</tooltip>
 			</variable>
 			
 			<variable CV="17" item="Long Address">
@@ -266,22 +272,22 @@
 				<label>Reverse Directionl Control</label>
 			</variable>
 
-			<variable CV="47" item="ProductID1" readOnly="yes" default="0">
+			<variable CV="47" item="ProductID1" readOnly="yes">
 				<decVal/>
 				<label>ProductID1</label>
 			</variable>
 
-			<variable CV="48" item="ProductID2" readOnly="yes" default="24">
+			<variable CV="48" item="ProductID2" readOnly="yes">
 				<decVal/>
 				<label>ProductID2</label>
 			</variable>
 
-			<variable CV="49" item="ProductID3" readOnly="yes" default="10">
+			<variable CV="49" item="ProductID3" readOnly="yes">
 				<decVal/>
 				<label>ProductID3</label>
 			</variable>
 
-			<variable CV="50" item="ProductID4" readOnly="yes" default="20">
+			<variable CV="50" item="ProductID4" readOnly="yes">
 				<decVal/>
 				<label>ProductID4</label>
 			</variable>
@@ -291,9 +297,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -318,9 +322,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -345,9 +347,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -372,9 +372,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -399,9 +397,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -426,9 +422,7 @@
 				<enumChoice choice="Normal">
 				</enumChoice>
 				<enumChoice choice="Dimable">
-				</enumChoice>
-				<enumChoice choice="Fade">
-				</enumChoice>
+				</enumChoice>				
 				<enumChoice choice="Strobe">
 				</enumChoice>
 				<enumChoice choice="Random">
@@ -449,40 +443,40 @@
 		</variable>
 
 
-		<variable CV="66" item="FX1 Brightness" mask="XXXXVVVV" default="4" minOut="1">
-				<decVal min="0" max="8"/>
+		<variable CV="66" item="FX1 Brightness" mask="XXXXVVVV" default="7" minOut="1">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="67" item="FX2 Brightness" mask="XXXXVVVV" default="4" minOut="2">
-				<decVal min="0" max="8"/>
+			<variable CV="67" item="FX2 Brightness" mask="XXXXVVVV" default="7" minOut="2">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 51</tooltip>
 			</variable>
 			
-			<variable CV="68" item="FX3 Brightness" mask="XXXXVVVV" default="4" minOut="3">
-				<decVal min="0" max="8"/>
+			<variable CV="68" item="FX3 Brightness" mask="XXXXVVVV" default="7" minOut="3">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="69" item="FX4 Brightness" mask="XXXXVVVV" default="4" minOut="4">
-				<decVal min="0" max="8"/>
+			<variable CV="69" item="FX4 Brightness" mask="XXXXVVVV" default="7" minOut="4">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="70" item="FX5 Brightness" mask="XXXXVVVV" default="4" minOut="5">
-				<decVal min="0" max="8"/>
+			<variable CV="70" item="FX5 Brightness" mask="XXXXVVVV" default="7" minOut="5">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 15</tooltip>
 			</variable>
 			
-			<variable CV="71" item="FX6 Brightness" mask="XXXXVVVV" default="4" minOut="6">
-				<decVal min="0" max="8"/>
+			<variable CV="71" item="FX6 Brightness" mask="XXXXVVVV" default="7" minOut="6">
+				<decVal min="0" max="15"/>
 				<label>Brightness</label>
-				<tooltip>choose a value 0 - 8</tooltip>
+				<tooltip>choose a value 0 - 51</tooltip>
 			</variable>
 			
 			<variable CV="66" item="FX1 Dimmer" mask="VVVVXXXX" default="0" minOut="1">
@@ -1906,7 +1900,7 @@
 						<text> </text>
 					</label>
 					<row>
-					<display item="FX4 Fade Rate" layout="above" label=""/>
+					<display item="FX6 Fade Rate" layout="above" label=""/>
 					<display item="FX6 Fade Rate" layout="above" format="hslider"/>
 					</row>
 					<label>

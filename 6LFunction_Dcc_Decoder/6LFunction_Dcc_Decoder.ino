@@ -1,7 +1,10 @@
 
 // NMRA Dcc Multifunction Lighting Decoder
+//#include <EEPROM.h>
 #include "Function_Led_V2.h"
 #include <NmraDcc.h>
+
+#define VERSION 11 // 1.1
 
 // This section defines the Arduino UNO Pins to use
 #ifdef __AVR_ATmega328P__
@@ -13,7 +16,7 @@
 #define FUNCTION_GROUPS 5
 #define FUNCTIONS 6
 #define FEATURES 4
-#define UNUSED_PINS 23 - 3 - FUNCTIONS 
+#define UNUSED_PINS 23 - 2 - FUNCTIONS 
 
 
 #else
@@ -43,6 +46,12 @@ uint8_t cv29Config = 0;
 uint16_t myAddress = 0;
 DCC_DIRECTION direction = DCC_DIR_FWD;
 
+// cache Speed
+uint8_t speed = 0;
+
+// cache Packet Time-out
+uint16_t packetTimeOut;
+
 // function list
 Function_Led* functionList[FUNCTIONS];
 
@@ -52,7 +61,10 @@ struct CVPair {
 	uint8_t Value;
 };
 
+unsigned long saveStateTimer = 0;
+
 // CV Addresses we will be using
+#define CV_PACKET_TIMEOUT 11
 #define CV_CONSIST_ADDR 19
 
 #define CV_CONSIST_FUNC_EN 21
@@ -123,6 +135,13 @@ struct CVPair {
 #define CV_FN_MAP_FX6_F13_F20 148
 #define CV_FN_MAP_FX6_F21_F28 149
 
+#define FX1_SAVE_STATE 150
+#define FX2_SAVE_STATE 151
+#define FX3_SAVE_STATE 152
+#define FX4_SAVE_STATE 153
+#define FX5_SAVE_STATE 154
+#define FX6_SAVE_STATE 155
+
 #define CONFIG_END CV_FX1_EFFECT + (FEATURES * FUNCTIONS) - 1
 
 // Default CV Values Table
@@ -137,18 +156,18 @@ CVPair FactoryDefaultCVs[] = {
 	{ CV_FX4_EFFECT, 0 },
 	{ CV_FX5_EFFECT, 0 },
 	{ CV_FX6_EFFECT, 0 },
-	{ CV_FX1_CONFIG_1, 4 },
-	{ CV_FX2_CONFIG_1, 4 },
-	{ CV_FX3_CONFIG_1, 4 },
-	{ CV_FX4_CONFIG_1, 4 },
-	{ CV_FX5_CONFIG_1, 4 },
-	{ CV_FX6_CONFIG_1, 4 },
-	{ CV_FX1_CONFIG_2, 119 },
-	{ CV_FX2_CONFIG_2, 119 },
-	{ CV_FX3_CONFIG_2, 119 },
-	{ CV_FX4_CONFIG_2, 119 },
-	{ CV_FX5_CONFIG_2, 119 },
-	{ CV_FX6_CONFIG_2, 119 },
+	{ CV_FX1_CONFIG_1, 7 },
+	{ CV_FX2_CONFIG_1, 7 },
+	{ CV_FX3_CONFIG_1, 7 },
+	{ CV_FX4_CONFIG_1, 7 },
+	{ CV_FX5_CONFIG_1, 7 },
+	{ CV_FX6_CONFIG_1, 7 },
+	{ CV_FX1_CONFIG_2, 112 },
+	{ CV_FX2_CONFIG_2, 112 },
+	{ CV_FX3_CONFIG_2, 112 },
+	{ CV_FX4_CONFIG_2, 112 },
+	{ CV_FX5_CONFIG_2, 112 },
+	{ CV_FX6_CONFIG_2, 112 },
 	{ CV_FX1_PROBABILITY, 50 },
 	{ CV_FX2_PROBABILITY, 50 },
 	{ CV_FX3_PROBABILITY, 50 },
@@ -188,10 +207,19 @@ CVPair FactoryDefaultCVs[] = {
 	{ CV_FN_MAP_FX6_F13_F20, 0},
 	{ CV_FN_MAP_FX6_F21_F28, 0},
 
+	{ CV_PACKET_TIMEOUT, 255},
+
 	{ CV_PROD_ID_1, 0},
 	{ CV_PROD_ID_2, 24},
 	{ CV_PROD_ID_3, 10},
 	{ CV_PROD_ID_4, 20},
+
+	{ FX1_SAVE_STATE, 0},
+	{ FX2_SAVE_STATE, 0},
+	{ FX3_SAVE_STATE, 0},
+	{ FX4_SAVE_STATE, 0},
+	{ FX5_SAVE_STATE, 0},
+	{ FX6_SAVE_STATE, 0},
 
 	// The CV Below defines Advanced Consist Address
 	{ CV_CONSIST_ADDR, 0 },
@@ -223,6 +251,9 @@ uint8_t FactoryDefaultCVIndex = 0;
 // This call-back function is called when a CV Value changes so we can update CVs we're using
 void notifyCVChange(uint16_t CV, uint8_t Value) {
 	switch (CV) {
+	case CV_PACKET_TIMEOUT:
+		packetTimeOut = Value * 1000;
+		break;
 	case CV_CONSIST_ADDR:
 	case CV_MULTIFUNCTION_PRIMARY_ADDRESS:
 	case CV_MULTIFUNCTION_EXTENDED_ADDRESS_LSB:
@@ -309,7 +340,7 @@ void setAddress() {
 
 
 void configureUnusedPins() {
-	uint8_t unusedPins[] = { 0, 1, 4, 7, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
+	uint8_t unusedPins[] = { 0, 1, 4, 7, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
 	for (uint8_t i = 0; i < UNUSED_PINS; i++) {
 		pinMode(unusedPins[i], INPUT_PULLUP);
 	}
@@ -337,6 +368,7 @@ void notifyDccSpeed(uint16_t Addr, DCC_ADDR_TYPE AddrType, uint8_t Speed, DCC_DI
 		else {
 			direction = ((cv29Config & CV29_LOCO_DIR) ^ Dir) ? DCC_DIR_FWD : DCC_DIR_REV;
 		}
+		speed = Speed;
 	}
 }
 
@@ -405,12 +437,12 @@ void setup() {
 	// Interrupt Number for the Arduino Pin number, which reduces confusion.
 
 #ifdef digitalPinToInterrupt
-	Dcc.pin(DCC_PIN, false);
+	Dcc.pin(DCC_PIN, true);
 #else
-	Dcc.pin(0, DCC_PIN, false);
+	Dcc.pin(0, DCC_PIN, true);
 #endif
 
-	Dcc.init(MAN_ID_DIY, 10, FLAGS_OUTPUT_ADDRESS_MODE | FLAGS_AUTO_FACTORY_DEFAULT, 0);
+	Dcc.init(MAN_ID_DIY, VERSION, FLAGS_AUTO_FACTORY_DEFAULT, 0);
 
 	createFunctions();
 
@@ -435,9 +467,18 @@ void setup() {
 		}
 	}
 
+	// load packet time-out
+	packetTimeOut = Dcc.getCV(CV_PACKET_TIMEOUT) * 1000;
+
 	// load funtion settings
 	for (int index = CV_FX1_EFFECT; index < CONFIG_END; index++) {
 		updateFunctions(index, Dcc.getCV(index));
+	}
+
+	// load function states
+	for (uint8_t i = 0; i < FUNCTIONS; i++) {		
+		functionState[i] = Dcc.getCV(FX1_SAVE_STATE + i);
+		functionList[i]->setState(functionState[i]);
 	}
 
 #ifdef InitalizeCVs
@@ -448,7 +489,10 @@ void setup() {
 
 void loop() {
 	// You MUST call the NmraDcc.process() method frequently from the Arduino loop() function for correct library operation
-	Dcc.process();
+	if (Dcc.process()) {
+		// DCC active so reset saveStateTimer
+		saveStateTimer = millis();
+	}
 
 	for (int i = 0; i < FUNCTIONS; i++) {
 		functionList[i]->heartbeat();
@@ -458,5 +502,12 @@ void loop() {
 	if (FactoryDefaultCVIndex && Dcc.isSetCVReady()) {
 		FactoryDefaultCVIndex--;  // Decrement first as initially it is the size of the array
 		Dcc.setCV(FactoryDefaultCVs[FactoryDefaultCVIndex].CV, FactoryDefaultCVs[FactoryDefaultCVIndex].Value);
+	}
+
+	// If power lost, save function states
+	if (millis() - saveStateTimer >= packetTimeOut * 1000) {
+		for (uint8_t i = 0; i < FUNCTIONS; i++) {
+			Dcc.setCV(FX1_SAVE_STATE + i, functionState[i]);
+		}
 	}
 }

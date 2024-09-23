@@ -20,14 +20,13 @@
 // Modes
 #define NORMAL 0
 #define DIMMABLE 1
-#define FADE 2
-#define STROBE 3
-#define RANDOM 4
-#define BEACON 5
-#define MARS 6
-#define FLICKER 7
-#define DITCH_A 8
-#define DITCH_B 9
+#define STROBE 2
+#define RANDOM 3
+#define BEACON 4
+#define MARS 5
+#define FLICKER 6
+#define DITCH_A 7
+#define DITCH_B 8
 
 
 // Fade mode config
@@ -41,7 +40,7 @@
 #define DURATION 50U
 
 // Random mode config
-#define TIME 10000U
+#define TIME 15000U
 #define PROBABILITY 50U
 
 // Beacon mode congig
@@ -49,6 +48,8 @@
 #define MAX_ANGLE PI * 3.5
 
 extern DCC_DIRECTION direction;
+
+extern uint8_t speed;
 
 /*!
  *  @brief  Class that stores state and functions for the Funtion Led
@@ -67,9 +68,11 @@ public:
 	void heartbeat();
 
 private:
+	void setFadeTime();
 	// Instance variables
 	unsigned long _previousMillis;
 	unsigned long _crossingTimer;
+	unsigned long _fadeTimer;
 
 	uint8_t _randomNumber;
 	uint8_t _pin;
@@ -79,12 +82,15 @@ private:
 	uint8_t _flashRate;
 	uint8_t _brightValue;
 	uint8_t _probability;
+	uint16_t _fadeTime;
 	bool _crossingActive;
 	bool _phase;
 	bool _fading;
 	bool _fadeDir;
 	bool _state;
 	bool _ledState;
+	bool _fadeOn;
+	bool _fadeOff;
 	int _fade;
 	float _angle;
 	float _value;
